@@ -10,9 +10,9 @@
 */
 
 #include <QtCore/QDebug>
-#include <QtGui/QShortcut>
-#include <QtGui/QAction>
-#include <QtGui/QWidget>
+#include <QtWidgets/QShortcut>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QWidget>
 #include "actionsmanager.h"
 #include "actiondata.h"
 

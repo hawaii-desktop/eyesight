@@ -18,7 +18,7 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include "aboutdialog.h"
 
 QString AboutDialog::getFromResource(const QString& res_file)

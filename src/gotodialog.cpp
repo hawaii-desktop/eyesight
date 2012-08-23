@@ -1,4 +1,4 @@
-#include <QtGui/QCompleter>
+#include <QtWidgets/QCompleter>
 #include "gotodialog.h"
 
 GoToDialog::GoToDialog(QWidget *parent) :

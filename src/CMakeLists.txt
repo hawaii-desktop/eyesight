@@ -1,13 +1,14 @@
 include_directories(
     ${Qt5Widgets_INCLUDE_DIRS}
     ${Qt5PrintSupport_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 add_definitions(
     ${Qt5Widgets_DEFINITIONS}
     ${Qt5PrintSupport_DEFINITIONS}
 )
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 set(SOURCES
     main.cpp

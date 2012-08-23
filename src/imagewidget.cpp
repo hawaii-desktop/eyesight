@@ -18,7 +18,7 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include "imagewidget.h"
 #ifdef WEBP_SUPPORT
 #include "webpdecoder.h"

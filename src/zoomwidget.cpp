@@ -19,7 +19,7 @@
 **********************************************************************/
 
 #include "zoomwidget.h"
-#include <QtGui>
+#include <QtWidgets>
 
 ZoomWidget::ZoomWidget(QWidget *parent) :
     QWidget(parent)

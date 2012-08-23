@@ -18,9 +18,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include <getopt.h>
 #include <iostream>
+
+#include <config.h>
+
 #include "mainwindow.h"
 #include "eggsdialog.h"
 #include "configdialog.h"
@@ -103,7 +106,7 @@ int main(int argc, char *argv[])
                                  "<http://gnu.org/licenses/gpl.html>.\n"
                                  "This is free software: you are free to change it and redistribute.\n"
                                  "There is NO WARRANTY.\n"
-                                 ).arg(QLatin1String(PKGVERSION)).toStdString();
+                                 ).arg(QLatin1String(EYESIGHT_VERSION)).toStdString();
         re = 0;
     }
 

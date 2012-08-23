@@ -18,7 +18,7 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include "toolbaredit.h"
 
 ToolBarEdit::ToolBarEdit(QWidget* parent, Qt::WFlags fl) : QWidget(parent, fl)
