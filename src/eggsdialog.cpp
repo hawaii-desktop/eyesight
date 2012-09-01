@@ -11,21 +11,21 @@ EggsDialog::EggsDialog(QWidget *parent) :
     ui.cancelButton->setIcon(QIcon::fromTheme("dialog-cancel"));
 
     loadSettings();
-    if(!ui.enableEgg->isChecked()){
-      ui.imageJokes->setEnabled(false);
-      ui.binaryButton->setEnabled(false);
-      ui.endTime->setEnabled(false);
-      ui.beginTime->setEnabled(false);
-      ui.label_4->setEnabled(false);
-      ui.label_5->setEnabled(false);
-      ui.label->setEnabled(false);
-      ui.label_2->setEnabled(false);
+    if (!ui.enableEgg->isChecked()) {
+        ui.imageJokes->setEnabled(false);
+        ui.binaryButton->setEnabled(false);
+        ui.endTime->setEnabled(false);
+        ui.beginTime->setEnabled(false);
+        ui.label_4->setEnabled(false);
+        ui.label_5->setEnabled(false);
+        ui.label->setEnabled(false);
+        ui.label_2->setEnabled(false);
     }
 }
 
 void EggsDialog::saveSettings()
 {
-    QSettings settings("QIviewer", "qiviewer");
+    QSettings settings("EyeSight", "qiviewer");
     settings.beginGroup("Eggs");
     settings.setValue("enableEggs", ui.enableEgg->isChecked());
     settings.setValue("imageJokes", ui.imageJokes->isChecked());
@@ -38,15 +38,15 @@ void EggsDialog::saveSettings()
 
 void EggsDialog::loadSettings()
 {
-    QSettings settings("QIviewer", "qiviewer");
+    QSettings settings("EyeSight", "qiviewer");
     settings.beginGroup("Eggs");
     ui.enableEgg->setChecked(settings.value("enableEggs", true).toBool());
     ui.imageJokes->setChecked(settings.value("imageJokes", false).toBool());
     ui.binaryButton->setChecked(settings.value("useBinary", true).toBool());
 
     int endH, endM, begH, begM;
-    getHour(settings.value("eggStart", setHour(0,0)).toString(), begH, begM);
-    getHour(settings.value("eggEnd", setHour(0,30)).toString(), endH, endM);
+    getHour(settings.value("eggStart", setHour(0, 0)).toString(), begH, begM);
+    getHour(settings.value("eggEnd", setHour(0, 30)).toString(), endH, endM);
     ui.endTime->setTime(QTime(endH, endM));
     ui.beginTime->setTime(QTime(begH, begM));
     settings.endGroup();
@@ -55,7 +55,7 @@ void EggsDialog::loadSettings()
 void EggsDialog::getHour(QString time, int &hour, int &min)
 {
     //qDebug()<<time;
-    if(time.indexOf("@Time(") == -1)
+    if (time.indexOf("@Time(") == -1)
         return;
 
     time.remove("@Time(");
@@ -68,12 +68,12 @@ void EggsDialog::getHour(QString time, int &hour, int &min)
     //qDebug()<<QString("%1:%2").arg(h).arg(m);
 
     //check min and hour are both valids
-    while(min > 59){
+    while (min > 59) {
         hour++;
         min -= 60;
     }
 
-    while(hour > 23){
+    while (hour > 23) {
         hour -= 24;
     }
 

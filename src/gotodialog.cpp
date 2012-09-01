@@ -55,6 +55,6 @@ void GoToDialog::nameLineSlot(QString d)
 
 void GoToDialog::spinSlot(int d)
 {
-    ui.nameLine->setText(list.at(d-1));
-    emit goTo(list.at(d-1), d-1);
+    ui.nameLine->setText(list.at(d - 1));
+    emit goTo(list.at(d - 1), d - 1);
 }

@@ -47,17 +47,17 @@ public:
     /**
      * \enum ImageWidget::Transform
      */
-    enum Transform{
+    enum Transform {
         toLeft,       ///<the image is rotated 90 degrees to the Left
         toRight,      ///<the image is rotated 90 degrees to the right
         horizontally, ///<the image is flipped horizontally
         vertically    ///<vertically the image is flipped vertically
     };
-    
+
     /**
      * \enum ImageWidget::BackgroundType
      */
-    enum BackgroundType{
+    enum BackgroundType {
         squares,    ///<uses a chessboard as background
         solidColor, ///<uses a color as background
         none        ///<the background isn't setted
@@ -67,7 +67,7 @@ public:
      * constructor
      */
     ImageWidget(QWidget *parent = 0);
-    
+
     /**
      * Transfom the image to the given \a Transform
      * */
@@ -77,84 +77,104 @@ public:
       *removes any image or movie loaded and sets everything to default
       */
     void clear();
-    
+
     /**
      * sets the \a name to be the picture to show
      */
     void setPicture(const QString name);
-    
+
     /**
      * sets the \a name as the movie to show
      */
     void setMovie(const QString name);
-    
+
     /**
      * sets the background type.
      * it might be \a squares, \a solidColor or \a none
      */
     void setBGType(const QString type);
-    
+
     /**
      * sets \a speed as the movie speed
      * it's in percentage, being 100 the normal and default speed
      */
     void setMovieSpeed(int speed);
-    
+
     /**
      * sets \a size as each square side size in the chessboard background
      */
-    inline void setCBSSize(int size){if(size<=32 && size>0){cbsSize = size;}}
-    
+    inline void setCBSSize(int size) {
+        if (size <= 32 && size > 0) {
+            cbsSize = size;
+        }
+    }
+
     /**
      * sets \a color as the color in the solidColor background
      */
-    inline void setSCBColor(QColor color){backColor = color;}
-    
+    inline void setSCBColor(QColor color) {
+        backColor = color;
+    }
+
     /**
      * if \a restart is true, when making zoom the image reproduction will
      * be restarted
      * it's only for animated images
      */
-    inline void setRestartWhenZooming(bool restart){restartWhenZooming = restart;}
-    
+    inline void setRestartWhenZooming(bool restart) {
+        restartWhenZooming = restart;
+    }
+
     /**
      * if \a stop is true, the animated image reproduction will be stopped
      * after it reaches it's final frame
      */
-    inline void setStopWhenFinish(bool stop){stopWhenFinish = stop;}
-    
+    inline void setStopWhenFinish(bool stop) {
+        stopWhenFinish = stop;
+    }
+
     /**
      * this is an egg
      * if \a invert is true, inverts all pixel values in the image
      */
-    inline void invertColors(bool invert){invertedColors = invert;}
-    
+    inline void invertColors(bool invert) {
+        invertedColors = invert;
+    }
+
     /**
      * @return a copy of the image
      */
-    inline QPixmap getPixmap() const{return pixmap;}
-    
+    inline QPixmap getPixmap() const {
+        return pixmap;
+    }
+
     /**
      * @return the name of the previous image that was setted
      */
-    inline QString getPrevFile() const{return prevFile;}
-    
+    inline QString getPrevFile() const {
+        return prevFile;
+    }
+
     /**
      * @return the animated image speed
      */
-    inline int getMovieSpeed() const{return movieSpeed;}
-    
+    inline int getMovieSpeed() const {
+        return movieSpeed;
+    }
+
     /**
      * @return if the animated image reproduction will be stopped or not
      * after reach its final frame
      */
-    inline bool getStopWhenFinish() const{return stopWhenFinish;}
-    
+    inline bool getStopWhenFinish() const {
+        return stopWhenFinish;
+    }
+
     /**
      * @return the image's size
      */
     QSize getPictureSize() const;
-    
+
     /**
      * @returns the background type
      */
@@ -179,23 +199,23 @@ signals:
      * the object could open the image and false if not
      */
     void couldOpen(bool);
-    
+
     /**
      * signal sent every time the image size change, for example when making zoom
      */
     void picSizeChanged();
-    
+
     /**
      * signal sent when the image change, for example when it makes a transformation
      */
     void pixmapChanged();
-    
+
     /**
      * signal sent when making zoom with the mouse wheel
      * -1->zoom in, -1->zoom out
      */
     void wheelZoom(int);
-    
+
     /**
      * this is to move the image with the mouse,
      * being the first argument the final position and the second the inicial
@@ -204,11 +224,11 @@ signals:
     void moveWidget(QPoint, QPoint);
 
 private:
-   /**
-     * \enum ImageWidget::Elementipe
-     * posibles types for images.
-     */
-    enum ElementType{
+    /**
+      * \enum ImageWidget::Elementipe
+      * posibles types for images.
+      */
+    enum ElementType {
         None,       ///<not specified
         Picture,    ///<A static image
         Movie,      ///<A dynamic image
@@ -240,7 +260,9 @@ private:
     QPixmap chessBoardBackground();
     void drawPixmap();
     void defaulTransMovie();
-    inline bool restartMovieWhenZooming(){return restartWhenZooming;}
+    inline bool restartMovieWhenZooming() {
+        return restartWhenZooming;
+    }
     void calculateNewState(Transform);
     void makeTransformation(Transform);
     void makeDynamicTransformation();

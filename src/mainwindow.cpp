@@ -83,18 +83,18 @@ MainWindow::MainWindow()
     //a separator
     QAction *action1 = new QAction(this);
     action1->setSeparator(true);
-    imageWidget->addAction(action1);    
+    imageWidget->addAction(action1);
     imageWidget->addAction(normalSizeAct);
-    imageWidget->addAction(adjustSizeAct);    
+    imageWidget->addAction(adjustSizeAct);
     //another separator
     QAction *action2 = new QAction(this);
     action2->setSeparator(true);
-    imageWidget->addAction(action2);    
-    imageWidget->addAction(filePropertiesAct); 
+    imageWidget->addAction(action2);
+    imageWidget->addAction(filePropertiesAct);
     imageWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
 
     this->loadSettings();
-    this->setWindowTitle(tr("QIviewer"));
+    this->setWindowTitle(tr("EyeSight"));
     this->setWindowIcon(QIcon::fromTheme("image-x-generic"));
     this->showMenuBar();
     this->addAction(this->showMenuBarAct);
@@ -135,19 +135,19 @@ void MainWindow::moveWidget(QPoint d, QPoint e)
     int deltaY = e.y() - mousePos.y();
 
     if (mousePos.y() <= 4 && scrollArea->verticalScrollBar()->value() < scrollArea->verticalScrollBar()->maximum() - 10) {
-            // wrap mouse from top to bottom
-            mousePos.setY(height - 5);
+        // wrap mouse from top to bottom
+        mousePos.setY(height - 5);
     } else if (mousePos.y() >= height - 4 && scrollArea->verticalScrollBar()->value() > 10) {
-            // wrap mouse from bottom to top
-            mousePos.setY(5);
+        // wrap mouse from bottom to top
+        mousePos.setY(5);
     }
 
     if (mousePos.x() <= 4 && scrollArea->horizontalScrollBar()->value() < scrollArea->horizontalScrollBar()->maximum() - 10) {
-            // wrap mouse from left to right
-            mousePos.setX(width - 5);
+        // wrap mouse from left to right
+        mousePos.setX(width - 5);
     } else if (mousePos.x() >= width - 4 && scrollArea->horizontalScrollBar()->value() > 10) {
-            // wrap mouse from right to left
-            mousePos.setX(5);
+        // wrap mouse from right to left
+        mousePos.setX(5);
     }
 
     scrollArea->horizontalScrollBar()->setValue(scrollArea->horizontalScrollBar()->value() + deltaX);
@@ -156,14 +156,14 @@ void MainWindow::moveWidget(QPoint d, QPoint e)
 
 void MainWindow::imageTranformated()
 {
-    if(!adjustSizeAct->isChecked()){
+    if (!adjustSizeAct->isChecked()) {
         return;
     }
 
     zoomWidget->clearSizes();
     zoomWidget->setPicSize(imageWidget->getPictureSize());
-    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20,20));
-    if(showZoomSlider){
+    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20, 20));
+    if (showZoomSlider) {
         zoomSlider->setValue(zoomWidget->getZoomValue());
     }
 
@@ -172,7 +172,7 @@ void MainWindow::imageTranformated()
 
 void MainWindow::setLastPathUsed(QString newPath)
 {
-    qDebug()<<newPath;
+    qDebug() << newPath;
     lastDirUsed = newPath;
 }
 
@@ -184,16 +184,18 @@ void MainWindow::openImageFromCommandLine(const QStringList d)
 
     bool open;
     int i, j;
-    i=0; j=nameFilters.size(); open = false;
+    i = 0;
+    j = nameFilters.size();
+    open = false;
 
     //check if the file format is included in the supported formats
     //in case it is, open=true, but open=false
     QString g;
-    while(!open && i<j){
+    while (!open && i < j) {
         g = nameFilters.at(i);
         g.remove('*');
         g.remove('"');
-        if(currentFile.absoluteFilePath().indexOf(g) != -1){
+        if (currentFile.absoluteFilePath().indexOf(g) != -1) {
             open = true;
             i = j;
         }
@@ -201,28 +203,28 @@ void MainWindow::openImageFromCommandLine(const QStringList d)
     }
 
     //if open=true, the app explore the folder and open the image
-    if(open && fileUtils->openFile(currentFile.absoluteFilePath())){
+    if (open && fileUtils->openFile(currentFile.absoluteFilePath())) {
         openImage();
     }
 
     //if open=false, show a message
-    else{
+    else {
         QMessageBox notOpen;
         notOpen.setIcon(QMessageBox::Information);
-        notOpen.setText(tr("QIviewer couldn't open the image, what do you want to do?"));
+        notOpen.setText(tr("EyeSight couldn't open the image, what do you want to do?"));
         notOpen.setStandardButtons(QMessageBox::Ok | QMessageBox::Open);
         notOpen.setDefaultButton(QMessageBox::Ok);
         int ret = notOpen.exec();
         switch (ret) {
-           case QMessageBox::Ok:
-               break;
-           case QMessageBox::Open:
-               this->open();
-               break;
-           default:
-               // should never be reached
-               break;
-         }
+            case QMessageBox::Ok:
+                break;
+            case QMessageBox::Open:
+                this->open();
+                break;
+            default:
+                // should never be reached
+                break;
+        }
     }
 }
 
@@ -231,26 +233,26 @@ void MainWindow::goToSlot()
     GoToDialog gt(this);
     gt.setWindowIcon(QIcon::fromTheme("go-jump"));
     gt.setList(fileUtils->getFilesList());
-    gt.setRange(1,fileUtils->getFilesAmount(), fileUtils->getCurrentPosition());
-    connect(&gt, SIGNAL(goTo(QString,int)), this, SLOT(goToSlot(QString, int)));
+    gt.setRange(1, fileUtils->getFilesAmount(), fileUtils->getCurrentPosition());
+    connect(&gt, SIGNAL(goTo(QString, int)), this, SLOT(goToSlot(QString, int)));
     gt.exec();
 }
 
 void MainWindow::goToSlot(QString s, int g)
 {
-   bool d = fileUtils->goToFile(s,g);
-   if(!d){
-     qDebug()<<"the file doesn't exists";
-   }
+    bool d = fileUtils->goToFile(s, g);
+    if (!d) {
+        qDebug() << "the file doesn't exists";
+    }
 
-   else{
-     this->openImage();
-   }
+    else {
+        this->openImage();
+    }
 }
 
 void MainWindow::configureToolBarSlot()
 {
-    qDebug()<<"configure toolbars";
+    qDebug() << "configure toolbars";
     EditToolBar etb;
     etb.setActionsList(actionsManager->getActions(), settings->getActionsLoaded());
     connect(&etb, SIGNAL(actionsChanged(QStringList)), this, SLOT(configureToolBarSlot2(QStringList)));
@@ -261,10 +263,10 @@ void MainWindow::configureToolBarSlot2(QStringList l)
 {
     settings->setActionsLoaded(l);
     setUpToolBar(l,
-                     Qt::ToolBarArea(settings->getTBArea()),
-                     Qt::ToolButtonStyle(settings->getTBButtomStyle()),
-                     settings->getTBVisible(),
-                     showZoomSlider);
+                 Qt::ToolBarArea(settings->getTBArea()),
+                 Qt::ToolButtonStyle(settings->getTBButtomStyle()),
+                 settings->getTBVisible(),
+                 showZoomSlider);
 }
 
 void MainWindow::configureProgram()
@@ -280,8 +282,8 @@ void MainWindow::configureProgram()
 
 void MainWindow::resizeEvent(QResizeEvent *)
 {
-    if(imageSetted){
-        zoomWidget->maxSizeChanged(centralWidget()->size() - QSize(20,20));
+    if (imageSetted) {
+        zoomWidget->maxSizeChanged(centralWidget()->size() - QSize(20, 20));
     }
 }
 
@@ -297,16 +299,16 @@ void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonS
     QStringList actList = actionsManager->getIds();
 
     //add the actions
-    for(int i=0; i < sl.size(); i++){
+    for (int i = 0; i < sl.size(); i++) {
         //add a separator
-        if(sl.at(i) == "_separator"){
+        if (sl.at(i) == "_separator") {
             mainToolBar->addSeparator();
         }
 
         //add an action
-        for(int j=0; j < actList.size(); j++){
+        for (int j = 0; j < actList.size(); j++) {
             QString id = actList.at(j);
-            if(id == sl.at(i)){
+            if (id == sl.at(i)) {
                 mainToolBar->addAction(actionsManager->getAction(id));
             }
         }
@@ -319,7 +321,7 @@ void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonS
     mainToolBar->setToolButtonStyle(s);
 
     //zoom slider stuff
-    if(zl){
+    if (zl) {
         zoomSlider = new QSlider(Qt::Horizontal);
         zoomSlider->setMaximumSize(QSize(75, 25));
         zoomSlider->setRange(zoomWidget->getMinZoomValue(),
@@ -382,7 +384,7 @@ void MainWindow::createMenus()
     goMenu->addAction(goFirstAct);
     goMenu->addAction(goLastAct);
     goMenu->addSeparator(),
-    goMenu->addAction(goToAct);
+           goMenu->addAction(goToAct);
 
     menuBar()->addMenu(fileMenu);
     menuBar()->addMenu(editMenu);
@@ -412,7 +414,7 @@ void MainWindow::updateActions()
     actionsManager->setEnabled("_rotateRight" , imageSetted);
     actionsManager->setEnabled("_flipVertically" , imageSetted);
     actionsManager->setEnabled("_flipHorizontally" , imageSetted);
-    if(showZoomSlider){
+    if (showZoomSlider) {
         zoomSlider->setEnabled(imageSetted);
     }
     actionsManager->setEnabled("_fileProperties" , imageSetted);
@@ -427,161 +429,161 @@ void MainWindow::updateActions()
 
 void MainWindow::createActions()
 {
-  openAct = new QAction(tr("&Open"), this);
-  openAct->setToolTip(tr("Open an image"));
-  actionsManager->addAction(openAct, "_open", this, this, SLOT(open()), QKeySequence::Open);
+    openAct = new QAction(tr("&Open"), this);
+    openAct->setToolTip(tr("Open an image"));
+    actionsManager->addAction(openAct, "_open", this, this, SLOT(open()), QKeySequence::Open);
 
-  saveAct = new QAction(tr("&Save"), this);
-  saveAct->setEnabled(false);
-  actionsManager->addAction(saveAct, "_save", this, this, SLOT(save()), QKeySequence::Save);
+    saveAct = new QAction(tr("&Save"), this);
+    saveAct->setEnabled(false);
+    actionsManager->addAction(saveAct, "_save", this, this, SLOT(save()), QKeySequence::Save);
 
-  exitAct = new QAction(tr("&Exit"), this);
-  actionsManager->addAction(exitAct, "_exit", this, this, SLOT(close()), QKeySequence::Quit);
+    exitAct = new QAction(tr("&Exit"), this);
+    actionsManager->addAction(exitAct, "_exit", this, this, SLOT(close()), QKeySequence::Quit);
 
-  filePropertiesAct = new QAction(tr("Properties"), this);
-  filePropertiesAct->setEnabled(false);
-  actionsManager->addAction(filePropertiesAct, "_fileProperties", this, this,
-                            SLOT(fileProperties()), QKeySequence("Ctrl+."));
+    filePropertiesAct = new QAction(tr("Properties"), this);
+    filePropertiesAct->setEnabled(false);
+    actionsManager->addAction(filePropertiesAct, "_fileProperties", this, this,
+                              SLOT(fileProperties()), QKeySequence("Ctrl+."));
 
-  zoomInAct = new QAction(tr("Zoom In"), this);
-  zoomInAct->setEnabled(false);
-  actionsManager->addAction(zoomInAct, "_zoomIn", this, this, SLOT(zoomIn()), QKeySequence("+"));
+    zoomInAct = new QAction(tr("Zoom In"), this);
+    zoomInAct->setEnabled(false);
+    actionsManager->addAction(zoomInAct, "_zoomIn", this, this, SLOT(zoomIn()), QKeySequence("+"));
 
-  zoomOutAct = new QAction(tr("Zoom Out"), this);
-  zoomOutAct->setEnabled(false);
-  actionsManager->addAction(zoomOutAct, "_zoomOut", this, this, SLOT(zoomOut()), QKeySequence("-"));
+    zoomOutAct = new QAction(tr("Zoom Out"), this);
+    zoomOutAct->setEnabled(false);
+    actionsManager->addAction(zoomOutAct, "_zoomOut", this, this, SLOT(zoomOut()), QKeySequence("-"));
 
-  normalSizeAct = new QAction(tr("Normal Size"), this);
-  normalSizeAct->setEnabled(false);
-  actionsManager->addAction(normalSizeAct, "_normalSize", this, this, SLOT(normalSize()), QKeySequence("1"));
+    normalSizeAct = new QAction(tr("Normal Size"), this);
+    normalSizeAct->setEnabled(false);
+    actionsManager->addAction(normalSizeAct, "_normalSize", this, this, SLOT(normalSize()), QKeySequence("1"));
 
-  adjustSizeAct = new QAction(tr("Best Fit"), this);
-  adjustSizeAct->setEnabled(false);
-  adjustSizeAct->setCheckable(true);
-  actionsManager->addAction(adjustSizeAct, "_adjustSize", this, this, SLOT(adjustSizeSlot()), QKeySequence("0"));
+    adjustSizeAct = new QAction(tr("Best Fit"), this);
+    adjustSizeAct->setEnabled(false);
+    adjustSizeAct->setCheckable(true);
+    actionsManager->addAction(adjustSizeAct, "_adjustSize", this, this, SLOT(adjustSizeSlot()), QKeySequence("0"));
 
-  rotateRightAct = new QAction(tr("Rotate to right"), this);
-  rotateRightAct->setToolTip(tr("Rotate image in the clockwise clock"));
-  rotateRightAct->setEnabled(false);
-  actionsManager->addAction(rotateRightAct, "_rotateRight", this, this, SLOT(rotateRight()));
+    rotateRightAct = new QAction(tr("Rotate to right"), this);
+    rotateRightAct->setToolTip(tr("Rotate image in the clockwise clock"));
+    rotateRightAct->setEnabled(false);
+    actionsManager->addAction(rotateRightAct, "_rotateRight", this, this, SLOT(rotateRight()));
 
-  rotateLeftAct = new QAction(tr("Rotate to Left"), this);
-  rotateLeftAct->setToolTip(tr("Rotate image counter-clockwise to clockwise"));
-  rotateLeftAct->setEnabled(false);
-  actionsManager->addAction(rotateLeftAct, "_rotateLeft", this, this, SLOT(rotateLeft()));
+    rotateLeftAct = new QAction(tr("Rotate to Left"), this);
+    rotateLeftAct->setToolTip(tr("Rotate image counter-clockwise to clockwise"));
+    rotateLeftAct->setEnabled(false);
+    actionsManager->addAction(rotateLeftAct, "_rotateLeft", this, this, SLOT(rotateLeft()));
 
-  flipVerticallyAct = new QAction(tr("Flip vertically"), this);
-  flipVerticallyAct->setToolTip(tr("Turns vertically the image"));
-  flipVerticallyAct->setEnabled(false);
-  actionsManager->addAction(flipVerticallyAct, "_flipVertically", this, this, SLOT(flipVertically()));
+    flipVerticallyAct = new QAction(tr("Flip vertically"), this);
+    flipVerticallyAct->setToolTip(tr("Turns vertically the image"));
+    flipVerticallyAct->setEnabled(false);
+    actionsManager->addAction(flipVerticallyAct, "_flipVertically", this, this, SLOT(flipVertically()));
 
-  flipHorizontallyAct = new QAction(tr("Flip horizontally"), this);
-  flipHorizontallyAct->setToolTip(tr("Reflects the image"));
-  flipHorizontallyAct->setEnabled(false);
-  actionsManager->addAction(flipHorizontallyAct, "_flipHorizontally", this, this, SLOT(flipHorizontally()));
+    flipHorizontallyAct = new QAction(tr("Flip horizontally"), this);
+    flipHorizontallyAct->setToolTip(tr("Reflects the image"));
+    flipHorizontallyAct->setEnabled(false);
+    actionsManager->addAction(flipHorizontallyAct, "_flipHorizontally", this, this, SLOT(flipHorizontally()));
 
-  aboutAct = new QAction(tr("A&bout"), this);
-  actionsManager->addAction(aboutAct, "_about", this, this, SLOT(about()), QKeySequence::HelpContents);
+    aboutAct = new QAction(tr("A&bout"), this);
+    actionsManager->addAction(aboutAct, "_about", this, this, SLOT(about()), QKeySequence::HelpContents);
 
-  aboutQtAct = new QAction(tr("About &Qt"), this);
-  aboutQtAct->setIcon(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"));
-  actionsManager->addAction(aboutQtAct, "_aboutQt", this, qApp, SLOT(aboutQt()));
+    aboutQtAct = new QAction(tr("About &Qt"), this);
+    aboutQtAct->setIcon(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"));
+    actionsManager->addAction(aboutQtAct, "_aboutQt", this, qApp, SLOT(aboutQt()));
 
-  nextAct = new QAction(tr("Ne&xt"), this);
-  nextAct->setStatusTip(tr("Loads next image"));
-  nextAct->setEnabled(false);
-  actionsManager->addAction(nextAct, "_next", this, this, SLOT(next()), Qt::Key_Right);
+    nextAct = new QAction(tr("Ne&xt"), this);
+    nextAct->setStatusTip(tr("Loads next image"));
+    nextAct->setEnabled(false);
+    actionsManager->addAction(nextAct, "_next", this, this, SLOT(next()), Qt::Key_Right);
 
-  goFirstAct = new QAction(tr("Go to the first"), this);
-  goFirstAct->setStatusTip(tr("Loads the first image in the folder"));
-  goFirstAct->setEnabled(false);
-  actionsManager->addAction(goFirstAct, "_goFirst", this, this, SLOT(goFirst()), Qt::Key_Home);
+    goFirstAct = new QAction(tr("Go to the first"), this);
+    goFirstAct->setStatusTip(tr("Loads the first image in the folder"));
+    goFirstAct->setEnabled(false);
+    actionsManager->addAction(goFirstAct, "_goFirst", this, this, SLOT(goFirst()), Qt::Key_Home);
 
-  prevAct = new QAction(tr("Pre&vious"), this);
-  prevAct->setStatusTip(tr("Loads previous image"));
-  prevAct->setEnabled(false);
-  actionsManager->addAction(prevAct, "_previous", this, this, SLOT(previous()), Qt::Key_Left);
+    prevAct = new QAction(tr("Pre&vious"), this);
+    prevAct->setStatusTip(tr("Loads previous image"));
+    prevAct->setEnabled(false);
+    actionsManager->addAction(prevAct, "_previous", this, this, SLOT(previous()), Qt::Key_Left);
 
-  goLastAct = new QAction(tr("Go to the last"), this);
-  goLastAct->setStatusTip(tr("Loads the last image in the folder"));
-  goLastAct->setEnabled(false);
-  actionsManager->addAction(goLastAct, "_goLast", this, this, SLOT(goLast()), Qt::Key_End);
+    goLastAct = new QAction(tr("Go to the last"), this);
+    goLastAct->setStatusTip(tr("Loads the last image in the folder"));
+    goLastAct->setEnabled(false);
+    actionsManager->addAction(goLastAct, "_goLast", this, this, SLOT(goLast()), Qt::Key_End);
 
-  openDirAct = new QAction(tr("Open &Folder"), this);
-  openDirAct->setStatusTip("Open a folder to explore images inside it");
-  actionsManager->addAction(openDirAct, "_openFolder", this, this, SLOT(openDir()), QKeySequence("Ctrl+Shift+O"));
+    openDirAct = new QAction(tr("Open &Folder"), this);
+    openDirAct->setStatusTip("Open a folder to explore images inside it");
+    actionsManager->addAction(openDirAct, "_openFolder", this, this, SLOT(openDir()), QKeySequence("Ctrl+Shift+O"));
 
-  showMenuBarAct = new QAction(tr("Show Menu Bar"), this);
-  showMenuBarAct->setCheckable(true);
-  actionsManager->addAction(showMenuBarAct, "_showMenuBar", this, this, SLOT(showMenuBar()), QKeySequence("Ctrl+M"));
+    showMenuBarAct = new QAction(tr("Show Menu Bar"), this);
+    showMenuBarAct->setCheckable(true);
+    actionsManager->addAction(showMenuBarAct, "_showMenuBar", this, this, SLOT(showMenuBar()), QKeySequence("Ctrl+M"));
 
-  setTBMovableAct = new QAction(tr("Lock toolbar"), this);
-  setTBMovableAct->setCheckable(true);
-  setTBMovableAct->setEnabled(settings->getTBVisible());
-  setTBMovableAct->setStatusTip(tr("Lock/unlock toolbar"));
-  actionsManager->addAction(setTBMovableAct, "_tbMovable", this, this, SLOT(setToolBarMovable()));
+    setTBMovableAct = new QAction(tr("Lock toolbar"), this);
+    setTBMovableAct->setCheckable(true);
+    setTBMovableAct->setEnabled(settings->getTBVisible());
+    setTBMovableAct->setStatusTip(tr("Lock/unlock toolbar"));
+    actionsManager->addAction(setTBMovableAct, "_tbMovable", this, this, SLOT(setToolBarMovable()));
 
-  configAct = new QAction(tr("Configuration"), this);
-  configAct->setEnabled(true);
-  actionsManager->addAction(configAct, "_configuration", this, this, SLOT(configureProgram()), QKeySequence("Ctrl+C"));
-  
-  deleteRecentFilesAct = new QAction(tr("Delete list"), this);
-  deleteRecentFilesAct->setIcon(QIcon::fromTheme("edit-clear"));
-  connect(deleteRecentFilesAct, SIGNAL(triggered()), this, SLOT(deleteRecentFiles()));
-  
-  printAct = new QAction(tr("Print"), this);
-  printAct->setEnabled(false);
-  actionsManager->addAction(printAct, "_print", this, this, SLOT(print()), QKeySequence::Print);
-  
-  deleteFileAct = new QAction(tr("Delete"), this);
-  deleteFileAct->setEnabled(false);
-  deleteFileAct->setToolTip(tr("This deletes completly the file from the disk, doesn't move it to the trash"));
-  actionsManager->addAction(deleteFileAct, "_deleteFile", this, this, SLOT(deleteFileSlot()), QKeySequence::Delete);
-  
-  moveToAct = new QAction(tr("Move to..."), this);
-  moveToAct->setEnabled(false);
-  actionsManager->addAction(moveToAct, "_moveTo", this, this, SLOT(moveToSlot()));
-  
-  goToAct = new QAction(tr("Go to"), this);
-  goToAct->setEnabled(false);
-  actionsManager->addAction(goToAct, "_goTo", this, this, SLOT(goToSlot()), QKeySequence("Ctrl+J"));
+    configAct = new QAction(tr("Configuration"), this);
+    configAct->setEnabled(true);
+    actionsManager->addAction(configAct, "_configuration", this, this, SLOT(configureProgram()), QKeySequence("Ctrl+C"));
 
-  showToolBarAct = new QAction(tr("Show toolbar"), this);
-  showToolBarAct->setCheckable(true);
-  showToolBarAct->setChecked(settings->getTBVisible());
-  actionsManager->addAction(showToolBarAct, "_showToolBar", this, this, SLOT(setToolBarVisible(bool)));
+    deleteRecentFilesAct = new QAction(tr("Delete list"), this);
+    deleteRecentFilesAct->setIcon(QIcon::fromTheme("edit-clear"));
+    connect(deleteRecentFilesAct, SIGNAL(triggered()), this, SLOT(deleteRecentFiles()));
 
-  configureToolBarAct = new QAction(tr("Configure toolbar"), this);
-  actionsManager->addAction(configureToolBarAct, "_configureToolBar", this, this, SLOT(configureToolBarSlot()));
+    printAct = new QAction(tr("Print"), this);
+    printAct->setEnabled(false);
+    actionsManager->addAction(printAct, "_print", this, this, SLOT(print()), QKeySequence::Print);
 
-  //set the icons, becouse QIcon::name() was included in Qt4.7
-  actionsManager->setActionIcon("_about", "help-about");
-  actionsManager->setActionIcon("_adjustSize", "zoom-fit-best");
-  actionsManager->setActionIcon("_configuration", "configure");
-  actionsManager->setActionIcon("_deleteFile", "edit-delete");
-  actionsManager->setActionIcon("_exit", "application-exit");
-  actionsManager->setActionIcon("_fileProperties", "document-properties");
-  actionsManager->setActionIcon("_flipHorizontally", "object-flip-horizontal");
-  actionsManager->setActionIcon("_flipVertically", "object-flip-vertical");
-  actionsManager->setActionIcon("_goFirst", "go-first");
-  actionsManager->setActionIcon("_goLast", "go-last");
-  actionsManager->setActionIcon("_goTo", "go-jump");
-  actionsManager->setActionIcon("_moveTo", "none");
-  actionsManager->setActionIcon("_next", "go-next");
-  actionsManager->setActionIcon("_normalSize", "zoom-original");
-  actionsManager->setActionIcon("_open", "document-open");
-  actionsManager->setActionIcon("_openFolder", "folder-open");
-  actionsManager->setActionIcon("_previous", "go-previous");
-  actionsManager->setActionIcon("_print", "document-print");
-  actionsManager->setActionIcon("_rotateLeft", "object-rotate-left");
-  actionsManager->setActionIcon("_rotateRight", "object-rotate-right");
-  actionsManager->setActionIcon("_save", "document-save");
-  actionsManager->setActionIcon("_showMenuBar", "show-menu");
-  actionsManager->setActionIcon("_showToolBar", "configure-toolbars");
-  actionsManager->setActionIcon("_tbMovable", "configure-toolbars");
-  actionsManager->setActionIcon("_configureToolBar", "configure-toolbars");
-  actionsManager->setActionIcon("_zoomIn", "zoom-in");
-  actionsManager->setActionIcon("_zoomOut", "zoom-out");
+    deleteFileAct = new QAction(tr("Delete"), this);
+    deleteFileAct->setEnabled(false);
+    deleteFileAct->setToolTip(tr("This deletes completly the file from the disk, doesn't move it to the trash"));
+    actionsManager->addAction(deleteFileAct, "_deleteFile", this, this, SLOT(deleteFileSlot()), QKeySequence::Delete);
+
+    moveToAct = new QAction(tr("Move to..."), this);
+    moveToAct->setEnabled(false);
+    actionsManager->addAction(moveToAct, "_moveTo", this, this, SLOT(moveToSlot()));
+
+    goToAct = new QAction(tr("Go to"), this);
+    goToAct->setEnabled(false);
+    actionsManager->addAction(goToAct, "_goTo", this, this, SLOT(goToSlot()), QKeySequence("Ctrl+J"));
+
+    showToolBarAct = new QAction(tr("Show toolbar"), this);
+    showToolBarAct->setCheckable(true);
+    showToolBarAct->setChecked(settings->getTBVisible());
+    actionsManager->addAction(showToolBarAct, "_showToolBar", this, this, SLOT(setToolBarVisible(bool)));
+
+    configureToolBarAct = new QAction(tr("Configure toolbar"), this);
+    actionsManager->addAction(configureToolBarAct, "_configureToolBar", this, this, SLOT(configureToolBarSlot()));
+
+    //set the icons, becouse QIcon::name() was included in Qt4.7
+    actionsManager->setActionIcon("_about", "help-about");
+    actionsManager->setActionIcon("_adjustSize", "zoom-fit-best");
+    actionsManager->setActionIcon("_configuration", "configure");
+    actionsManager->setActionIcon("_deleteFile", "edit-delete");
+    actionsManager->setActionIcon("_exit", "application-exit");
+    actionsManager->setActionIcon("_fileProperties", "document-properties");
+    actionsManager->setActionIcon("_flipHorizontally", "object-flip-horizontal");
+    actionsManager->setActionIcon("_flipVertically", "object-flip-vertical");
+    actionsManager->setActionIcon("_goFirst", "go-first");
+    actionsManager->setActionIcon("_goLast", "go-last");
+    actionsManager->setActionIcon("_goTo", "go-jump");
+    actionsManager->setActionIcon("_moveTo", "none");
+    actionsManager->setActionIcon("_next", "go-next");
+    actionsManager->setActionIcon("_normalSize", "zoom-original");
+    actionsManager->setActionIcon("_open", "document-open");
+    actionsManager->setActionIcon("_openFolder", "folder-open");
+    actionsManager->setActionIcon("_previous", "go-previous");
+    actionsManager->setActionIcon("_print", "document-print");
+    actionsManager->setActionIcon("_rotateLeft", "object-rotate-left");
+    actionsManager->setActionIcon("_rotateRight", "object-rotate-right");
+    actionsManager->setActionIcon("_save", "document-save");
+    actionsManager->setActionIcon("_showMenuBar", "show-menu");
+    actionsManager->setActionIcon("_showToolBar", "configure-toolbars");
+    actionsManager->setActionIcon("_tbMovable", "configure-toolbars");
+    actionsManager->setActionIcon("_configureToolBar", "configure-toolbars");
+    actionsManager->setActionIcon("_zoomIn", "zoom-in");
+    actionsManager->setActionIcon("_zoomOut", "zoom-out");
 }
 
 void MainWindow::setToolBarVisible(bool d)
@@ -599,10 +601,9 @@ void MainWindow::setToolBarMovable()
 
 void MainWindow::showMenuBar()
 {
-    if(showMenuBarAct->isChecked()){
+    if (showMenuBarAct->isChecked()) {
         menuBar()->show();
-    }
-    else{
+    } else {
         menuBar()->hide();
     }
 }
@@ -618,8 +619,8 @@ void MainWindow::fileProperties()
 
 void MainWindow::about()
 {
-  AboutDialog abd(this);
-  abd.exec();
+    AboutDialog abd(this);
+    abd.exec();
 }
 
 void MainWindow::flipHorizontally()
@@ -629,7 +630,7 @@ void MainWindow::flipHorizontally()
 
 void MainWindow::flipVertically()
 {
-  imageWidget->transformImage(ImageWidget::vertically);
+    imageWidget->transformImage(ImageWidget::vertically);
 }
 
 void MainWindow::rotateRight()
@@ -639,37 +640,37 @@ void MainWindow::rotateRight()
 
 void MainWindow::rotateLeft()
 {
-  imageWidget->transformImage(ImageWidget::toLeft);
+    imageWidget->transformImage(ImageWidget::toLeft);
 }
 
 void MainWindow::deleteRecentFiles()
 {
-  //qDebug()<<"delete";
-  //clean menu and actions
-  recentFilesMenu->clear();
-  for(int i=0; i<recentFilesAct.size(); i++){
-      recentFilesAct.at(i)->~QAction();
-  }
-  recentFilesAct.clear();
-    
-  //add action to clear list
-  recentFilesMenu->addAction(deleteRecentFilesAct);
-  recentFilesMenu->addSeparator();
+    //qDebug()<<"delete";
+    //clean menu and actions
+    recentFilesMenu->clear();
+    for (int i = 0; i < recentFilesAct.size(); i++) {
+        recentFilesAct.at(i)->~QAction();
+    }
+    recentFilesAct.clear();
 
-  //remove any previous coincidence
-  recentFilesPath.clear();
-  
-  createRFActs();
+    //add action to clear list
+    recentFilesMenu->addAction(deleteRecentFilesAct);
+    recentFilesMenu->addSeparator();
+
+    //remove any previous coincidence
+    recentFilesPath.clear();
+
+    createRFActs();
 }
 
 void MainWindow::moveToSlot()
 {
     QString newFileName = QFileDialog::getExistingDirectory(this, tr("Move to"), getLastDir());
-    if(fileUtils->moveFile(newFileName)){
-	qDebug()<<"moved";
-	recentFilesPath.removeAt(0);
-	createRFActs();
-	openImage();
+    if (fileUtils->moveFile(newFileName)) {
+        qDebug() << "moved";
+        recentFilesPath.removeAt(0);
+        createRFActs();
+        openImage();
     }
 }
 
@@ -677,29 +678,28 @@ void MainWindow::deleteFileSlot()
 {
     //ask if user really wants to delete the file
     int result = QMessageBox::question(this, tr("Delete"), tr("Do you want to delete %1?").arg(fileUtils->getFileName()),
-        QMessageBox::Yes|QMessageBox::No);
+                                       QMessageBox::Yes | QMessageBox::No);
 
-    if (result == QMessageBox::No){
-      return;
+    if (result == QMessageBox::No) {
+        return;
     }
-    
-    if(fileUtils->deleteFile()){
-        qDebug()<<tr("File deleted");
+
+    if (fileUtils->deleteFile()) {
+        qDebug() << tr("File deleted");
+    } else {
+        QMessageBox::information(this, tr("EyeSight"), tr("The file couldn't be deleted"), QMessageBox::Ok);
     }
-    else{
-        QMessageBox::information(this, tr("QIviewer"), tr("The file couldn't be deleted"), QMessageBox::Ok);
+
+    if (fileUtils->getFilesAmount() != 0) {
+        //removes the file from the list of recent files, and since it was the last one
+        //opened, then remove the first in the list.
+        recentFilesPath.removeAt(0);
+        createRFActs();
+        openImage();
     }
-    
-    if(fileUtils->getFilesAmount() != 0){
-      //removes the file from the list of recent files, and since it was the last one
-      //opened, then remove the first in the list.
-      recentFilesPath.removeAt(0);
-      createRFActs();
-      openImage();
-    }
-    
-    else{
-      imageWidget->clear();
+
+    else {
+        imageWidget->clear();
     }
 }
 
@@ -707,11 +707,11 @@ void MainWindow::pushNewFile()
 {
     //clean menu and actions
     recentFilesMenu->clear();
-    for(int i=0; i<recentFilesAct.size(); i++){
+    for (int i = 0; i < recentFilesAct.size(); i++) {
         recentFilesAct.at(i)->~QAction();
     }
     recentFilesAct.clear();
-    
+
     //remove any previous coincidence
     recentFilesPath.removeAll(fileUtils->absoluteFilePath());
 
@@ -719,7 +719,7 @@ void MainWindow::pushNewFile()
     recentFilesPath.prepend(fileUtils->absoluteFilePath());
 
     //make sure the list doesn't have more files than the allowed
-    if(recentFilesPath.size() > maxRecentFiles){
+    if (recentFilesPath.size() > maxRecentFiles) {
         recentFilesPath.removeLast();
     }
 
@@ -732,42 +732,42 @@ void MainWindow::openRecentFile()
      *i just copy/pasted it from the qt examples :-P*/
     QString temp;
     QAction *action = qobject_cast<QAction *>(sender());
-    if (action){
+    if (action) {
         temp = action->data().toString();
     }
 
     //check if the file exists
-    if(!fileUtils->openFile(temp)){
-        QMessageBox::information(this, tr("QIviewer"), tr("The file doesn't exist, may be it's been moved or deleted."),
+    if (!fileUtils->openFile(temp)) {
+        QMessageBox::information(this, tr("EyeSight"), tr("The file doesn't exist, may be it's been moved or deleted."),
                                  QMessageBox::Ok);
         recentFilesPath.removeOne(temp);
         createRFActs();
         return;
     }
 
-    else{
+    else {
         openImage();
     }
 }
 
 void MainWindow::createRFActs()
 {
-    while(recentFilesPath.size() > maxRecentFiles){
+    while (recentFilesPath.size() > maxRecentFiles) {
         recentFilesPath.removeLast();
     }
 
     //remove the files moved or deleted from the list
     QStringList temp;
-    foreach(QString flag, recentFilesPath){
-        if(QFileInfo(flag).exists()){
-            temp<<flag;
+    foreach(QString flag, recentFilesPath) {
+        if (QFileInfo(flag).exists()) {
+            temp << flag;
         }
     }
     recentFilesPath = temp;
 
     //clean menu and actions
     recentFilesMenu->clear();
-    for(int i=0; i<recentFilesAct.size(); i++){
+    for (int i = 0; i < recentFilesAct.size(); i++) {
         recentFilesAct.at(i)->~QAction();
     }
 
@@ -779,10 +779,10 @@ void MainWindow::createRFActs()
     recentFilesMenu->setEnabled(recentFilesPath.size() > 0);
 
     recentFilesAct.clear();
-    if(recentFilesPath.size() > 0){
-        for(int i=0; i < recentFilesPath.size(); i++){
+    if (recentFilesPath.size() > 0) {
+        for (int i = 0; i < recentFilesPath.size(); i++) {
             //creo y agrego un objeto QAction con un icono generico y el nombre del archivo
-            recentFilesAct<<new QAction(QIcon::fromTheme("image-x-generic"), QFileInfo(recentFilesPath.at(i)).fileName(), this);
+            recentFilesAct << new QAction(QIcon::fromTheme("image-x-generic"), QFileInfo(recentFilesPath.at(i)).fileName(), this);
 
             //agrego la direccion completa a la data del QAction correspondiente
             recentFilesAct.at(i)->setData(recentFilesPath.at(i));
@@ -828,22 +828,22 @@ void MainWindow::save()
 
     //call the save dialog
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
-                                    fileUtils->getFilePath(),
-                                    tr("Image Files (%1)").arg(g.join(" ")));
+                                                    fileUtils->getFilePath(),
+                                                    tr("Image Files (%1)").arg(g.join(" ")));
 
     //check if the name isn't empty and imageWidget can save
-    if(!(fileName.isEmpty()) && imageWidget->canSave()){
-	//try to save the image
-        bool couldsave = imageWidget->getPixmap().save(fileName,0,compressLevel);
-	
-	//if succed, then open ot
-        if(couldsave && fileUtils->openFile(fileName)){
+    if (!(fileName.isEmpty()) && imageWidget->canSave()) {
+        //try to save the image
+        bool couldsave = imageWidget->getPixmap().save(fileName, 0, compressLevel);
+
+        //if succed, then open ot
+        if (couldsave && fileUtils->openFile(fileName)) {
             this->openImage();
         }
-        
-        //else, show a messege informing the user 
-        else{
-            QMessageBox::information(this, tr("QIviewer"), tr("I couldn't save the image"), QMessageBox::Ok);
+
+        //else, show a messege informing the user
+        else {
+            QMessageBox::information(this, tr("EyeSight"), tr("I couldn't save the image"), QMessageBox::Ok);
         }
     }
 }
@@ -851,39 +851,38 @@ void MainWindow::save()
 void MainWindow::openDir()
 {
     this->canCloseImage();
-  QString dirName = QFileDialog::getExistingDirectory(this, tr("Open folder"),
-                                                 getLastDir(), QFileDialog::ShowDirsOnly
-                                                 | QFileDialog::DontResolveSymlinks);
-  qDebug()<<"folder"<<dirName;
-  if(dirName.isEmpty()){
-      qDebug()<<tr("No folder selected");
-      return;
-  }
+    QString dirName = QFileDialog::getExistingDirectory(this, tr("Open folder"),
+                                                        getLastDir(), QFileDialog::ShowDirsOnly
+                                                        | QFileDialog::DontResolveSymlinks);
+    qDebug() << "folder" << dirName;
+    if (dirName.isEmpty()) {
+        qDebug() << tr("No folder selected");
+        return;
+    }
 
-  if(fileUtils->openFolder(dirName)){
-      pixmapChanged = false;
-    openImage();
-  }
-  else{
-      QMessageBox::information(this, tr("QIviewer"), tr("No folder selected, i can't do anything"),
-                               QMessageBox::Ok);
-  }
+    if (fileUtils->openFolder(dirName)) {
+        pixmapChanged = false;
+        openImage();
+    } else {
+        QMessageBox::information(this, tr("EyeSight"), tr("No folder selected, i can't do anything"),
+                                 QMessageBox::Ok);
+    }
 }
 
 void MainWindow::canCloseImage()
 {
-    if(pixmapChanged){
+    if (pixmapChanged) {
         int g = QMessageBox::information(this, tr("Image changed"),
-                                 tr("I've touched the image so, do you want to "
-                                    "save it before exit?"),
-                                 QMessageBox::Save, QMessageBox::Discard, QMessageBox::Cancel);
-        switch(g){
-        case QMessageBox::Save:
-            this->save();
-            pixmapChanged = false;
-            break;
-        case QMessageBox::Cancel:
-            return;
+                                         tr("I've touched the image so, do you want to "
+                                            "save it before exit?"),
+                                         QMessageBox::Save, QMessageBox::Discard, QMessageBox::Cancel);
+        switch (g) {
+            case QMessageBox::Save:
+                this->save();
+                pixmapChanged = false;
+                break;
+            case QMessageBox::Cancel:
+                return;
         }
     }
 }
@@ -891,16 +890,16 @@ void MainWindow::canCloseImage()
 QString MainWindow::getLastDir() const
 {
     QString d;
-    switch(pathToUse){
-    case 0:
-        d = lastDirUsed;
-        break;
-    case 1:
-        d = defaultPath;
-        break;
-    default:
-        d = defaultPath;
-        break;
+    switch (pathToUse) {
+        case 0:
+            d = lastDirUsed;
+            break;
+        case 1:
+            d = defaultPath;
+            break;
+        default:
+            d = defaultPath;
+            break;
     }
     return d;
 }
@@ -912,18 +911,17 @@ void MainWindow::open()
 
     //get a filename from a open dialog
     QString fileName = QFileDialog::getOpenFileName(this,
-                                    tr("Open file", "dialog to open file"),
-                                    getLastDir(),
-                                    tr("Image Files (%1)").arg(nameFilters.join(" ")));
+                                                    tr("Open file", "dialog to open file"),
+                                                    getLastDir(),
+                                                    tr("Image Files (%1)").arg(nameFilters.join(" ")));
 
     //if the filename name isn't empty, open the file
-    if(!(fileName.isEmpty())){
-        if(fileUtils->openFile(fileName)){
+    if (!(fileName.isEmpty())) {
+        if (fileUtils->openFile(fileName)) {
             pixmapChanged = false;
             openImage();
-        }
-        else{
-            QMessageBox::information(this, tr("QIviewer"), tr("QIviewer couldn't open the image, what do you want to do?"),
+        } else {
+            QMessageBox::information(this, tr("EyeSight"), tr("EyeSight couldn't open the image, what do you want to do?"),
                                      QMessageBox::Ok);
         }
     }
@@ -931,30 +929,30 @@ void MainWindow::open()
 
 void MainWindow::goFirst()
 {
-  if(fileUtils->goToFile(FileUtils::First)){
-    openImage();
-  }
+    if (fileUtils->goToFile(FileUtils::First)) {
+        openImage();
+    }
 }
 
 void MainWindow::goLast()
 {
-  if(fileUtils->goToFile(FileUtils::Last)){
-    openImage();
-  }
+    if (fileUtils->goToFile(FileUtils::Last)) {
+        openImage();
+    }
 }
 
 void MainWindow::next()
 {
-  if(fileUtils->goToFile(FileUtils::Next)){
-    openImage();
-  }
+    if (fileUtils->goToFile(FileUtils::Next)) {
+        openImage();
+    }
 }
 
 void MainWindow::previous()
 {
-  if(fileUtils->goToFile(FileUtils::Previous)){
-    openImage();
-  }
+    if (fileUtils->goToFile(FileUtils::Previous)) {
+        openImage();
+    }
 }
 
 void MainWindow::openImage()
@@ -962,15 +960,15 @@ void MainWindow::openImage()
     determinateImageType();
 
     this->setCursor(Qt::BusyCursor);
-    switch(imageType){
-    case Static:
-        openStatic();
-        break;
-    case Dynamic:
-        openDynamic();
-        break;
-    case Webp:
-        openStatic();
+    switch (imageType) {
+        case Static:
+            openStatic();
+            break;
+        case Dynamic:
+            openDynamic();
+            break;
+        case Webp:
+            openStatic();
     }
     this->setCursor(Qt::ArrowCursor);
     this->pushNewFile();
@@ -980,18 +978,17 @@ void MainWindow::openImage()
 void MainWindow::determinateImageType()
 {
 #ifdef WEBP_SUPPORT
-    if(fileUtils->getFileName().indexOf(".webp") != -1){
+    if (fileUtils->getFileName().indexOf(".webp") != -1) {
         imageType = Webp;
         return;
     }
 #endif
 
     QMovie m(fileUtils->absoluteFilePath());
-    if(m.isValid()){
-        if(m.frameCount() > 1){
+    if (m.isValid()) {
+        if (m.frameCount() > 1) {
             imageType = Dynamic;
-        }
-        else{
+        } else {
             imageType = Static;
         }
     }
@@ -999,14 +996,13 @@ void MainWindow::determinateImageType()
 
 void MainWindow::updateWindowTitle()
 {
-    if(fileUtils->getFilesAmount() == 0){
-        this->setWindowTitle(tr("QIviewer"));
-    }
-    else{
+    if (fileUtils->getFilesAmount() == 0) {
+        this->setWindowTitle(tr("EyeSight"));
+    } else {
         QString windowTitleFormat = QString("appName :: pos/amount - zoomLevel - imageName");
-        windowTitleFormat.replace("appName", "QIviewer");
+        windowTitleFormat.replace("appName", "EyeSight");
         windowTitleFormat.replace("imageName", fileUtils->getFileName());
-        windowTitleFormat.replace("pos", QString("%1").arg(fileUtils->getCurrentPosition()+1));
+        windowTitleFormat.replace("pos", QString("%1").arg(fileUtils->getCurrentPosition() + 1));
         windowTitleFormat.replace("amount", QString("%1").arg(fileUtils->getFilesAmount()));
         windowTitleFormat.replace("zoomLevel", QString("%1%").arg(zoomWidget->getZoomValue()));
         this->setWindowTitle(windowTitleFormat);
@@ -1019,8 +1015,8 @@ void MainWindow::openStatic()
     imageWidget->setPicture(fileUtils->absoluteFilePath());
     zoomWidget->clearSizes();
     zoomWidget->setPicSize(imageWidget->getPictureSize());
-    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20,20));
-    if(showZoomSlider){
+    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20, 20));
+    if (showZoomSlider) {
         zoomSlider->setValue(zoomWidget->getZoomValue());
     }
     updateActions();
@@ -1031,8 +1027,8 @@ void MainWindow::openDynamic()
     imageWidget->setMovie(fileUtils->absoluteFilePath());
     zoomWidget->clearSizes();
     zoomWidget->setPicSize(imageWidget->getPictureSize());
-    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20,20));
-    if(showZoomSlider){
+    zoomWidget->setMaxSize(centralWidget()->size() - QSize(20, 20));
+    if (showZoomSlider) {
         zoomSlider->setValue(zoomWidget->getZoomValue());
     }
     updateActions();
@@ -1040,39 +1036,39 @@ void MainWindow::openDynamic()
 
 void MainWindow::couldOpen(bool d)
 {
-    if(d){
+    if (d) {
         imageSetted = true;
         return;
     }
-    int h = QMessageBox::information(this, tr("QIviewer"), tr("I couldn't make it :'("),
+    int h = QMessageBox::information(this, tr("EyeSight"), tr("I couldn't make it :'("),
                                      QMessageBox::Ok, QMessageBox::Open, QMessageBox::Ignore);
-    switch(h){
-    case QMessageBox::Ok:
-        break;
-    case QMessageBox::Open:
-        this->open();
-        break;
-    case QMessageBox::Ignore:
-        fileUtils->openFile(imageWidget->getPrevFile());
-        openImage();
-        break;
+    switch (h) {
+        case QMessageBox::Ok:
+            break;
+        case QMessageBox::Open:
+            this->open();
+            break;
+        case QMessageBox::Ignore:
+            fileUtils->openFile(imageWidget->getPrevFile());
+            openImage();
+            break;
     }
 }
 
 void MainWindow::wheelZoom(int d)
 {
-    if(!imageSetted){
+    if (!imageSetted) {
         return;
     }
 
-    if(d > 0){
+    if (d > 0) {
         zoomWidget->zoomIn();
     }
 
-    if(d < 0){
+    if (d < 0) {
         zoomWidget->zoomOut();
     }
-    
+
     adjustSizeAct->setChecked(zoomWidget->bestZoomValue());
 }
 
@@ -1103,8 +1099,8 @@ void MainWindow::normalSize()
 void MainWindow::getColorFromSettings(QStringList d)
 {
     imageWidget->setSCBColor(QColor(d.at(0).toInt(),
-                             d.at(1).toInt(),
-                             d.at(2).toInt()));
+                                    d.at(1).toInt(),
+                                    d.at(2).toInt()));
 }
 
 void MainWindow::loadSettings()
@@ -1127,7 +1123,7 @@ void MainWindow::loadSettings()
     showZoomSlider  = settings->getShowZoomSlider();
     compressLevel   = settings->getCompressLevel();
     maxRecentFiles  = settings->getMaxRecentFiles();
-    recentFilesPath = settings->getRecentFilesList();    
+    recentFilesPath = settings->getRecentFilesList();
     fileUtils->setSorting(FileUtils::Order(settings->getSorting()));
     this->createRFActs();
     this->adjustSizeSlot();
@@ -1139,10 +1135,10 @@ void MainWindow::loadSettings()
     showToolBarAct->setChecked(settings->getTBVisible());
     setTBMovableAct->setEnabled(settings->getTBVisible());
     setUpToolBar(settings->getActionsLoaded(),
-                     Qt::ToolBarArea(settings->getTBArea()),
-                     Qt::ToolButtonStyle(settings->getTBButtomStyle()),
-                     settings->getTBVisible(),
-                     showZoomSlider);
+                 Qt::ToolBarArea(settings->getTBArea()),
+                 Qt::ToolButtonStyle(settings->getTBButtomStyle()),
+                 settings->getTBVisible(),
+                 showZoomSlider);
 
     //last dir used
     lastDirUsed = settings->getLastDirUsed();
@@ -1154,8 +1150,8 @@ void MainWindow::loadSettings()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-  saveSettings();
-  event->accept();
+    saveSettings();
+    event->accept();
 }
 
 void MainWindow::saveSettings()

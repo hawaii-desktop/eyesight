@@ -57,7 +57,9 @@ public:
       * _aboutQt: aboutQt()\n
       * \see addShortcut(QString, QShortcut*, std::string member)
       */
-    QStringList getPosibleIds() const{return avaibleIds;}
+    QStringList getPosibleIds() const {
+        return avaibleIds;
+    }
 
     /**
       * @returns the signal corresponding to the id
@@ -107,7 +109,7 @@ signals:
 public slots:
 
 private:
-    struct Action{
+    struct Action {
         QShortcut *shortcut;
         std::string signal;
         std::string member;

@@ -30,48 +30,42 @@
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
-     
-  //all the translation stuff was taken from minitube
-  const QString locale = QLocale::system().name();
+    QApplication app(argc, argv);
 
-  // qt translations
-  QTranslator qtTranslator;
-  qtTranslator.load("qt_" + locale,
-                    QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-  app.installTranslator(&qtTranslator);
+    //all the translation stuff was taken from minitube
+    const QString locale = QLocale::system().name();
 
-  // app translations
+    // qt translations
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + locale,
+                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
+
+    // app translations
 #ifdef PKGDATADIR
-  QString dataDir = QLatin1String(PKGDATADIR);
+    QString dataDir = QLatin1String(PKGDATADIR);
 #else
-  QString dataDir = "";
+    QString dataDir = "";
 #endif
- 
-  
-#if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
-  QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
-#else
-  QString    localeDir = dataDir + QDir::separator() + "locale";
-#endif
-  
-  QTranslator translator;
-  translator.load(locale, localeDir);
-  app.installTranslator(&translator);
 
-#ifndef Q_OS_LINUX
-  QString BUILTIN_ICON_THEME = "oxygen";
-  QIcon::setThemeName(BUILTIN_ICON_THEME);
+
+#if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
+    QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
+#else
+    QString    localeDir = dataDir + QDir::separator() + "locale";
 #endif
+
+    QTranslator translator;
+    translator.load(locale, localeDir);
+    app.installTranslator(&translator);
 
     /**
       *command line stuff
       */
     int next_option;
     int re = 0;
-    const char* const short_options = "hev";
-    const struct option long_options[] =
-    {
+    const char *const short_options = "hev";
+    const struct option long_options[] = {
         {"help",     0, NULL, 'h'},
         {"eggs",     0, NULL, 'e'},
         {"version",  0, NULL, 'v'},
@@ -80,44 +74,39 @@ int main(int argc, char *argv[])
 
     next_option = getopt_long(argc, argv, short_options, long_options, NULL);
 
-    if (next_option == 'h')
-    {
-        std::cout << QString("If you have problems with the toolbar and the actions, try deleting the file .config/QIviewer/qiviewer.conf\n"
-			     "How to use: qiviewer [OPTION/FILE]\n"
+    if (next_option == 'h') {
+        std::cout << QString("If you have problems with the toolbar and the actions, try deleting the file .config/EyeSight/qiviewer.conf\n"
+                             "How to use: qiviewer [OPTION/FILE]\n"
                              "Avaible options:\n"
                              "    %1 shows this help and finish\n"
                              "    %2 shows qiviewer version\n"
                              "    %3 shows eggs dialog\n"
-                             ).arg("-h --help").arg("-v --version").arg("-e --eggs").toStdString();
+                            ).arg("-h --help").arg("-v --version").arg("-e --eggs").toStdString();
         re = 0;
     }
 
-    else if (next_option == '?')
-    {
+    else if (next_option == '?') {
         std::cout << QObject::tr("Try 'qiviewer --help' for more information\n").toStdString();
         re = 0;
     }
 
-    else if (next_option == 'v')
-    {
-        std::cout << QObject::tr("QIviewer %1\n"
+    else if (next_option == 'v') {
+        std::cout << QObject::tr("EyeSight %1\n"
                                  "Copyright (C) 2011 Aguilera Dario.\n"
                                  "License GPLv2+.\n"
                                  "<http://gnu.org/licenses/gpl.html>.\n"
                                  "This is free software: you are free to change it and redistribute.\n"
                                  "There is NO WARRANTY.\n"
-                                 ).arg(QLatin1String(EYESIGHT_VERSION)).toStdString();
+                                ).arg(QLatin1String(EYESIGHT_VERSION)).toStdString();
         re = 0;
     }
 
-    else if (next_option == 'e')
-    {
+    else if (next_option == 'e') {
         EggsDialog ed;
         re = ed.exec();
     }
 
-    else if (next_option == -1)
-    {
+    else if (next_option == -1) {
         MainWindow imageViewer;
         if (QApplication::arguments().size() > 1)
             imageViewer.openImageFromCommandLine(QApplication::arguments());
@@ -126,4 +115,4 @@ int main(int argc, char *argv[])
     }
 
     return re;
- } 
+}

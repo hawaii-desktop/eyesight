@@ -36,76 +36,100 @@ public:
      * constructor
      */
     ZoomWidget(QWidget *parent = 0);
-    
+
     /**
      * sets \a mSize as the maximun size
      */
     void setMaxSize(const QSize mSize);
-    
+
     /**
      * sets \a pSize as the picture size
      * */
     void setPicSize(const QSize pSize);
-    
+
     /**
      * @return true if the available zoom is iqual to the best zoom value
      * otherwise returns false
      */
     bool bestZoomValue() const;
-    
+
     /**
      * @return the max zoom value
      */
-    inline int getMaxZoomValue() const{return maxZoomValue;}
-    
+    inline int getMaxZoomValue() const {
+        return maxZoomValue;
+    }
+
     /**
      * @returns the minimun zoom value
      */
-    inline int getMinZoomValue() const{return minZoomValue;}
-    
+    inline int getMinZoomValue() const {
+        return minZoomValue;
+    }
+
     /**
      * @return the zoom incremente value
      */
-    inline int getZoomIncrement() const{return zoomIncrement;}
-    
+    inline int getZoomIncrement() const {
+        return zoomIncrement;
+    }
+
     /**
      * @returns the zoom value
      */
-    inline int getZoomValue() const{return zoomValue;}
-    
+    inline int getZoomValue() const {
+        return zoomValue;
+    }
+
     /**
      * sets \a d as de zoom increment
      */
-    inline void setZoomIncrement(int d){zoomIncrement = d;}
-    
+    inline void setZoomIncrement(int d) {
+        zoomIncrement = d;
+    }
+
     /**
      * sets \a d as the maximun zoom value
      */
-    inline void setMaxZoomValue(int d){maxZoomValue = d;}
-    
+    inline void setMaxZoomValue(int d) {
+        maxZoomValue = d;
+    }
+
     /**
      * sets \a d as the minimum zoom increment
      */
-    inline void setMinZoomValue(int d){minZoomValue = d;}
-    
+    inline void setMinZoomValue(int d) {
+        minZoomValue = d;
+    }
+
     /**
      * clear everithing
      */
-    inline void clearSizes(){setDefaults();}
-    
+    inline void clearSizes() {
+        setDefaults();
+    }
+
     /**
      * makes a zoom in
      */
-    inline void zoomIn(){makeZoom(zoomValue + zoomIncrement);}
-    
+    inline void zoomIn() {
+        makeZoom(zoomValue + zoomIncrement);
+    }
+
     /**
      * makes a zoom out
      */
-    inline void zoomOut(){makeZoom(zoomValue - zoomIncrement);}
-    
-    
-    inline void normalSize(){makeZoom(100);}
-    inline void adjustPicSize(){makeZoom(zoomValueForBestFit);}
+    inline void zoomOut() {
+        makeZoom(zoomValue - zoomIncrement);
+    }
+
+
+    inline void normalSize() {
+        makeZoom(100);
+    }
+    inline void adjustPicSize() {
+        makeZoom(zoomValueForBestFit);
+    }
 
 signals:
     /**
@@ -125,7 +149,9 @@ signals:
 public slots:
     void maxSizeChanged(QSize);
     void setAdjustedSize(bool);
-    inline void sliderSlot(int d){makeZoom(d);}
+    inline void sliderSlot(int d) {
+        makeZoom(d);
+    }
 
 private:
     QSize maxSize;

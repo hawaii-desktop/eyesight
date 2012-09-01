@@ -22,23 +22,23 @@ public:
      *
      * \brief   Options to use for navigation between files
      */
-    enum Operation{Next,        ///<Goes to the next file in folder
-                   Previous,    ///<Goes to the previous file infolder
-                   Last,        ///<Goes to the last file in folder
-                   First,       ///<Goes to the first file in folder
-                   UserDefined  ///<Goes to the file hte user pass
-                  };
+    enum Operation {Next,       ///<Goes to the next file in folder
+                    Previous,    ///<Goes to the previous file infolder
+                    Last,        ///<Goes to the last file in folder
+                    First,       ///<Goes to the first file in folder
+                    UserDefined  ///<Goes to the file hte user pass
+                   };
 
     /**
      * \enum    Order
      *
      * \brief   Available order styles for the files list
      */
-    enum Order{Name, ///<By name
-               Type, ///<By type (extension)
-               Size, ///<By size
-               Time  ///<By time (modification time)
-              };
+    enum Order {Name, ///<By name
+                Type, ///<By type (extension)
+                Size, ///<By size
+                Time  ///<By time (modification time)
+               };
 
     /**
       * Sets the file that the FileUtils provides tools about to \a file.
@@ -68,32 +68,42 @@ public:
       * \see getFilePath()
       * \see getFileName()
       */
-    inline QString absoluteFilePath() const{return completeFileName;}
+    inline QString absoluteFilePath() const {
+        return completeFileName;
+    }
 
     /**
       * @return the path of the current file
       * \see absoluteFilePath()
       * \see getFileName()
       */
-    inline QString getFilePath() const{return currentFilePath;}
+    inline QString getFilePath() const {
+        return currentFilePath;
+    }
 
     /**
       * @return the file name
       * \see absoluteFilePath()
       * \see getFilePath()
       */
-    inline QString getFileName() const{return currentFileName;}
+    inline QString getFileName() const {
+        return currentFileName;
+    }
 
     /**
       * @returns the position of the current file in the list, being 0 the first one
       * and \fn getFilesAmount() - 1 the last
       */
-    inline int getCurrentPosition() const{return currentPosition;}
+    inline int getCurrentPosition() const {
+        return currentPosition;
+    }
 
     /**
       * @returns the amount of images in the folder
       */
-    inline int getFilesAmount() const{return files.count();}
+    inline int getFilesAmount() const {
+        return files.count();
+    }
 
     /**
       *sets \a filters as the name filters to explore the folder
@@ -105,12 +115,14 @@ public:
       *if \a is UseDefined, then retunr the image in the \a position
       *in the folder
       */
-    bool goToFile(Operation operation, int position=-1);
+    bool goToFile(Operation operation, int position = -1);
 
     /**
       * @return true if the file exists, otherwise returns false
       */
-    inline bool exists() const{return exist;}
+    inline bool exists() const {
+        return exist;
+    }
 
     /**
       *explores the given \a folder
@@ -129,14 +141,18 @@ public:
       * to QDir::SortFlag
       * \see setSorting(QDir::SortFlag sort)
       */
-    inline int getSorting() const{return sortBy;}
+    inline int getSorting() const {
+        return sortBy;
+    }
 
     /**
       \returns the list with the files of the folder, ordered.
       */
-    inline QStringList getFilesList() const{return files;}
+    inline QStringList getFilesList() const {
+        return files;
+    }
 
-    bool goToFile(const QString name="", const int position=-1);
+    bool goToFile(const QString name = "", const int position = -1);
 
 signals:
     /*!
@@ -220,7 +236,7 @@ private:
       *if \a operation is \a UserDefined, then goes to image in
       *\a position
       */
-    bool goTo(Operation operation, int position=-1);
+    bool goTo(Operation operation, int position = -1);
 
 private slots:
     void newPath(QString);

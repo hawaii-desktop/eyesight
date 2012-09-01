@@ -33,20 +33,20 @@ ZoomWidget::ZoomWidget(QWidget *parent) :
 
 bool ZoomWidget::bestZoomValue() const
 {
-    if(!needToMakeZoom && (zoomValue == 100))
+    if (!needToMakeZoom && (zoomValue == 100))
         return true;
-    
-    else if(needToMakeZoom && (zoomValue == zoomValueForBestFit))
+
+    else if (needToMakeZoom && (zoomValue == zoomValueForBestFit))
         return true;
-    
+
     else
         return false;
 }
 
 void ZoomWidget::setDefaults()
 {
-    maxSize = QSize(-1,-1);
-    picSize = QSize(-1,-1);
+    maxSize = QSize(-1, -1);
+    picSize = QSize(-1, -1);
     zoomValue = 100;
     zoomRestoreValue = 100;
     zoomValueForBestFit = 100;
@@ -59,7 +59,7 @@ void ZoomWidget::setDefaults()
 
 void ZoomWidget::makeZoom(int d)
 {
-    if(d < maxZoomValue && d > minZoomValue){
+    if (d < maxZoomValue && d > minZoomValue) {
         zoomValue = d;
         emit sliderSignal(d);
         emit zoom(d * 0.01);
@@ -69,11 +69,10 @@ void ZoomWidget::makeZoom(int d)
 void ZoomWidget::setAdjustedSize(bool d)
 {
     adjustedSize = d;
-    if(adjustedSize){
+    if (adjustedSize) {
         zoomRestoreValue = zoomValue;
         this->adjustPicSize();
-    }
-    else{
+    } else {
         //qDebug()<<"zom value:"<<zoomValue;
         zoomValue = zoomRestoreValue;
         makeZoom(zoomValue);
@@ -84,7 +83,7 @@ void ZoomWidget::setMaxSize(const QSize d)
 {
     maxSize = d;
     calculateZoom();
-    if(canMakeZoom){
+    if (canMakeZoom) {
         configure();
     }
 }
@@ -93,7 +92,7 @@ void ZoomWidget::setPicSize(const QSize d)
 {
     picSize = d;
     calculateZoom();
-    if(canMakeZoom){
+    if (canMakeZoom) {
         configure();
     }
 }
@@ -108,32 +107,30 @@ void ZoomWidget::maxSizeChanged(QSize d)
 
 void ZoomWidget::configure()
 {
-    if(!canMakeZoom)
+    if (!canMakeZoom)
         return;
 
-    if(needToMakeZoom){
-        if(zoomValue < minZoomValue)
+    if (needToMakeZoom) {
+        if (zoomValue < minZoomValue)
             minZoomValue = zoomValueForBestFit;
     }
 
-    if(adjustedSize){
+    if (adjustedSize) {
         this->adjustPicSize();
         //fTime = false;
         return;
-    }
-    else{
-        if(mSizeChanged){
+    } else {
+        if (mSizeChanged) {
             mSizeChanged = false;
             return;
-        }
-        else
+        } else
             this->normalSize();
     }
 }
 
 void ZoomWidget::calculateZoom()
 {
-    if(!maxSize.isValid() || !picSize.isValid()){
+    if (!maxSize.isValid() || !picSize.isValid()) {
         canMakeZoom = false;
         return;
     }
@@ -141,34 +138,34 @@ void ZoomWidget::calculateZoom()
     needToMakeZoom = false;
     canMakeZoom = true;
 
-    double w,h,mw,mh,rw,rh,g=1;
-    w=picSize.width();
-    h=picSize.height();
-    mw=maxSize.width();
-    mh=maxSize.height();
-    rw=mw/w;
-    rh=mh/h;
+    double w, h, mw, mh, rw, rh, g = 1;
+    w = picSize.width();
+    h = picSize.height();
+    mw = maxSize.width();
+    mh = maxSize.height();
+    rw = mw / w;
+    rh = mh / h;
 
-    if(rw<1 && rh>1){
-      g=rw;
-      needToMakeZoom = true;
-    }
-    if(rw>1 && rh<1){
-      g=rh;
-      needToMakeZoom = true;
-    }
-    if(rw<1 && rh<1){
-      if(rw<rh){
-        g=rw;
+    if (rw < 1 && rh > 1) {
+        g = rw;
         needToMakeZoom = true;
-      }
-      if(rh<rw){
-        g=rh;
+    }
+    if (rw > 1 && rh < 1) {
+        g = rh;
         needToMakeZoom = true;
-      }
+    }
+    if (rw < 1 && rh < 1) {
+        if (rw < rh) {
+            g = rw;
+            needToMakeZoom = true;
+        }
+        if (rh < rw) {
+            g = rh;
+            needToMakeZoom = true;
+        }
     }
 
-    if(canMakeZoom){
+    if (canMakeZoom) {
         zoomValueForBestFit = g * 100;
     }
 }

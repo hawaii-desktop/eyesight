@@ -22,22 +22,21 @@
 #include "fileproperties.h"
 #include "ui_fileproperties.h"
 
-QString FileProperties::getFromResource(const QString& res_file)
+QString FileProperties::getFromResource(const QString &res_file)
 {
-  QString ret_string;
-  QFile file(res_file);
-  if (file.open(QIODevice::ReadOnly))
-  {
-      QTextStream ts(&file);
-      ts.setCodec("UTF-8");
-      ret_string = ts.readAll();
-      file.close();
-  }
-  return ret_string;
+    QString ret_string;
+    QFile file(res_file);
+    if (file.open(QIODevice::ReadOnly)) {
+        QTextStream ts(&file);
+        ts.setCodec("UTF-8");
+        ret_string = ts.readAll();
+        file.close();
+    }
+    return ret_string;
 }
 
-FileProperties::FileProperties(QWidget* parent, Qt::WFlags fl)
-        : QDialog( parent, fl )
+FileProperties::FileProperties(QWidget *parent, Qt::WFlags fl)
+    : QDialog(parent, fl)
 {
     ui.setupUi(this);
     ui.okButton->setIcon(QIcon::fromTheme("dialog-ok"));
@@ -59,27 +58,27 @@ void FileProperties::setFile(const QString fileName, bool binary, int precision)
     QString size;
 
     //egg
-    if(binary){
+    if (binary) {
         //qDebug()<<archivo.size();
-        size.setNum(archivo.size(),2);
+        size.setNum(archivo.size(), 2);
         ui.sizeLabelF->setText(tr("%1 Bytes").arg(size));
-	ui.sizeLabelF->setToolTip(getFromResource(":eastereggs.txt"));
+        ui.sizeLabelF->setToolTip(getFromResource(":eastereggs.txt"));
     }
 
-    else if((archivo.size() /1.024)*0.001 > 1000){
-        size.setNum(((((archivo.size() /1.024)*0.001))/1.024) * 0.001,'f',precision);
+    else if ((archivo.size() / 1.024) * 0.001 > 1000) {
+        size.setNum(((((archivo.size() / 1.024) * 0.001)) / 1.024) * 0.001, 'f', precision);
         ui.sizeLabelF->setText(tr("%1 MiB (%2)").arg(size).arg(archivo.size()));
     }
 
-    else{
-        size.setNum((archivo.size() /1.024)*0.001, 'f', precision);
+    else {
+        size.setNum((archivo.size() / 1.024) * 0.001, 'f', precision);
         ui.sizeLabelF->setText(tr("%1 KiB (%2)").arg(size).arg(archivo.size()));
     }
 }
 
 void FileProperties::setPreviewPixmap(const QPixmap prevPixmap)
 {
-    ui.prevLabel->setPixmap(prevPixmap.scaled(ui.prevLabel->size(),Qt::KeepAspectRatio));
+    ui.prevLabel->setPixmap(prevPixmap.scaled(ui.prevLabel->size(), Qt::KeepAspectRatio));
 }
 
 void FileProperties::setPictureSize(QSize size)

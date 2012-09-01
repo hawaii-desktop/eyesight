@@ -26,17 +26,17 @@
 
 class AboutDialog : public QDialog
 {
-        Q_OBJECT
+    Q_OBJECT
 
-    public:
-        /*!
-          constructor
-          */
-        AboutDialog(QWidget* parent = 0, Qt::WFlags fl = 0);
+public:
+    /*!
+      constructor
+      */
+    AboutDialog(QWidget *parent = 0, Qt::WFlags fl = 0);
 
-    private:
-        Ui_AboutDialog ui;
-        QString getFromResource(const QString& res_file);
+private:
+    Ui_AboutDialog ui;
+    QString getFromResource(const QString &res_file);
 
 };
 

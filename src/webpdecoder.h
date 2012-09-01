@@ -21,14 +21,16 @@ public:
     /**
       * @return the image passed as an QPixmap object
       */
-    inline QPixmap getPixmap() const{return pixmap;}
+    inline QPixmap getPixmap() const {
+        return pixmap;
+    }
 
 private:
     QPixmap pixmap;
     QString name;
 
     bool decodeWebpImage(const QString fileName);
-    bool readImage(unsigned char* rgb, int width, int height, QPixmap& pixmap);
+    bool readImage(unsigned char *rgb, int width, int height, QPixmap &pixmap);
 
 };
 

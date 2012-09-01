@@ -19,7 +19,7 @@
 ActionsManager::ActionsManager(QObject *parent) :
     QObject(parent)
 {
-    qDebug()<<"new action manager object";
+    qDebug() << "new action manager object";
 }
 
 bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QObject *receiver, std::string slot, QKeySequence shortcut)
@@ -31,7 +31,7 @@ bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QOb
 
 void ActionsManager::setActionIcon(QString id, QString iconName)
 {
-    if(ActionsList.contains(id)){
+    if (ActionsList.contains(id)) {
         ActionsList[id].action->setIcon(QIcon::fromTheme(iconName));
         ActionsList[id].iconName = iconName;
     }
@@ -40,7 +40,7 @@ void ActionsManager::setActionIcon(QString id, QString iconName)
 bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QKeySequence key)
 {
     //check if already have the action added
-    if(ActionsList.contains(id)){
+    if (ActionsList.contains(id)) {
         return false;
     }
 
@@ -49,21 +49,20 @@ bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QKe
       one the action owns, or use the one provided by key
       */
     QKeySequence k;
-    if(!action->shortcut().isEmpty()){
+    if (!action->shortcut().isEmpty()) {
         //set the action's shortcut as the key
         k = action->shortcut();
 
         //and then remove that shortcut from the action
         action->setShortcut(QKeySequence());
-    }
-    else{
+    } else {
         //sets key as k
         k = key;
     }
 
     //make the action looks like it had a shortcut
     QString name = action->text();
-    if(!k.isEmpty()){
+    if (!k.isEmpty()) {
         name.append("\t" + k.toString());
     }
 
@@ -77,7 +76,7 @@ bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QKe
     this is becouse if the action doesn't have one, then it shows the action name
     and as "Name    shortcut", and that's not pretty*/
     QString g = this->removeSString(name).remove('&');
-    if(action->toolTip().indexOf(g) != -1){
+    if (action->toolTip().indexOf(g) != -1) {
         action->setToolTip(g);
     }
 
@@ -91,12 +90,11 @@ bool ActionsManager::addAction(QAction *action, QString id, QWidget *parent, QKe
 
 void ActionsManager::setEnabled(QString id, bool enabled)
 {
-    if(ActionsList.contains(id)){
+    if (ActionsList.contains(id)) {
         ActionsList[id].action->setEnabled(enabled);
         ActionsList[id].shortcut->setEnabled(enabled);
-    }
-    else{
-        qDebug()<<"Wrong id:"<<id;
+    } else {
+        qDebug() << "Wrong id:" << id;
     }
 }
 
@@ -106,7 +104,7 @@ QStringList ActionsManager::getIds()
     QMapIterator<QString, InternalActData> iterator(ActionsList);
     while (iterator.hasNext()) {
         iterator.next();
-        list<<QString(iterator.key());
+        list << QString(iterator.key());
     }
     return list;
 }
@@ -128,18 +126,18 @@ QList<ActionData *> ActionsManager::getActions()
 
         //icon name
         iconName = iterator.value().iconName;//icon name
-        if(iconName.isEmpty()){
+        if (iconName.isEmpty()) {
             iconName = "none";
         }
 
         //shortcut
         shortcut = iterator.value().shortcut->key().toString();//shortcut
-        if(shortcut.isEmpty()){
+        if (shortcut.isEmpty()) {
             shortcut = "none";
         }
 
         //add the object to the list
-        list<<new ActionData(name, id, shortcut, iconName);
+        list << new ActionData(name, id, shortcut, iconName);
     }
 
     return list;
@@ -148,35 +146,31 @@ QList<ActionData *> ActionsManager::getActions()
 QString ActionsManager::removeSString(QString str)
 {
     int k = str.indexOf("\t");
-    if(k != -1){
+    if (k != -1) {
         return str.left(k);
-    }
-    else{
+    } else {
         return str;
     }
 }
 
 QAction *ActionsManager::getAction(QString id)
 {
-    if(ActionsList.contains(id)){
+    if (ActionsList.contains(id)) {
         return ActionsList[id].action;
-    }
-    else{
+    } else {
         return 0;
     }
 }
 
 void ActionsManager::connectAction(QString id, QObject *receiver, std::string slot)
 {
-    if(!ActionsList.contains(id)){
-        qDebug()<<"no action with id:"<<id;
+    if (!ActionsList.contains(id)) {
+        qDebug() << "no action with id:" << id;
         return;
-    }
-    else if(!ActionsList[id].action->isCheckable()){
+    } else if (!ActionsList[id].action->isCheckable()) {
         connect(ActionsList[id].shortcut, SIGNAL(activated()), receiver, slot.data());
         connect(ActionsList[id].action, SIGNAL(triggered()), receiver, slot.data());
-    }
-    else{
+    } else {
         connect(ActionsList[id].action, SIGNAL(toggled(bool)), receiver, slot.data());
         connect(ActionsList[id].shortcut, SIGNAL(activated()), ActionsList[id].action, SLOT(toggle()));
     }
@@ -185,13 +179,13 @@ void ActionsManager::connectAction(QString id, QObject *receiver, std::string sl
 void ActionsManager::showData(QString n, QString id, QString in, QString s, bool e, bool c, bool cd)
 {
     //something to show
-    qDebug()<<"+-----------------------------------------------+";
-    qDebug()<<"|action name:"<<n;
-    qDebug()<<"|action id:"<<id;
-    qDebug()<<"|action iconName:"<<in;
-    qDebug()<<"|action shortcut:"<<s;
-    qDebug()<<"|enabled:"<<e;
-    qDebug()<<"|checkable:"<<c;
-    qDebug()<<"|ckecked:"<<cd;
-    qDebug()<<"+-----------------------------------------------+";
+    qDebug() << "+-----------------------------------------------+";
+    qDebug() << "|action name:" << n;
+    qDebug() << "|action id:" << id;
+    qDebug() << "|action iconName:" << in;
+    qDebug() << "|action shortcut:" << s;
+    qDebug() << "|enabled:" << e;
+    qDebug() << "|checkable:" << c;
+    qDebug() << "|ckecked:" << cd;
+    qDebug() << "+-----------------------------------------------+";
 }

@@ -21,14 +21,14 @@
 #include <QtWidgets>
 #include "toolbaredit.h"
 
-ToolBarEdit::ToolBarEdit(QWidget* parent, Qt::WFlags fl) : QWidget(parent, fl)
+ToolBarEdit::ToolBarEdit(QWidget *parent, Qt::WFlags fl) : QWidget(parent, fl)
 {
     ui.setupUi(this);
 
     //create separator item
     separatorItem = new QListWidgetItem(QString("--- %1 ---").arg(tr("Separator")));
     separatorItem->setData(32, "_separator");
-  
+
     connect(this, SIGNAL(actionListAdded()), this, SLOT(configureActionList()));
     connect(ui.availableActions, SIGNAL(itemSelectionChanged()), this, SLOT(enableActionsA()));
     connect(ui.currentActions, SIGNAL(itemSelectionChanged()), this, SLOT(enableActionsB()));
@@ -47,62 +47,62 @@ ToolBarEdit::ToolBarEdit(QWidget* parent, Qt::WFlags fl) : QWidget(parent, fl)
 
     connect(ui.currentFilter, SIGNAL(textChanged(QString)), this, SLOT(currentActionsSlot(QString)));
     connect(ui.availableFilter, SIGNAL(textChanged(QString)), this, SLOT(availableActionsSlot(QString)));
-  
+
 }
 
 QStringList ToolBarEdit::getActionsList()
 {
-  QStringList actions;
-  for(int i=0; i<ui.currentActions->count(); i++){
-      actions<<ui.currentActions->item(i)->data(32).toString();
-  }
+    QStringList actions;
+    for (int i = 0; i < ui.currentActions->count(); i++) {
+        actions << ui.currentActions->item(i)->data(32).toString();
+    }
 
-  return actions;
+    return actions;
 }
 
 void ToolBarEdit::addSeparatorAction()
 {
-  int i=ui.currentActions->currentRow();
-  switch(changeSeparatorButton()){
-    case 0:
-      if(i==-1){
-        i=ui.currentActions->count();
-      }
-      ui.currentActions->insertItem(i+1, separatorItem->clone());
-      ui.currentActions->setCurrentRow(i+1);
-      break;
-    case 1:
-      ui.currentActions->takeItem(i);
-      break;
-  }
-  emit actionsListChanged();
+    int i = ui.currentActions->currentRow();
+    switch (changeSeparatorButton()) {
+        case 0:
+            if (i == -1) {
+                i = ui.currentActions->count();
+            }
+            ui.currentActions->insertItem(i + 1, separatorItem->clone());
+            ui.currentActions->setCurrentRow(i + 1);
+            break;
+        case 1:
+            ui.currentActions->takeItem(i);
+            break;
+    }
+    emit actionsListChanged();
 }
 
 void ToolBarEdit::addAction()
 {
-  /*qDebug()<<"Agregar accion"<<ui.availableActions->currentRow()+1
-          <<":"<<ui.availableActions->currentItem()->text();*/
-  int i=ui.currentActions->currentRow()+1;
-  if(i==0){
-      i=ui.currentActions->count();
-  }
+    /*qDebug()<<"Agregar accion"<<ui.availableActions->currentRow()+1
+            <<":"<<ui.availableActions->currentItem()->text();*/
+    int i = ui.currentActions->currentRow() + 1;
+    if (i == 0) {
+        i = ui.currentActions->count();
+    }
 
-  for(int i=0; i<ui.currentActions->count(); i++){
-      if(ui.currentActions->item(i)->text() ==
-         ui.availableActions->item(ui.availableActions->currentRow())->text()){
-         return;
-      }
-  }
+    for (int i = 0; i < ui.currentActions->count(); i++) {
+        if (ui.currentActions->item(i)->text() ==
+                ui.availableActions->item(ui.availableActions->currentRow())->text()) {
+            return;
+        }
+    }
 
-  ui.currentActions->insertItem(i, ui.availableActions->item(ui.availableActions->currentRow())->clone());
-  ui.currentActions->setCurrentRow(i);
-  ui.removeButton->setEnabled(true);
-  emit actionsListChanged();
+    ui.currentActions->insertItem(i, ui.availableActions->item(ui.availableActions->currentRow())->clone());
+    ui.currentActions->setCurrentRow(i);
+    ui.removeButton->setEnabled(true);
+    emit actionsListChanged();
 }
 
 void ToolBarEdit::removeAction()
 {
-    if(ui.currentActions->count() == 1){
+    if (ui.currentActions->count() == 1) {
         ui.currentActions->clear();
         ui.removeButton->setEnabled(false);
         return;
@@ -128,36 +128,36 @@ void ToolBarEdit::removeAction()
 
 void ToolBarEdit::moveUpAction()
 {
-  int g=ui.currentActions->currentRow();
-  ui.currentActions->insertItem(g-1, ui.currentActions->takeItem(g));
-  ui.currentActions->setCurrentRow(g-1);
-  emit actionsListChanged();
+    int g = ui.currentActions->currentRow();
+    ui.currentActions->insertItem(g - 1, ui.currentActions->takeItem(g));
+    ui.currentActions->setCurrentRow(g - 1);
+    emit actionsListChanged();
 }
 
 void ToolBarEdit::moveDownAction()
 {
-  int g=ui.currentActions->currentRow();
-  ui.currentActions->insertItem(g+1, ui.currentActions->takeItem(g));
-  ui.currentActions->setCurrentRow(g+1);
-  emit actionsListChanged();
+    int g = ui.currentActions->currentRow();
+    ui.currentActions->insertItem(g + 1, ui.currentActions->takeItem(g));
+    ui.currentActions->setCurrentRow(g + 1);
+    emit actionsListChanged();
 }
 
 void ToolBarEdit::enableActionsA()
 {
-  //qDebug()<<"Item seleccionado:"<<ui.availableActions->currentRow()+1;
-  ui.addButton->setEnabled(ui.availableActions->count()-1!=0);
+    //qDebug()<<"Item seleccionado:"<<ui.availableActions->currentRow()+1;
+    ui.addButton->setEnabled(ui.availableActions->count() - 1 != 0);
 }
 
 int ToolBarEdit::changeSeparatorButton()
 {
-  //qDebug()<<ui.currentActions->currentItem()->text();
-  if(ui.currentActions->currentItem()->text()!=separatorItem->text()){
-    return 0;
-  }
-  if(ui.currentActions->currentItem()->text()==separatorItem->text()){
-    return 1;
-  }
-  return 2;
+    //qDebug()<<ui.currentActions->currentItem()->text();
+    if (ui.currentActions->currentItem()->text() != separatorItem->text()) {
+        return 0;
+    }
+    if (ui.currentActions->currentItem()->text() == separatorItem->text()) {
+        return 1;
+    }
+    return 2;
 }
 
 void ToolBarEdit::enableActionsB()
@@ -165,38 +165,38 @@ void ToolBarEdit::enableActionsB()
     //qDebug()<<"cantidad:"<<ui.currentActions->count();
     //qDebug()<<"posicopm:"<<ui.currentActions->currentRow();
     //qDebug()<<"Item seleccionado:"<<ui.currentActions->currentRow()+1;
-    ui.removeButton->setEnabled(ui.currentActions->count()-1!=0);
+    ui.removeButton->setEnabled(ui.currentActions->count() - 1 != 0);
     ui.moveDownButton->setEnabled(false);
     ui.moveUpButton->setEnabled(false);
     ui.addSeparatorButton->setEnabled(true);
-    switch(changeSeparatorButton()){
-      case 0:
-        ui.addSeparatorButton->setIcon(QIcon::fromTheme("list-add"));
-        ui.addSeparatorButton->setToolTip(tr("Add separator"));
-        break;
-      case 1:
-        ui.addSeparatorButton->setIcon(QIcon::fromTheme("list-remove"));
-        ui.addSeparatorButton->setToolTip(tr("Remove separator"));
-        break;
+    switch (changeSeparatorButton()) {
+        case 0:
+            ui.addSeparatorButton->setIcon(QIcon::fromTheme("list-add"));
+            ui.addSeparatorButton->setToolTip(tr("Add separator"));
+            break;
+        case 1:
+            ui.addSeparatorButton->setIcon(QIcon::fromTheme("list-remove"));
+            ui.addSeparatorButton->setToolTip(tr("Remove separator"));
+            break;
     }
-    if(ui.currentActions->currentRow()>=1){
-      ui.moveUpButton->setEnabled(true);
+    if (ui.currentActions->currentRow() >= 1) {
+        ui.moveUpButton->setEnabled(true);
     }
-    if(ui.currentActions->currentRow() < ui.currentActions->count()-1){
-      ui.moveDownButton->setEnabled(true);
+    if (ui.currentActions->currentRow() < ui.currentActions->count() - 1) {
+        ui.moveDownButton->setEnabled(true);
     }
 }
 
 void ToolBarEdit::setActionsList(QList<ActionData *> d1, QStringList d2)
 {
-  allActions = d1;
-  actionsUsed = d2;
-  emit actionListAdded();
+    allActions = d1;
+    actionsUsed = d2;
+    emit actionListAdded();
 }
 
 void ToolBarEdit::configureActionList()
 {
-  auCurrentItems();
+    auCurrentItems();
 }
 
 void ToolBarEdit::availableActionsSlot(QString d)
@@ -213,40 +213,39 @@ void ToolBarEdit::currentActionsSlot(QString d)
 
 void ToolBarEdit::auCurrentItems()
 {
-  ui.availableActions->clear();
-  ui.currentActions->clear();
+    ui.availableActions->clear();
+    ui.currentActions->clear();
 
-  QListWidgetItem *item;
-  foreach(ActionData *flag, allActions){
-      item = new QListWidgetItem(flag->getName());
-      if(flag->getIconName() != "none"){
-          //qDebug()<<flag->getIconName();
-          item->setIcon(QIcon::fromTheme(flag->getIconName()));
-      }
-      else{
-          item->setText(QString("---  %1").arg(item->text()));
-      }
-      item->setData(32,flag->getId());
-      ui.availableActions->addItem(item);
-  }
+    QListWidgetItem *item;
+    foreach(ActionData * flag, allActions) {
+        item = new QListWidgetItem(flag->getName());
+        if (flag->getIconName() != "none") {
+            //qDebug()<<flag->getIconName();
+            item->setIcon(QIcon::fromTheme(flag->getIconName()));
+        } else {
+            item->setText(QString("---  %1").arg(item->text()));
+        }
+        item->setData(32, flag->getId());
+        ui.availableActions->addItem(item);
+    }
 
-  for(int i=0; i<actionsUsed.size(); i++){
-      if(actionsUsed.at(i) == "_separator"){
-          item = separatorItem->clone();
-      }
-      else{
-          item = new QListWidgetItem(actionsUsed.at(i));
-      }
-    ui.currentActions->addItem(item);
-  }
+    for (int i = 0; i < actionsUsed.size(); i++) {
+        if (actionsUsed.at(i) == "_separator") {
+            item = separatorItem->clone();
+        } else {
+            item = new QListWidgetItem(actionsUsed.at(i));
+        }
+        ui.currentActions->addItem(item);
+    }
 
-  for(int j=0; j<ui.currentActions->count(); j++){
-   bool add=false;foreach(ActionData *flag, allActions){
-       if((flag->getId() == ui.currentActions->item(j)->text()) && !add){
-           ui.currentActions->item(j)->setText(flag->getName());
-           ui.currentActions->item(j)->setIcon(QIcon::fromTheme(flag->getIconName()));
-           ui.currentActions->item(j)->setData(32, flag->getId());
-       }
-   }
-  }
+    for (int j = 0; j < ui.currentActions->count(); j++) {
+        bool add = false;
+        foreach(ActionData * flag, allActions) {
+            if ((flag->getId() == ui.currentActions->item(j)->text()) && !add) {
+                ui.currentActions->item(j)->setText(flag->getName());
+                ui.currentActions->item(j)->setIcon(QIcon::fromTheme(flag->getIconName()));
+                ui.currentActions->item(j)->setData(32, flag->getId());
+            }
+        }
+    }
 }

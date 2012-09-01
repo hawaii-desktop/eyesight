@@ -21,25 +21,24 @@
 #include <QtWidgets>
 #include "aboutdialog.h"
 
-QString AboutDialog::getFromResource(const QString& res_file)
+QString AboutDialog::getFromResource(const QString &res_file)
 {
-  QString ret_string;
-  QFile file(res_file);
-  if (file.open(QIODevice::ReadOnly))
-  {
-      QTextStream ts(&file);
-      ts.setCodec("UTF-8");
-      ret_string = ts.readAll();
-      file.close();
-  }
-  return ret_string;
+    QString ret_string;
+    QFile file(res_file);
+    if (file.open(QIODevice::ReadOnly)) {
+        QTextStream ts(&file);
+        ts.setCodec("UTF-8");
+        ret_string = ts.readAll();
+        file.close();
+    }
+    return ret_string;
 }
 
-AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
+AboutDialog::AboutDialog(QWidget *parent, Qt::WFlags fl) : QDialog(parent, fl)
 {
     ui.setupUi(this);
 #ifdef WEBP_SUPPORT
-    qDebug()<<"experimental webp support enabled";
+    qDebug() << "experimental webp support enabled";
 #endif
 
 #ifdef PKGVERSION
@@ -47,7 +46,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
 #else
     ui.versionLabel->setText(tr("Version ") + "0.3.*");
 #endif
-    
+
     QString descString;
     descString.append("<p>");
     descString.append(tr("A simple and lightweight image viewer, written totally in Qt."));

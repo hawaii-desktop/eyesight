@@ -29,41 +29,41 @@ class QListWidgetItem;
 
 class ToolBarEdit : public QWidget
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  ToolBarEdit(QWidget* parent = 0, Qt::WFlags fl = 0);
-  QStringList getActionsList();
-  void setActionsList(QList<ActionData *>, QStringList);
+    ToolBarEdit(QWidget *parent = 0, Qt::WFlags fl = 0);
+    QStringList getActionsList();
+    void setActionsList(QList<ActionData *>, QStringList);
 
 signals:
-  void actionsListChanged();
+    void actionsListChanged();
 
 private:
-  Ui_toolBarEdit ui;
-  void auCurrentItems();
+    Ui_toolBarEdit ui;
+    void auCurrentItems();
 
-  QList<ActionData *> allActions;
-  QStringList actionsUsed;
+    QList<ActionData *> allActions;
+    QStringList actionsUsed;
 
-  int changeSeparatorButton();
-  QListWidgetItem *separatorItem;
-  
+    int changeSeparatorButton();
+    QListWidgetItem *separatorItem;
+
 private slots:
-  void configureActionList();
-  void enableActionsA();
-  void enableActionsB();
-  
-  void addAction();
-  void removeAction();
-  void moveUpAction();
-  void moveDownAction();
-  void addSeparatorAction();
-  void availableActionsSlot(QString);
-  void currentActionsSlot(QString);
-  
+    void configureActionList();
+    void enableActionsA();
+    void enableActionsB();
+
+    void addAction();
+    void removeAction();
+    void moveUpAction();
+    void moveDownAction();
+    void addSeparatorAction();
+    void availableActionsSlot(QString);
+    void currentActionsSlot(QString);
+
 signals:
-  void actionListAdded();
+    void actionListAdded();
 
 };
 

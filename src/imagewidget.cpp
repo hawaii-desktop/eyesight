@@ -37,13 +37,13 @@ ImageWidget::ImageWidget(QWidget *parent) :
     cbsSize = 16;
 
     //i don't know why i did this
-    originalSize = QSize(-1,-1);
+    originalSize = QSize(-1, -1);
 
     //scaleFactor;
     scaleFactor = 1;
 
     //me cago en la mier*, i mean, setting the bug size
-    bugSize = QSize(18,18);
+    bugSize = QSize(18, 18);
 
     //eType
     eType = ImageWidget::None;
@@ -61,7 +61,7 @@ ImageWidget::ImageWidget(QWidget *parent) :
     movieSpeed = 100;//200 = 2x, 100 = 1, 50 = 0.5x
 
     //
-    move=false;
+    move = false;
 
     //use eggs
     invertedColors = false;
@@ -86,24 +86,24 @@ void ImageWidget::egg()
     QPainter p(&image);
     p.setPen(Qt::blue);
     int k = QTime::currentTime().hour();
-    k = k%2;
-    switch(k){
-    case 0:
-        p.drawEllipse(0,0,d.width(),d.height());
-        p.drawLine(0,0,d.width(),d.height());
-        p.drawLine(0,d.height(),d.width(),0);
-        p.drawLine(0,d.height()/2,d.width(),d.height()/2);
-        p.drawLine(d.width()/2,0,d.width()/2,d.height());
-        p.drawLine(0,0,d.width(),0);
-        p.drawLine(d.width()-1,0,d.width()-1,d.height());
-        p.drawLine(0,0,0,d.height());
-        p.drawLine(0,d.height()-1,d.width(),d.height()-1);
-        break;
-    case 1:
-        QFont f;
-        f.setPixelSize(40);
-        p.setFont(f);
-        p.drawText(0,0,d.width(),d.height(),Qt::AlignJustify|Qt::TextWordWrap,tr("I own your OS"));
+    k = k % 2;
+    switch (k) {
+        case 0:
+            p.drawEllipse(0, 0, d.width(), d.height());
+            p.drawLine(0, 0, d.width(), d.height());
+            p.drawLine(0, d.height(), d.width(), 0);
+            p.drawLine(0, d.height() / 2, d.width(), d.height() / 2);
+            p.drawLine(d.width() / 2, 0, d.width() / 2, d.height());
+            p.drawLine(0, 0, d.width(), 0);
+            p.drawLine(d.width() - 1, 0, d.width() - 1, d.height());
+            p.drawLine(0, 0, 0, d.height());
+            p.drawLine(0, d.height() - 1, d.width(), d.height() - 1);
+            break;
+        case 1:
+            QFont f;
+            f.setPixelSize(40);
+            p.setFont(f);
+            p.drawText(0, 0, d.width(), d.height(), Qt::AlignJustify | Qt::TextWordWrap, tr("I own your OS"));
     }
 
 
@@ -114,7 +114,7 @@ void ImageWidget::egg()
 
 void ImageWidget::mousePressEvent(QMouseEvent *e)
 {
-    if(e->button() == Qt::LeftButton){
+    if (e->button() == Qt::LeftButton) {
         move = true;
         point = e->pos();
         setCursor(Qt::ClosedHandCursor);
@@ -123,7 +123,7 @@ void ImageWidget::mousePressEvent(QMouseEvent *e)
 
 void ImageWidget::mouseMoveEvent(QMouseEvent *e)
 {
-    if(!move)
+    if (!move)
         return;
 
     //QPoint g = e->pos() - point;
@@ -133,7 +133,7 @@ void ImageWidget::mouseMoveEvent(QMouseEvent *e)
 
 void ImageWidget::mouseReleaseEvent(QMouseEvent *)
 {
-    if(!move)
+    if (!move)
         return;
 
     setCursor(Qt::ArrowCursor);
@@ -142,23 +142,23 @@ void ImageWidget::mouseReleaseEvent(QMouseEvent *)
 QString ImageWidget::getBGType() const
 {
     QString g;
-    switch(backType){
-    case squares:
-        g = "squares";
-        break;
-    case solidColor:
-        g = "solidColor";
-        break;
-    case none:
-        g = "none";
-        break;
+    switch (backType) {
+        case squares:
+            g = "squares";
+            break;
+        case solidColor:
+            g = "solidColor";
+            break;
+        case none:
+            g = "none";
+            break;
     }
     return g;
 }
 
 bool ImageWidget::canSave() const
 {
-    if(eType == ImageWidget::Picture){
+    if (eType == ImageWidget::Picture) {
         return true;
     }
     return false;
@@ -167,45 +167,43 @@ bool ImageWidget::canSave() const
 QSize ImageWidget::getPictureSize() const
 {
     QSize g;
-    switch(eType){
-    case ImageWidget::Picture:
-        if(!pixmap.isNull()){
-            g = pixmap.size();
-        }
-        else{
-            g = QSize(-1,-1);
-        }
-        break;
-    case ImageWidget::Movie:
-        if(movie->isValid()){
-            g = movie->currentPixmap().size();
-        }
-        else{
-            g = QSize(-1,-1);
-        }
-        break;
-    default:
-        g = QSize(-1,-1);
-        break;
+    switch (eType) {
+        case ImageWidget::Picture:
+            if (!pixmap.isNull()) {
+                g = pixmap.size();
+            } else {
+                g = QSize(-1, -1);
+            }
+            break;
+        case ImageWidget::Movie:
+            if (movie->isValid()) {
+                g = movie->currentPixmap().size();
+            } else {
+                g = QSize(-1, -1);
+            }
+            break;
+        default:
+            g = QSize(-1, -1);
+            break;
     }
     return g;
 }
 
 void ImageWidget::setBGType(QString d)
 {
-    if(d == "squares"){
+    if (d == "squares") {
         backType = ImageWidget::squares;
     }
-    
-    else if(d == "solidColor"){
+
+    else if (d == "solidColor") {
         backType = ImageWidget::solidColor;
     }
-    
-    else if(d == "none"){
+
+    else if (d == "none") {
         backType = ImageWidget::none;
     }
-    
-    else{
+
+    else {
         //i like the squares background, that's the reason it's the default one
         backType = ImageWidget::squares;
     }
@@ -215,7 +213,7 @@ void ImageWidget::clear()
 {
     movie->stop();
     imageLabel->clear();
-    imageLabel->resize(QSize(0,0));
+    imageLabel->resize(QSize(0, 0));
     defaulTransMovie();
     scaleFactor = 1;
     eType = ImageWidget::None;
@@ -227,22 +225,21 @@ void ImageWidget::setPicture(const QString name)
     clear();
     eType = ImageWidget::Picture;
 #ifdef WEBP_SUPPORT
-    if(name.indexOf(".webp") != -1){
+    if (name.indexOf(".webp") != -1) {
         WebpDecoder wepI;
         wepI.setFile(name);
         pixmap = wepI.getPixmap();
-    }
-    else
+    } else
         pixmap = QPixmap(name);
 #else
-    if(name.indexOf(".webp") != -1)
+    if (name.indexOf(".webp") != -1)
         emit couldOpen(false);
 
     else
         pixmap = QPixmap(name);
 #endif
 
-    if(invertedColors){
+    if (invertedColors) {
         egg();
     }
 
@@ -263,23 +260,23 @@ void ImageWidget::setMovie(const QString d)
 
 void ImageWidget::makeZoom(double f)
 {
-    if(eType == ImageWidget::Movie && restartWhenZooming){
+    if (eType == ImageWidget::Movie && restartWhenZooming) {
         movie->stop();
     }
 
     scaleFactor = f;
 
-    if(f==1){
+    if (f == 1) {
         imageLabel->adjustSize();
         this->adjustSize();
     }
 
-    else{
+    else {
         imageLabel->resize(pixmap.size() * f);
         this->resize((pixmap.size() + bugSize) * f);
     }
 
-    if(eType == ImageWidget::Movie && restartWhenZooming)
+    if (eType == ImageWidget::Movie && restartWhenZooming)
         movie->start();
 
     ////qDebug()<<"new size:"<<imageLabel->size();
@@ -294,16 +291,16 @@ void ImageWidget::setMovieSpeed(int d)
 
 void ImageWidget::movieSlot()
 {
-    if(stopWhenFinish && (movie->currentFrameNumber() == movie->frameCount() - 1)){
+    if (stopWhenFinish && (movie->currentFrameNumber() == movie->frameCount() - 1)) {
         movie->stop();
     }
     pixmap = movie->currentPixmap();
     makeDynamicTransformation();
-    if(invertedColors){
+    if (invertedColors) {
         egg();
     }
     drawPixmap();
-    if(scaleFactor==1){
+    if (scaleFactor == 1) {
         scaleFactor = 1;
         imageLabel->adjustSize();
         this->adjustSize();
@@ -316,17 +313,17 @@ void ImageWidget::movieSlot()
 
 void ImageWidget::makeDynamicTransformation()
 {
-    if(movieFlipX != 1 || movieFlipY != 1){
+    if (movieFlipX != 1 || movieFlipY != 1) {
         pixmap = pixmap.transformed(QTransform().scale(movieFlipX, movieFlipY));
     }
-    if(movieAngle != 0){
+    if (movieAngle != 0) {
         pixmap = pixmap.transformed(QTransform().rotate(movieAngle));
     }
 }
 
 void ImageWidget::drawPixmap()
 {
-    if(pixmap.isNull()){
+    if (pixmap.isNull()) {
         emit couldOpen(false);
         return;
     }
@@ -344,46 +341,46 @@ void ImageWidget::defaulTransMovie()
 
 void ImageWidget::calculateNewState(Transform d)
 {
-    qDebug()<<"I've founded a book where i've learned to manipulate "
-              "animated images, so i can do it now ^_^";
-    switch(d){
-    case toLeft:
-        movieAngle -= 90;
-        break;
-    case toRight:
-        movieAngle += 90;
-        break;
-    case horizontally:
-        movieFlipX = -movieFlipX;
-        break;
-    case vertically:
-        movieFlipY = -movieFlipY;
-        break;
-    default:
-        qDebug()<<tr("PERO Q' LO QUE PASOOOO!!!!");//a little bit of craziness
-        break;
-    }
-
-    if(double(movieAngle / 360) == 1)
-        movieAngle = 0;
-
-    if( abs(movieAngle) == 90 || abs(movieAngle) == 270 ){
-        switch(d){
+    qDebug() << "I've founded a book where i've learned to manipulate "
+             "animated images, so i can do it now ^_^";
+    switch (d) {
         case toLeft:
-            //nothing needed here, just added to see the message below
-            qDebug()<<"ImageWidget/calculateNewState->toRight";
+            movieAngle -= 90;
             break;
         case toRight:
-            qDebug()<<"ImageWidget/calculateNewState->toRight";
+            movieAngle += 90;
             break;
         case horizontally:
             movieFlipX = -movieFlipX;
-            movieFlipY = -movieFlipY;
             break;
         case vertically:
-            movieFlipX = -movieFlipX;
             movieFlipY = -movieFlipY;
             break;
+        default:
+            qDebug() << tr("PERO Q' LO QUE PASOOOO!!!!"); //a little bit of craziness
+            break;
+    }
+
+    if (double(movieAngle / 360) == 1)
+        movieAngle = 0;
+
+    if (abs(movieAngle) == 90 || abs(movieAngle) == 270) {
+        switch (d) {
+            case toLeft:
+                //nothing needed here, just added to see the message below
+                qDebug() << "ImageWidget/calculateNewState->toRight";
+                break;
+            case toRight:
+                qDebug() << "ImageWidget/calculateNewState->toRight";
+                break;
+            case horizontally:
+                movieFlipX = -movieFlipX;
+                movieFlipY = -movieFlipY;
+                break;
+            case vertically:
+                movieFlipX = -movieFlipX;
+                movieFlipY = -movieFlipY;
+                break;
         }
     }
 
@@ -392,45 +389,45 @@ void ImageWidget::calculateNewState(Transform d)
 
 void ImageWidget::makeTransformation(Transform d)
 {
-    qDebug()<<"make transformation:"<<d;
+    qDebug() << "make transformation:" << d;
 
     QTransform transformation;
     QSize f = pixmap.size();
 
-    switch(d){
-    case toLeft:
-        transformation.rotate(-90);
-        pixmap = pixmap.transformed(transformation);
-        imageLabel->setPixmap(pixmap);
-        f.transpose();
-        imageLabel->resize(f);
-        this->adjustSize();
-        emit picSizeChanged();
-        break;
-    case toRight:
-        transformation.rotate(90);
-        pixmap = pixmap.transformed(transformation);
-        imageLabel->setPixmap(pixmap);
-        f.transpose();
-        imageLabel->resize(f);
-        this->adjustSize();
-        emit picSizeChanged();
-        break;
-    case horizontally:
-        transformation.scale(-1,1);
-        pixmap = pixmap.transformed(transformation);
-        imageLabel->setPixmap(pixmap);
-        break;
-    case vertically:
-        transformation.scale(1,-1);
-        pixmap = pixmap.transformed(transformation);
-        imageLabel->setPixmap(pixmap);
-        break;
+    switch (d) {
+        case toLeft:
+            transformation.rotate(-90);
+            pixmap = pixmap.transformed(transformation);
+            imageLabel->setPixmap(pixmap);
+            f.transpose();
+            imageLabel->resize(f);
+            this->adjustSize();
+            emit picSizeChanged();
+            break;
+        case toRight:
+            transformation.rotate(90);
+            pixmap = pixmap.transformed(transformation);
+            imageLabel->setPixmap(pixmap);
+            f.transpose();
+            imageLabel->resize(f);
+            this->adjustSize();
+            emit picSizeChanged();
+            break;
+        case horizontally:
+            transformation.scale(-1, 1);
+            pixmap = pixmap.transformed(transformation);
+            imageLabel->setPixmap(pixmap);
+            break;
+        case vertically:
+            transformation.scale(1, -1);
+            pixmap = pixmap.transformed(transformation);
+            imageLabel->setPixmap(pixmap);
+            break;
     }
 
     emit pixmapChanged();
 
-    if(scaleFactor != 1){
+    if (scaleFactor != 1) {
         imageLabel->resize(pixmap.size() * scaleFactor);
         this->resize((pixmap.size() + bugSize) * scaleFactor);
     }
@@ -439,11 +436,9 @@ void ImageWidget::makeTransformation(Transform d)
 
 void ImageWidget::transformImage(Transform d)
 {
-    if(eType != Movie)
-    {
+    if (eType != Movie) {
         makeTransformation(d);
-    }
-    else{
+    } else {
         calculateNewState(d);
     }
 }
@@ -458,41 +453,41 @@ void ImageWidget::transformImage(Transform d)
 QPixmap ImageWidget::chessBoardBackground()
 {
     //cbsSize is the size of each square side
-    QPixmap m = QPixmap(cbsSize*2,cbsSize*2);
+    QPixmap m = QPixmap(cbsSize * 2, cbsSize * 2);
     QPainter p(&m);
-    p.fillRect(m.rect(), QColor(128,128,128));
-    QColor light = QColor(192,192,192);
-    p.fillRect(0,0,cbsSize,cbsSize,light);
-    p.fillRect(cbsSize,cbsSize,cbsSize,cbsSize, light);
+    p.fillRect(m.rect(), QColor(128, 128, 128));
+    QColor light = QColor(192, 192, 192);
+    p.fillRect(0, 0, cbsSize, cbsSize, light);
+    p.fillRect(cbsSize, cbsSize, cbsSize, cbsSize, light);
     p.end();
     return m;
 }
 
 void ImageWidget::paintEvent(QPaintEvent *)
 {
-    if(pixmap.hasAlphaChannel()){
+    if (pixmap.hasAlphaChannel()) {
         QPainter p(this);
-        switch(int(backType)){
-        case ImageWidget::squares:
-            p.drawTiledPixmap(rect(), chessBoardBackground());
-            break;
-        case ImageWidget::solidColor:
-            p.fillRect(rect(), backColor);
-            break;
-        case ImageWidget::none:
-            break;
+        switch (int(backType)) {
+            case ImageWidget::squares:
+                p.drawTiledPixmap(rect(), chessBoardBackground());
+                break;
+            case ImageWidget::solidColor:
+                p.fillRect(rect(), backColor);
+                break;
+            case ImageWidget::none:
+                break;
         }
     }
 }
 
 void ImageWidget::wheelEvent(QWheelEvent *event)
- {
-     int numDegrees = event->delta() / 8;
-     int numSteps = numDegrees / 15;
-     if(numSteps > 0){
-         emit wheelZoom(1);
-     }
-     if(numSteps < 0){
-         emit wheelZoom(-1);
-     }
- }
+{
+    int numDegrees = event->delta() / 8;
+    int numSteps = numDegrees / 15;
+    if (numSteps > 0) {
+        emit wheelZoom(1);
+    }
+    if (numSteps < 0) {
+        emit wheelZoom(-1);
+    }
+}

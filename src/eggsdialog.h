@@ -26,7 +26,7 @@ private slots:
       * @param hour returns the hour
       * @param min returns the min
       */
-    void getHour(QString time, int& hour, int& min);
+    void getHour(QString time, int &hour, int &min);
 
     /**
       * @return a string containing the hour and min

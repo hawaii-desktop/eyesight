@@ -41,7 +41,6 @@ set(UI_SOURCES
 
 set(QRC_SOURCES
     eyesight.qrc
-    oxygen.qrc
 )
 
 qt5_wrap_ui(UI_FILES ${UI_SOURCES})

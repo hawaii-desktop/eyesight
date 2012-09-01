@@ -26,34 +26,34 @@
 
 class FileProperties : public QDialog
 {
-  Q_OBJECT
-  
-public:
-  /**
-   * constructor
-   */
-  FileProperties(QWidget* parent = 0, Qt::WFlags fl = 0 );
+    Q_OBJECT
 
-  /**
-   * Sets \a fileName as the file to be processed
-   * @param useBinarySystem enable/disable the binary sistem notation to show the file size
-   * @param sizePrecision sets the file's size precision to use
-   */
-  void setFile(const QString fileName, bool useBinarySystem=false, int sizePrecision=2);
-  
-  /**
-   * Sets \a prevPixmap as the preview image to show in the dialog
-   */
-  void setPreviewPixmap(const QPixmap prevPixmap);
-  
-  /**
-   * Sets \a size as the picture size (height and width) to show
-   */
-  void setPictureSize(QSize size);
-    
+public:
+    /**
+     * constructor
+     */
+    FileProperties(QWidget *parent = 0, Qt::WFlags fl = 0);
+
+    /**
+     * Sets \a fileName as the file to be processed
+     * @param useBinarySystem enable/disable the binary sistem notation to show the file size
+     * @param sizePrecision sets the file's size precision to use
+     */
+    void setFile(const QString fileName, bool useBinarySystem = false, int sizePrecision = 2);
+
+    /**
+     * Sets \a prevPixmap as the preview image to show in the dialog
+     */
+    void setPreviewPixmap(const QPixmap prevPixmap);
+
+    /**
+     * Sets \a size as the picture size (height and width) to show
+     */
+    void setPictureSize(QSize size);
+
 private:
-  Ui_PropertiesDialog ui;
-  QString getFromResource(const QString& res_file);
+    Ui_PropertiesDialog ui;
+    QString getFromResource(const QString &res_file);
 
 };
 #endif

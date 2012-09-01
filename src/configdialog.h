@@ -30,60 +30,60 @@ class ToolBarEdit;
 
 class ConfigDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  ConfigDialog(QWidget* parent = 0, Qt::WFlags fl = 0 );
-  /**
-   * Sends all the actions available with their shortcuts and icons
-   * name to the dialog
-   */
-  void setActionsList(QList<ActionData *> actionData);//actions's icons name
+    ConfigDialog(QWidget *parent = 0, Qt::WFlags fl = 0);
+    /**
+     * Sends all the actions available with their shortcuts and icons
+     * name to the dialog
+     */
+    void setActionsList(QList<ActionData *> actionData);//actions's icons name
 
 signals:
-  /**
-   * signal sent when the dialog saves the configuration
-   */
-  void settingsSaved();
+    /**
+     * signal sent when the dialog saves the configuration
+     */
+    void settingsSaved();
 
 protected:
-  void closeEvent(QCloseEvent *event);
-    
+    void closeEvent(QCloseEvent *event);
+
 private:
-  Ui_ConfigDialog ui;
-  Settings *settings;
-  int closeDialog();
-  bool settingsChanged;
+    Ui_ConfigDialog ui;
+    Settings *settings;
+    int closeDialog();
+    bool settingsChanged;
 
-  //loaction page settings stuff
-  int getLastDirOption();
+    //loaction page settings stuff
+    int getLastDirOption();
 
-  //toolbar stuff
-  ToolBarEdit *tbe;
-  int getButtonStyle();
-  int gettbpos();
+    //toolbar stuff
+    ToolBarEdit *tbe;
+    int getButtonStyle();
+    int gettbpos();
 
-  //general options stuff
-  QPixmap iconForButton();
-  QStringList rflBack;
-  QColor color;
-  QStringList setColorSettings();
-  void getColorFromSettings(QStringList);
-  int getBGSelection(int);//0->returns the settings selectins
-                          //1->returns the combobox selecteditem
+    //general options stuff
+    QPixmap iconForButton();
+    QStringList rflBack;
+    QColor color;
+    QStringList setColorSettings();
+    void getColorFromSettings(QStringList);
+    int getBGSelection(int);//0->returns the settings selectins
+    //1->returns the combobox selecteditem
 
 private slots:
-  void saveSettings();
-  void settingsChangedSlot();
+    void saveSettings();
+    void settingsChangedSlot();
 
-  //loaction page settings stuff
-  void openDirSlot();
+    //loaction page settings stuff
+    void openDirSlot();
 
-  //general options stuff
-  void paintSquaresSample(int);
-  void bgComboBoxSlot(int);
-  void selectColorSlot();
-  void deleteRecentFilesList(QString);
+    //general options stuff
+    void paintSquaresSample(int);
+    void bgComboBoxSlot(int);
+    void selectColorSlot();
+    void deleteRecentFilesList(QString);
 
 };
 

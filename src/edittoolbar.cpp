@@ -36,13 +36,13 @@ void EditToolBar::actionsChangedSlot()
 
 void EditToolBar::applySlot()
 {
-    qDebug()<<"apply slot";
+    qDebug() << "apply slot";
     emit actionsChanged(tbe->getActionsList());
 }
 
 void EditToolBar::okSlot()
 {
-    qDebug()<<"ok slot";
+    qDebug() << "ok slot";
     emit actionsChanged(tbe->getActionsList());
     this->close();
 }

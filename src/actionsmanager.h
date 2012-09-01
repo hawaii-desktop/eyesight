@@ -91,9 +91,9 @@ public:
       */
     void setActionIcon(QString id, QString iconName);
 
-//signals:
+    //signals:
 
-//public slots:
+    //public slots:
 
 private:
     /*!
@@ -106,7 +106,7 @@ private:
     /*!
       \struct this struct contains an action, it's shortcut
       */
-    struct InternalActData{
+    struct InternalActData {
         QAction *action;    ///<action
         QShortcut *shortcut;///<actions's shortcut
         QString iconName;

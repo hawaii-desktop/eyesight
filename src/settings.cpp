@@ -26,7 +26,7 @@ Settings::Settings()
     backgroundColor = this->defaultColor();
     backgroundToShow = QString("squares");
     defaultPath = QDir().homePath();
-    windowSize = QSize(500,400);
+    windowSize = QSize(500, 400);
     sorting = 0;
     pathToUse = 0;
     squaresSize = 8;
@@ -48,19 +48,19 @@ Settings::Settings()
     previousSettings = true;
 
     //eggs
-    eggBegin = setHour(0,0);
-    eggEnd = setHour(0,30);
+    eggBegin = setHour(0, 0);
+    eggEnd = setHour(0, 30);
     enableEggs = true;
     imageJoke = false;
     useBinary = true;
 }
 
-void Settings::getEggsEndHour(int& hour, int& min)
+void Settings::getEggsEndHour(int &hour, int &min)
 {
     getHour(eggEnd, hour, min);
 }
 
-void Settings::getEggsBeginHour(int& hour, int& min)
+void Settings::getEggsBeginHour(int &hour, int &min)
 {
     getHour(eggBegin, hour, min);
 }
@@ -68,7 +68,7 @@ void Settings::getEggsBeginHour(int& hour, int& min)
 void Settings::getHour(QString time, int &hour, int &min)
 {
     //qDebug()<<time;
-    if(time.indexOf("@Time(") == -1)
+    if (time.indexOf("@Time(") == -1)
         return;
 
     time.remove("@Time(");
@@ -81,12 +81,12 @@ void Settings::getHour(QString time, int &hour, int &min)
     //qDebug()<<QString("%1:%2").arg(h).arg(m);
 
     //check min and hour are both valids
-    while(min > 59){
+    while (min > 59) {
         hour++;
         min -= 60;
     }
-    
-    while(hour > 23){
+
+    while (hour > 23) {
         hour -= 24;
     }
 
@@ -99,13 +99,13 @@ QString Settings::setHour(int hour, int min)
 
 bool Settings::isTime()
 {
-    int bh=0, bm=0, eh=0, em=0;
-    getHour(eggBegin,bh,bm);
-    getHour(eggEnd,eh,em);
+    int bh = 0, bm = 0, eh = 0, em = 0;
+    getHour(eggBegin, bh, bm);
+    getHour(eggEnd, eh, em);
     //qDebug()<<QString("Begin: %1:%2").arg(bh).arg(bm);
     //qDebug()<<QString("End: %1:%2").arg(eh).arg(em);
 
-    if(QTime(bh,bm) <= QTime::currentTime() && QTime::currentTime() <= QTime(eh,em))
+    if (QTime(bh, bm) <= QTime::currentTime() && QTime::currentTime() <= QTime(eh, em))
         return true;
 
     else
@@ -114,15 +114,15 @@ bool Settings::isTime()
 
 bool Settings::useEggs()
 {
-    if(!enableEggs || !isTime())
-         return false;
+    if (!enableEggs || !isTime())
+        return false;
 
     return true;
 }
 
 bool Settings::imageJokes()
 {
-    if(!useEggs() || !imageJoke)
+    if (!useEggs() || !imageJoke)
         return false;
 
     else
@@ -131,7 +131,7 @@ bool Settings::imageJokes()
 
 bool Settings::useBinaryStyle()
 {
-    if(!useEggs() || !useBinary)
+    if (!useEggs() || !useBinary)
         return false;
 
     else
@@ -141,34 +141,34 @@ bool Settings::useBinaryStyle()
 QStringList Settings::defaultActions() const
 {
     QStringList defaultActions;
-    defaultActions<<"_previous"<<"_next"<<"_separator"<<"_zoomIn"<<"_zoomOut"<<"_normalSize"<<"_adjustSize"
-                  <<"_separator"<<"_rotateLeft"<<"_rotateRight";
+    defaultActions << "_previous" << "_next" << "_separator" << "_zoomIn" << "_zoomOut" << "_normalSize" << "_adjustSize"
+                   << "_separator" << "_rotateLeft" << "_rotateRight";
     return defaultActions;
 }
 
 QStringList Settings::defaultColor() const
 {
     QStringList defColor;
-    defColor<<"104"<<"102"<<"101";
+    defColor << "104" << "102" << "101";
     return defColor;
 }
 
 void Settings::getPreviousConfig()
 {
-    QSettings settings("QIviewer", "qiviewer");
-    if(settings.value("MainWindow/bgToShow").toString() == "scuares"){
+    QSettings settings("EyeSight", "qiviewer");
+    if (settings.value("MainWindow/bgToShow").toString() == "scuares") {
         settings.setValue("MainWindow/bgToShow", "squares");
     }
-    if(settings.value("ToolBar/tbArea") == "top"){
+    if (settings.value("ToolBar/tbArea") == "top") {
         settings.setValue("ToolBar/tbArea", 4);
     }
-    if(settings.value("ToolBar/tbArea") == "bottom"){
+    if (settings.value("ToolBar/tbArea") == "bottom") {
         settings.setValue("ToolBar/tbArea", 8);
     }
-    if(settings.value("ToolBar/tbArea") == "left"){
+    if (settings.value("ToolBar/tbArea") == "left") {
         settings.setValue("ToolBar/tbArea", 1);
     }
-    if(settings.value("ToolBar/tbArea") == "right"){
+    if (settings.value("ToolBar/tbArea") == "right") {
         settings.setValue("ToolBar/tbArea", 2);
     }
     settings.setValue("lastDir/pathToUse", settings.value("lastDir/showlastdir", 0).toInt());
@@ -180,11 +180,11 @@ void Settings::getPreviousConfig()
 
 void Settings::loadSettings()
 {
-    qDebug()<<"load settings";
-    QSettings settings("QIviewer", "qiviewer");
+    qDebug() << "load settings";
+    QSettings settings("EyeSight", "qiviewer");
 
     //check if need to load previous version settings
-    if(settings.value("getPreviousSettings", true).toBool()){
+    if (settings.value("getPreviousSettings", true).toBool()) {
         this->getPreviousConfig();
     }
 
@@ -206,16 +206,18 @@ void Settings::loadSettings()
     backgroundToShow    = settings.value("bgToShow",             "squares").toString();
     backgroundColor     = settings.value("backgroundColor",      defaultColor()).toStringList();
     recentFilesList     = settings.value("recentFiles").toStringList();
-    settings.endGroup();    
+    settings.endGroup();
     //check max files
-    if(maxRecentFiles < 0 || maxRecentFiles >15){maxRecentFiles = 5;}
+    if (maxRecentFiles < 0 || maxRecentFiles > 15) {
+        maxRecentFiles = 5;
+    }
 
     settings.beginGroup("Eggs");
     enableEggs		= settings.value("enableEggs",           true).toBool();
     imageJoke           = settings.value("imageJokes",           false).toBool();
     useBinary           = settings.value("useBinary",            true).toBool();
-    eggBegin            = settings.value("eggStart",             setHour(0,0)).toString();
-    eggEnd              = settings.value("eggEnd",               setHour(0,30)).toString();
+    eggBegin            = settings.value("eggStart",             setHour(0, 0)).toString();
+    eggEnd              = settings.value("eggEnd",               setHour(0, 30)).toString();
     settings.endGroup();
 
     //toolbar settings
@@ -248,7 +250,7 @@ void Settings::loadSettings()
 
 void Settings::saveSettings()
 {
-    QSettings settings("QIviewer", "qiviewer");
+    QSettings settings("EyeSight", "qiviewer");
     settings.beginGroup("Eggs");
     settings.setValue("enableEggs", enableEggs);
     settings.setValue("imageJokes", imageJoke);

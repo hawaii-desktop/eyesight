@@ -11,17 +11,17 @@ Shortcut::Shortcut(QWidget *parent) :
                                      " _toLeft, _toRight, _horizontally, _vertically, _next, _previous, _last, _first, _about,"
                                      " _aboutQt").split(", "));
 
-    avaibleSignals = QStringList()<<SIGNAL(open())<<SIGNAL(openDir())<<SIGNAL(save())<<SIGNAL(print())
-                                  <<SIGNAL(fileProperties())<<SIGNAL(exit())<<SIGNAL(showMenuBar())
-                                  <<SIGNAL(setToolBarMovable())<<SIGNAL(configureProgram())
-                                  <<SIGNAL(zoomIn())<<SIGNAL(zoomOut())<<SIGNAL(normalSize())
-                                  <<SIGNAL(adjustSize())<<SIGNAL(rotateLeft())<<SIGNAL(rotateRight())
-                                  <<SIGNAL(flipHorizontally())<<SIGNAL(flipVertically())<<SIGNAL(next())
-                                  <<SIGNAL(previous())<<SIGNAL(goLast())<<SIGNAL(goFirst())
-                                  <<SIGNAL(about())<<SIGNAL(aboutQt());
+    avaibleSignals = QStringList() << SIGNAL(open()) << SIGNAL(openDir()) << SIGNAL(save()) << SIGNAL(print())
+                     << SIGNAL(fileProperties()) << SIGNAL(exit()) << SIGNAL(showMenuBar())
+                     << SIGNAL(setToolBarMovable()) << SIGNAL(configureProgram())
+                     << SIGNAL(zoomIn()) << SIGNAL(zoomOut()) << SIGNAL(normalSize())
+                     << SIGNAL(adjustSize()) << SIGNAL(rotateLeft()) << SIGNAL(rotateRight())
+                     << SIGNAL(flipHorizontally()) << SIGNAL(flipVertically()) << SIGNAL(next())
+                     << SIGNAL(previous()) << SIGNAL(goLast()) << SIGNAL(goFirst())
+                     << SIGNAL(about()) << SIGNAL(aboutQt());
 
     //create a shorcut for each id and store it in shortcuts
-    for(int i=0; i<avaibleIds.count(); i++){
+    for (int i = 0; i < avaibleIds.count(); i++) {
         shortcuts[avaibleIds.at(i)].shortcut = new QShortcut(parent);
         shortcuts[avaibleIds.at(i)].signal = avaibleSignals.at(i).toStdString();
     }
@@ -32,14 +32,14 @@ Shortcut::Shortcut(QWidget *parent) :
 
 void Shortcut::MakeConnections(QStringList li)
 {
-    for(int i=0; i<li.count(); i++){
+    for (int i = 0; i < li.count(); i++) {
         connect(shortcuts[li.at(i)].shortcut, SIGNAL(activated()), this, shortcuts[li.at(i)].signal.data());
     }
 }
 
 void Shortcut::disconnectShortcuts()
 {
-    for(int i=0; i<avaibleIds.count(); i++){
+    for (int i = 0; i < avaibleIds.count(); i++) {
         connect(shortcuts[avaibleIds.at(i)].shortcut, SIGNAL(activated()), this, shortcuts[avaibleIds.at(i)].signal.data());
     }
 }
@@ -47,11 +47,10 @@ void Shortcut::disconnectShortcuts()
 bool Shortcut::addShortcut(QString id, QString shortcut, std::string member)
 {
     //check if the id is valid
-    if(!shortcuts.contains(id)){
-        qDebug()<<"no es valido";
+    if (!shortcuts.contains(id)) {
+        qDebug() << "no es valido";
         return false;
-    }
-    else{
+    } else {
         shortcuts[id].shortcut->setKey(QKeySequence(shortcut));
         shortcuts[id].member = member;
         return true;
@@ -60,10 +59,9 @@ bool Shortcut::addShortcut(QString id, QString shortcut, std::string member)
 
 bool Shortcut::isEmpty(QString id)
 {
-    if(!shortcuts.contains(id)){
+    if (!shortcuts.contains(id)) {
         return false;
-    }
-    else{
+    } else {
         return shortcuts[id].shortcut->key().isEmpty();
     }
 }
