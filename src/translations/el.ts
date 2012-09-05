@@ -369,11 +369,6 @@
         <translation>Αλλαγή προκαθορισμένης τοποθεσίας</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="154"/>
-        <source>To configure the easter eggs, you have to execute:</source>
-        <translation>Για να ρυθμίσετε τα πασχαλινά αυγά, πρέπει να εκτελέσετε:</translation>
-    </message>
-    <message>
         <location filename="../configdialog.cpp" line="162"/>
         <source>Name</source>
         <translation>Όνομα</translation>
@@ -1169,48 +1164,6 @@ The new folder is iqual to the older</source>
         <location filename="../webpdecoder.cpp" line="115"/>
         <source>[WEBP]Error opening file %s !!</source>
         <translation>[WEBP]Σφάλμα στο άνοιγμα του αρχείου % !!</translation>
-    </message>
-</context>
-<context>
-    <name>eggsDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">Διάλογος</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="25"/>
-        <source>Enable eggs</source>
-        <translation>Ενεργοποίηση αυγών</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="42"/>
-        <source>Enable binary notation</source>
-        <translation>Ενεργοποίηση εκτελέσιμων σημειώσεων</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="59"/>
-        <source>Enable image jokes</source>
-        <translation>Ενεργοποίηση ανεκδότων των εικόνων</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="76"/>
-        <source>Begin</source>
-        <translation>Έναρξη</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="86"/>
-        <source>End</source>
-        <translation>Τερματισμός</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="113"/>
-        <source>Ok</source>
-        <translation>Εντάξει</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="120"/>
-        <source>Cancel</source>
-        <translation>Ακύρωση</translation>
     </message>
 </context>
 <context>

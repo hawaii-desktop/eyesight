@@ -602,11 +602,6 @@ herramientas</translation>
         <translation>Cambiar ubicación por defecto</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="154"/>
-        <source>To configure the easter eggs, you have to execute:</source>
-        <translation>Para configurar los huevos de pascua, tenes que ejecutar:</translation>
-    </message>
-    <message>
         <location filename="../configdialog.cpp" line="162"/>
         <source>Name</source>
         <translation>Nombre</translation>
@@ -1632,13 +1627,11 @@ to do?</source>
 Avaible options:
   -h --help         shows this help and finish
   -v --version      shows qiviewer version
-  -e --eggs         shows eggs dialog
 </source>
         <translation type="obsolete">Modo de uso: qiviewer [OPCIÓN/ARCHIVO]
 Opciones disponibles:
   -h --help        muestra esta ayuda y finaliza
   -v --version   muestra la versión de qiviewer
-  -e --eggs        muestra el dialog de los huevos
 </translation>
     </message>
     <message>
@@ -1646,7 +1639,6 @@ Opciones disponibles:
 Avaible options:
     %1 shows this help and finish
     %2 shows qiviewer version
-    %3 shows eggs dialog
 </source>
         <translation type="obsolete">Como usar: qiviewer [OPCION/ARCHIVO]
 Opciones disponibles:
@@ -1984,44 +1976,6 @@ No hay NINGUNA GARANTIA.
     <message>
         <source>The zoom value isn&apos;t inside the zoom value limits</source>
         <translation type="obsolete">El valor de zoom no esta dentro de los limites</translation>
-    </message>
-</context>
-<context>
-    <name>eggsDialog</name>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="25"/>
-        <source>Enable eggs</source>
-        <translation>Habilitar huevos</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="42"/>
-        <source>Enable binary notation</source>
-        <translation>Habilitar notacion binaria</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="59"/>
-        <source>Enable image jokes</source>
-        <translation>Habilitar bromas de imagenes</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="76"/>
-        <source>Begin</source>
-        <translation>Comienzo</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="86"/>
-        <source>End</source>
-        <translation>Fin</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="113"/>
-        <source>Ok</source>
-        <translation>Aceptar</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="120"/>
-        <source>Cancel</source>
-        <translation>Cancelar</translation>
     </message>
 </context>
 <context>

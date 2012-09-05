@@ -25,7 +25,6 @@
 #include <config.h>
 
 #include "mainwindow.h"
-#include "eggsdialog.h"
 #include "configdialog.h"
 
 int main(int argc, char *argv[])
@@ -67,7 +66,6 @@ int main(int argc, char *argv[])
     const char *const short_options = "hev";
     const struct option long_options[] = {
         {"help",     0, NULL, 'h'},
-        {"eggs",     0, NULL, 'e'},
         {"version",  0, NULL, 'v'},
         {NULL,       0, NULL, 0}
     };
@@ -80,8 +78,7 @@ int main(int argc, char *argv[])
                              "Avaible options:\n"
                              "    %1 shows this help and finish\n"
                              "    %2 shows qiviewer version\n"
-                             "    %3 shows eggs dialog\n"
-                            ).arg("-h --help").arg("-v --version").arg("-e --eggs").toStdString();
+                            ).arg("-h --help").arg("-v --version").toStdString();
         re = 0;
     }
 
@@ -99,11 +96,6 @@ int main(int argc, char *argv[])
                                  "There is NO WARRANTY.\n"
                                 ).arg(QLatin1String(EYESIGHT_VERSION)).toStdString();
         re = 0;
-    }
-
-    else if (next_option == 'e') {
-        EggsDialog ed;
-        re = ed.exec();
     }
 
     else if (next_option == -1) {

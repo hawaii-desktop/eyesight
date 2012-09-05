@@ -46,23 +46,6 @@ Settings::Settings()
     toolBarVisible = true;
     createNewShortCuts = true;
     previousSettings = true;
-
-    //eggs
-    eggBegin = setHour(0, 0);
-    eggEnd = setHour(0, 30);
-    enableEggs = true;
-    imageJoke = false;
-    useBinary = true;
-}
-
-void Settings::getEggsEndHour(int &hour, int &min)
-{
-    getHour(eggEnd, hour, min);
-}
-
-void Settings::getEggsBeginHour(int &hour, int &min)
-{
-    getHour(eggBegin, hour, min);
 }
 
 void Settings::getHour(QString time, int &hour, int &min)
@@ -100,8 +83,6 @@ QString Settings::setHour(int hour, int min)
 bool Settings::isTime()
 {
     int bh = 0, bm = 0, eh = 0, em = 0;
-    getHour(eggBegin, bh, bm);
-    getHour(eggEnd, eh, em);
     //qDebug()<<QString("Begin: %1:%2").arg(bh).arg(bm);
     //qDebug()<<QString("End: %1:%2").arg(eh).arg(em);
 
@@ -110,32 +91,6 @@ bool Settings::isTime()
 
     else
         return false;
-}
-
-bool Settings::useEggs()
-{
-    if (!enableEggs || !isTime())
-        return false;
-
-    return true;
-}
-
-bool Settings::imageJokes()
-{
-    if (!useEggs() || !imageJoke)
-        return false;
-
-    else
-        return true;
-}
-
-bool Settings::useBinaryStyle()
-{
-    if (!useEggs() || !useBinary)
-        return false;
-
-    else
-        return true;
 }
 
 QStringList Settings::defaultActions() const
@@ -212,14 +167,6 @@ void Settings::loadSettings()
         maxRecentFiles = 5;
     }
 
-    settings.beginGroup("Eggs");
-    enableEggs		= settings.value("enableEggs",           true).toBool();
-    imageJoke           = settings.value("imageJokes",           false).toBool();
-    useBinary           = settings.value("useBinary",            true).toBool();
-    eggBegin            = settings.value("eggStart",             setHour(0, 0)).toString();
-    eggEnd              = settings.value("eggEnd",               setHour(0, 30)).toString();
-    settings.endGroup();
-
     //toolbar settings
     settings.beginGroup("Toolbar");
     toolBarMovable = settings.value("toolbar_movable",           false).toBool();
@@ -251,13 +198,6 @@ void Settings::loadSettings()
 void Settings::saveSettings()
 {
     QSettings settings("EyeSight", "qiviewer");
-    settings.beginGroup("Eggs");
-    settings.setValue("enableEggs", enableEggs);
-    settings.setValue("imageJokes", imageJoke);
-    settings.setValue("useBinary", useBinary);
-    settings.setValue("eggStart", eggBegin);
-    settings.setValue("eggEnd", eggEnd);
-    settings.endGroup();
 
     settings.beginGroup("MainWindow");
     settings.setValue("movieSpeed", movieSpeed);

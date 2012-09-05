@@ -36,30 +36,6 @@ public:
       */
     Settings();
 
-    /*!
-      return true if its setted to use easter eggs in the images, otherwise returns false
-      */
-    bool imageJokes();
-
-    /*!
-      return true if its setted to use binary sistem, otherwise returns false
-      */
-    bool useBinaryStyle();
-
-    /*!
-      returns true if its setted to use easter eggs , evaluating if it's timeto use them or not,
-      */
-    bool useEggs();
-
-    /*!
-      returns the easter eggs end \a hour and \a min
-      */
-    void getEggsEndHour(int &hour, int &min);
-
-    /*!
-      returns the easter eggs begining \a hour and \a min
-      */
-    void getEggsBeginHour(int &hour, int &min);
     inline QStringList getActionsLoaded() const {
         return actionsLoaded;
     }
@@ -236,8 +212,6 @@ private:
     QString backgroundToShow;
     QString lastDirUsed;
     QString defaultPath;
-    QString eggEnd;
-    QString eggBegin;
     QSize windowSize;
     int sorting;
     int pathToUse;
@@ -249,7 +223,6 @@ private:
     int compressLevel;
     int tbButtomStyle;
     int tbArea;
-    bool binary;
     bool restartWhenZooming;
     bool stopMovieWhenFinish;
     bool showZoomSlider;
@@ -259,9 +232,6 @@ private:
     bool toolBarVisible;
     bool createNewShortCuts;
     bool previousSettings;
-    bool enableEggs;
-    bool imageJoke;
-    bool useBinary;
 
     //methods
     void getPreviousConfig();

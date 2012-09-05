@@ -9,16 +9,15 @@ add_definitions(
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/eyesight.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/eyesight.desktop)
 
 set(SOURCES
     main.cpp
     mainwindow.cpp
-    aboutdialog.cpp
     actiondata.cpp
     actionsmanager.cpp
     configdialog.cpp
     edittoolbar.cpp
-    eggsdialog.cpp
     fileproperties.cpp
     fileutils.cpp
     gotodialog.cpp
@@ -30,10 +29,8 @@ set(SOURCES
 )
 
 set(UI_SOURCES
-    forms/aboutdialog.ui
     forms/fileproperties.ui
     forms/configdialog.ui
-    forms/eggsdialog.ui
     forms/gotodialog.ui
     forms/toolbaredit.ui
     forms/edittoolbar.ui
@@ -54,3 +51,4 @@ target_link_libraries(eyesight
 )
 
 install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_PROGSDIR})
+#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/eyesight.desktop ${CMAKE_INSTALL_APPSDIR})

@@ -146,12 +146,6 @@ ConfigDialog::ConfigDialog(QWidget *parent, Qt::WFlags fl) : QDialog(parent, fl)
     /**
       *general options stuff
       */
-    //eggs dialog
-    QString eggsDialog;
-    eggsDialog.append("<p>" + tr("To configure the easter eggs, you have to execute:") + " ");
-    eggsDialog.append("<code>qiviewer -e</code></p>");
-    ui.configureEggsLabel->setText(eggsDialog);
-    ui.configureEggsLabel->setVisible(settings->useEggs());
 
     //webp support
     //ui.webpSupport->setChecked(settings->useWebp());

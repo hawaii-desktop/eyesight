@@ -586,11 +586,6 @@ herramientas</translation>
         <translation>Cambiar ubicación por defecto</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="154"/>
-        <source>To configure the easter eggs, you have to execute:</source>
-        <translation>Para configurar los huevos de pascua, ejecuta:</translation>
-    </message>
-    <message>
         <location filename="../configdialog.cpp" line="162"/>
         <source>Name</source>
         <translation>Nombre</translation>
@@ -1883,48 +1878,6 @@ to do?</source>
     <message>
         <source>The zoom value isn&apos;t inside the zoom value limits</source>
         <translation type="obsolete">El valor de zoom no esta dentro de los limites</translation>
-    </message>
-</context>
-<context>
-    <name>eggsDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">Dialogo</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="25"/>
-        <source>Enable eggs</source>
-        <translation>Habilitar huevos de pascua</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="42"/>
-        <source>Enable binary notation</source>
-        <translation>Habilitar notación binaria</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="59"/>
-        <source>Enable image jokes</source>
-        <translation>Habilitar bromas en las imagenes</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="76"/>
-        <source>Begin</source>
-        <translation>Comienza</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="86"/>
-        <source>End</source>
-        <translation>Fin</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="113"/>
-        <source>Ok</source>
-        <translation>Aceptar</translation>
-    </message>
-    <message>
-        <location filename="../forms/eggsdialog.ui" line="120"/>
-        <source>Cancel</source>
-        <translation>Cancelar</translation>
     </message>
 </context>
 <context>

@@ -106,7 +106,6 @@ private:
     QAction *openAct;
     QAction *saveAct;
     QAction *exitAct;
-    QAction *aboutAct;
     QAction *aboutQtAct;
     QAction *filePropertiesAct;
     QAction *zoomInAct;
@@ -191,7 +190,6 @@ private slots:
     void rotateRight();
     void flipHorizontally();
     void flipVertically();
-    void about();
     void couldOpen(bool);
     void loadSettings();
     void saveSettings();

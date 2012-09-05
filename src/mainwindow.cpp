@@ -24,7 +24,6 @@
 #include "mainwindow.h"
 #include "imagewidget.h"
 #include "zoomwidget.h"
-#include "aboutdialog.h"
 #include "fileproperties.h"
 #include "configdialog.h"
 #include "settings.h"
@@ -615,12 +614,6 @@ void MainWindow::fileProperties()
     fp.setPreviewPixmap(imageWidget->getPixmap());
     fp.setPictureSize(imageWidget->getPictureSize());
     fp.exec();
-}
-
-void MainWindow::about()
-{
-    AboutDialog abd(this);
-    abd.exec();
 }
 
 void MainWindow::flipHorizontally()

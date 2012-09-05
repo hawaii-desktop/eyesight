@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>632</width>
-    <height>357</height>
+    <width>657</width>
+    <height>358</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -310,16 +310,6 @@
                    </spacer>
                   </item>
                  </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="configureEggsLabel">
-                  <property name="text">
-                   <string notr="true">egg</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
                 </item>
                 <item>
                  <spacer name="verticalSpacer">
