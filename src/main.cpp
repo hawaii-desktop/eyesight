@@ -22,6 +22,8 @@
 #include <getopt.h>
 #include <iostream>
 
+#include <VApplication>
+
 #include <config.h>
 
 #include "mainwindow.h"
@@ -29,7 +31,13 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    VApplication app(argc, argv);
+    app.setApplicationName("EyeSight");
+    app.setApplicationVersion(EYESIGHT_VERSION);
+    app.setOrganizationDomain("maui-project.org");
+    app.setOrganizationName("Maui");
+    app.setIdentifier("org.maui.EyeSight");
+    app.setWindowIcon(QIcon::fromTheme("eyesight"));
 
     //all the translation stuff was taken from minitube
     const QString locale = QLocale::system().name();

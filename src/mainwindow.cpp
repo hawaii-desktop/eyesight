@@ -96,7 +96,7 @@ MainWindow::MainWindow()
 
     this->loadSettings();
     this->setWindowTitle(tr("EyeSight"));
-    this->setWindowIcon(QIcon::fromTheme("image-x-generic"));
+    this->setWindowIcon(QIcon::fromTheme("eyesight"));
     this->showMenuBar();
     this->addAction(this->showMenuBarAct);
     this->addAction(this->showToolBarAct);
