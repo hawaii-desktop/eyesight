@@ -1,10 +1,10 @@
 include_directories(
-    ${Qt5Widgets_INCLUDE_DIRS}
+    ${VibeWidgets_INCLUDE_DIRS}
     ${Qt5PrintSupport_INCLUDE_DIRS}
 )
 
 add_definitions(
-    ${Qt5Widgets_DEFINITIONS}
+    ${VibeWidgets_DEFINITIONS}
     ${Qt5PrintSupport_DEFINITIONS}
 )
 
@@ -46,7 +46,7 @@ qt5_add_resources(QRC_FILES ${QRC_SOURCES})
 add_executable(eyesight ${SOURCES} ${UI_FILES} ${QRC_FILES})
 set_target_properties(eyesight PROPERTIES COMPILE_FLAGS ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS})
 target_link_libraries(eyesight
-    ${Qt5Widgets_LIBRARIES}
+    ${VibeWidgets_LIBRARIES}
     ${Qt5PrintSupport_LIBRARIES}
 )
 

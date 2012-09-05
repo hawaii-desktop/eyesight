@@ -21,6 +21,8 @@
 #include <QtWidgets>
 #include <QPrintDialog>
 
+#include <VAboutDialog>
+
 #include "mainwindow.h"
 #include "imagewidget.h"
 #include "zoomwidget.h"
@@ -374,7 +376,6 @@ void MainWindow::createMenus()
 
     helpMenu = new QMenu(tr("&Help"), this);
     helpMenu->addAction(aboutAct);
-    helpMenu->addAction(aboutQtAct);
 
     goMenu = new QMenu(tr("&Go"), this);
     goMenu->addAction(nextAct);
@@ -483,10 +484,6 @@ void MainWindow::createActions()
 
     aboutAct = new QAction(tr("A&bout"), this);
     actionsManager->addAction(aboutAct, "_about", this, this, SLOT(about()), QKeySequence::HelpContents);
-
-    aboutQtAct = new QAction(tr("About &Qt"), this);
-    aboutQtAct->setIcon(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"));
-    actionsManager->addAction(aboutQtAct, "_aboutQt", this, qApp, SLOT(aboutQt()));
 
     nextAct = new QAction(tr("Ne&xt"), this);
     nextAct->setStatusTip(tr("Loads next image"));
@@ -614,6 +611,26 @@ void MainWindow::fileProperties()
     fp.setPreviewPixmap(imageWidget->getPixmap());
     fp.setPictureSize(imageWidget->getPictureSize());
     fp.exec();
+}
+
+void MainWindow::about()
+{
+    QStringList authors;
+    authors << "Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>";
+
+    VAboutDialog dialog(this);
+    dialog.setAuthors(authors);
+    dialog.setCopyright("Pier Luigi Fiorini");
+    dialog.setDescription("Simple image visualization application.");
+    dialog.setLink(QUrl("http://www.maui-project.org/"));
+
+    QFile licenseFile(":/COPYING");
+    if (licenseFile.open(QIODevice::ReadOnly)) {
+        dialog.setLicenseText(licenseFile.readAll());
+        licenseFile.close();
+    }
+
+    dialog.exec();
 }
 
 void MainWindow::flipHorizontally()
