@@ -9,7 +9,6 @@ add_definitions(
 )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/eyesight.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/eyesight.desktop)
 
 set(SOURCES
     main.cpp
@@ -51,4 +50,3 @@ target_link_libraries(eyesight
 )
 
 install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_PROGSDIR})
-#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/eyesight.desktop ${CMAKE_INSTALL_APPSDIR})
