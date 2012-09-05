@@ -607,7 +607,7 @@ void MainWindow::showMenuBar()
 void MainWindow::fileProperties()
 {
     FileProperties fp;
-    fp.setFile(fileUtils->absoluteFilePath(), settings->useBinaryStyle(), settings->getFileSizePrecision());
+    fp.setFile(fileUtils->absoluteFilePath(), settings->getFileSizePrecision());
     fp.setPreviewPixmap(imageWidget->getPixmap());
     fp.setPictureSize(imageWidget->getPictureSize());
     fp.exec();
@@ -1129,7 +1129,6 @@ void MainWindow::loadSettings()
     imageWidget->setRestartWhenZooming(settings->getRestartWhenZooming());
     imageWidget->setMovieSpeed(settings->getMovieSpeed());
     imageWidget->setStopWhenFinish(settings->getStopMovieWhenFinish());
-    imageWidget->invertColors(settings->imageJokes());
     showZoomSlider  = settings->getShowZoomSlider();
     compressLevel   = settings->getCompressLevel();
     maxRecentFiles  = settings->getMaxRecentFiles();
