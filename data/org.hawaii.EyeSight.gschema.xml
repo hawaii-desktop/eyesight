@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gsettings-hawaii-eyesight-schemas">
+  <schema path="/org/hawaii/EyeSight/" id="org.hawaii.EyeSight">
+    <key type="i" name="window-width">
+      <default>500</default>
+      <summary>Window Width</summary>
+      <description>The last recorded width of the application window.</description>
+    </key>
+    <key type="i" name="window-height">
+      <default>400</default>
+      <summary>Window Height</summary>
+      <description>The last recorded hight of the application window.</description>
+    </key>
+    <key type="b" name="show-menu-bar">
+      <default>true</default>
+      <summary>Show Menu Bar</summary>
+      <description>Whether the menu bar should be displayed.</description>
+    </key>
+    <key name="toolbar-area" enum="org.hawaii.EyeSight.ToolBarArea">
+      <default>'bottom'</default>
+      <summary>Tool Bar Area</summary>
+      <description>Where the tool bar is docked.</description>
+    </key>
+    <key type="b" name="show-zoom-slider">
+      <default>false</default>
+      <summary>Show Zoom Slider</summary>
+      <description>Whether the zoom slider should be displayed.</description>
+    </key>
+    <key type="i" name="max-recent-files">
+      <default>5</default>
+      <range min="1" max="15"/>
+      <summary>Max Recent Files</summary>
+      <description>Maximum number of recent files to keep.</description>
+    </key>
+    <key type="as" name="recent-files">
+      <default>[]</default>
+      <summary>Recent Files</summary>
+      <description>List of recent files. See the "max-recent-files" to configure the maximum number of recent files to keep.</description>
+    </key>
+    <key type="b" name="restart-animation-when-zooming">
+      <default>true</default>
+      <summary>Restart Animation When Zooming</summary>
+      <description>Restart the currently played animation when zooming.</description>
+    </key>
+    <key type="i" name="animation-playback-speed">
+      <default>100</default>
+      <summary>Animation Speed</summary>
+      <description>The animation playback speed in percentage.</description>
+    </key>
+    <key type="b" name="stop-animation-when-finished">
+      <default>false</default>
+      <summary>Stop Animation When Finished</summary>
+      <description>Whether animations will stop when finished or continue indefinitely.</description>
+    </key>
+    <key type="i" name="zoom-multiplier">
+      <default>25</default>
+      <summary>Zoom Multiplier</summary>
+      <description>The multiplier to be applied when using the mouse scroll wheel for zooming. This value defines the zooming step used for each scroll event in percentage.</description>
+    </key>
+    <key type="i" name="compression-level">
+      <default>-1</default>
+      <summary>Compression Level</summary>
+      <description>Compression level for saved images.</description>
+    </key>
+    <key name="sort-by" enum="org.hawaii.EyeSight.FileSorting">
+      <default>'name'</default>
+      <summary>Files Sorting</summary>
+      <description>Files sorting key.</description>
+    </key>
+  </schema>
+</schemalist>
