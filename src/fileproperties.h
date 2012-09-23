@@ -32,7 +32,7 @@ public:
     /**
      * constructor
      */
-    FileProperties(QWidget *parent = 0, Qt::WFlags fl = 0);
+    FileProperties(QWidget *parent = 0);
 
     /**
      * Sets \a fileName as the file to be processed

@@ -35,8 +35,8 @@ QString FileProperties::getFromResource(const QString &res_file)
     return ret_string;
 }
 
-FileProperties::FileProperties(QWidget *parent, Qt::WFlags fl)
-    : QDialog(parent, fl)
+FileProperties::FileProperties(QWidget *parent)
+    : QDialog(parent)
 {
     ui.setupUi(this);
     ui.okButton->setIcon(QIcon::fromTheme("dialog-ok"));
