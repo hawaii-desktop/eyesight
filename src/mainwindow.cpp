@@ -99,9 +99,7 @@ MainWindow::MainWindow()
     this->setWindowIcon(QIcon::fromTheme("eyesight"));
     this->showMenuBar();
     this->addAction(this->showMenuBarAct);
-    this->addAction(this->showToolBarAct);
     this->addAction(this->configureToolBarAct);
-    this->addAction(this->setTBMovableAct);
     this->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
@@ -263,11 +261,7 @@ void MainWindow::configureToolBarSlot()
 void MainWindow::configureToolBarSlot2(QStringList l)
 {
     settings->setActionsLoaded(l);
-    setUpToolBar(l,
-                 Qt::ToolBarArea(settings->getTBArea()),
-                 Qt::ToolButtonStyle(settings->getTBButtomStyle()),
-                 settings->getTBVisible(),
-                 showZoomSlider);
+    setUpToolBar(l, settings->getTBArea(), showZoomSlider);
 }
 
 void MainWindow::configureProgram()
@@ -288,13 +282,10 @@ void MainWindow::resizeEvent(QResizeEvent *)
     }
 }
 
-void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonStyle s, bool v, bool zl)
+void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, bool zl)
 {
     //clear tool bar
     mainToolBar->clear();
-
-    //make it visible, or not
-    mainToolBar->setVisible(v);
 
     //create a list with all the ids
     QStringList actList = actionsManager->getIds();
@@ -317,9 +308,6 @@ void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonS
 
     //add the toolbar to the mainWindow
     addToolBar(a, mainToolBar);
-
-    //settning button style
-    mainToolBar->setToolButtonStyle(s);
 
     //zoom slider stuff
     if (zl) {
@@ -356,8 +344,6 @@ void MainWindow::createMenus()
 
     editMenu = new QMenu(tr("&Edit"), this);
     editMenu->addAction(showMenuBarAct);
-    editMenu->addAction(showToolBarAct);
-    editMenu->addAction(setTBMovableAct);
     editMenu->addAction(configAct);
 
     viewMenu = new QMenu(tr("&View"), this);
@@ -513,12 +499,6 @@ void MainWindow::createActions()
     showMenuBarAct->setCheckable(true);
     actionsManager->addAction(showMenuBarAct, "_showMenuBar", this, this, SLOT(showMenuBar()), QKeySequence("Ctrl+M"));
 
-    setTBMovableAct = new QAction(tr("Lock toolbar"), this);
-    setTBMovableAct->setCheckable(true);
-    setTBMovableAct->setEnabled(settings->getTBVisible());
-    setTBMovableAct->setStatusTip(tr("Lock/unlock toolbar"));
-    actionsManager->addAction(setTBMovableAct, "_tbMovable", this, this, SLOT(setToolBarMovable()));
-
     configAct = new QAction(tr("Configuration"), this);
     configAct->setEnabled(true);
     actionsManager->addAction(configAct, "_configuration", this, this, SLOT(configureProgram()), QKeySequence("Ctrl+C"));
@@ -543,11 +523,6 @@ void MainWindow::createActions()
     goToAct = new QAction(tr("Go to"), this);
     goToAct->setEnabled(false);
     actionsManager->addAction(goToAct, "_goTo", this, this, SLOT(goToSlot()), QKeySequence("Ctrl+J"));
-
-    showToolBarAct = new QAction(tr("Show toolbar"), this);
-    showToolBarAct->setCheckable(true);
-    showToolBarAct->setChecked(settings->getTBVisible());
-    actionsManager->addAction(showToolBarAct, "_showToolBar", this, this, SLOT(setToolBarVisible(bool)));
 
     configureToolBarAct = new QAction(tr("Configure toolbar"), this);
     actionsManager->addAction(configureToolBarAct, "_configureToolBar", this, this, SLOT(configureToolBarSlot()));
@@ -582,26 +557,12 @@ void MainWindow::createActions()
     actionsManager->setActionIcon("_zoomOut", "zoom-out");
 }
 
-void MainWindow::setToolBarVisible(bool d)
-{
-    mainToolBar->setVisible(d);
-
-    //you can't move a tool bar if you don't see it, can you?
-    setTBMovableAct->setEnabled(d);
-}
-
-void MainWindow::setToolBarMovable()
-{
-    mainToolBar->setMovable(!setTBMovableAct->isChecked());
-}
-
 void MainWindow::showMenuBar()
 {
-    if (showMenuBarAct->isChecked()) {
+    if (showMenuBarAct->isChecked())
         menuBar()->show();
-    } else {
+    else
         menuBar()->hide();
-    }
 }
 
 void MainWindow::fileProperties()
@@ -1121,9 +1082,7 @@ void MainWindow::loadSettings()
     resize(settings->getWindowSize());
     getColorFromSettings(settings->getBackgroundColor());
     showMenuBarAct->setChecked(settings->getShowMenuBar());
-    adjustSizeAct->setChecked(settings->getLoadFixedSize());
     zoomWidget->setZoomIncrement(settings->getZoomIncrement());
-    zoomWidget->setAdjustedSize(settings->getLoadFixedSize());
     imageWidget->setBGType(settings->getBGToShow());
     imageWidget->setCBSSize(settings->getSquaresSize());
     imageWidget->setRestartWhenZooming(settings->getRestartWhenZooming());
@@ -1134,19 +1093,13 @@ void MainWindow::loadSettings()
     maxRecentFiles  = settings->getMaxRecentFiles();
     recentFilesPath = settings->getRecentFilesList();
     fileUtils->setSorting(FileUtils::Order(settings->getSorting()));
-    this->createRFActs();
-    this->adjustSizeSlot();
-    this->showMenuBar();
+    createRFActs();
+    adjustSizeSlot();
+    showMenuBar();
 
     //tool bar settings
-    mainToolBar->setMovable(settings->getTBMovable());
-    setTBMovableAct->setChecked(!settings->getTBMovable());
-    showToolBarAct->setChecked(settings->getTBVisible());
-    setTBMovableAct->setEnabled(settings->getTBVisible());
     setUpToolBar(settings->getActionsLoaded(),
-                 Qt::ToolBarArea(settings->getTBArea()),
-                 Qt::ToolButtonStyle(settings->getTBButtomStyle()),
-                 settings->getTBVisible(),
+                 settings->getTBArea(),
                  showZoomSlider);
 
     //last dir used
@@ -1166,13 +1119,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::saveSettings()
 {
     //much more clear than loadSettings(), don't you think?
-    settings->setLoadFixedSize(adjustSizeAct->isChecked());
     settings->setWindowSize(this->size());
     settings->setRecentFilesList(recentFilesPath);
     settings->setShowMenuBar(showMenuBarAct->isChecked());
-    settings->setTBMovable(mainToolBar->isMovable());
-    settings->setTBArea(int(this->toolBarArea(mainToolBar)));
-    settings->setTBVisible(mainToolBar->isVisible());//necesary?
+    settings->setTBArea(toolBarArea(mainToolBar));
     settings->setLastDirUsed(lastDirUsed);
     /*settings->setCreateNewShortCuts(false);
     QStringList a, b;

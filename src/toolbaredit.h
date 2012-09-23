@@ -32,7 +32,8 @@ class ToolBarEdit : public QWidget
     Q_OBJECT
 
 public:
-    ToolBarEdit(QWidget *parent = 0, Qt::WFlags fl = 0);
+    ToolBarEdit(QWidget *parent = 0);
+
     QStringList getActionsList();
     void setActionsList(QList<ActionData *>, QStringList);
 

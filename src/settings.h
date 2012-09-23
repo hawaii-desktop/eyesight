@@ -26,173 +26,176 @@
 #include <QDebug>
 #include <QSize>
 
+#include <VSettings>
+
 class Settings : public QObject
 {
     Q_OBJECT
-
 public:
-    /*!
-      constructor
-      */
-    Settings();
+    Settings(QObject *parent = 0);
+    ~Settings();
+
+    inline QSize getWindowSize() const {
+        return m_windowSize;
+    }
+
+    inline void setWindowSize(const QSize d) {
+        m_windowSize = d;
+    }
+
+    inline bool getShowMenuBar() const {
+        return m_showMenuBar;
+    }
+
+    inline void setShowMenuBar(const bool d) {
+        m_showMenuBar = d;
+    }
+
+    inline Qt::ToolBarArea getTBArea() const {
+        return m_tbArea;
+    }
+
+    inline void setTBArea(const Qt::ToolBarArea d) {
+        m_tbArea = d;
+    }
+
+    inline bool getShowZoomSlider() const {
+        return m_showZoomSlider;
+    }
+
+    inline void setShowZoomSlider(const bool d) {
+        m_showZoomSlider = d;
+    }
+
+    inline int getMaxRecentFiles() const {
+        return m_maxRecentFiles;
+    }
+
+    inline void setMaxRecentFiles(const int d) {
+        m_maxRecentFiles = d;
+    }
+
+    inline QStringList getRecentFilesList() const {
+        return m_recentFilesList;
+    }
+
+    inline void setRecentFilesList(const QStringList d) {
+        m_recentFilesList = d;
+    }
+
+    inline bool getRestartWhenZooming() const {
+        return m_restartWhenZooming;
+    }
+
+    inline void setRestartWhenZooming(const bool d) {
+        m_restartWhenZooming = d;
+    }
+
+    inline int getMovieSpeed() const {
+        return m_movieSpeed;
+    }
+
+    inline void setMovieSpeed(const int d) {
+        m_movieSpeed = d;
+    }
+
+    inline bool getStopMovieWhenFinish() const {
+        return m_stopMovieWhenFinish;
+    }
+
+    inline void setStopMovieWhenFinish(const bool d) {
+        m_stopMovieWhenFinish = d;
+    }
+
+    inline int getZoomIncrement() const {
+        return m_zoomMultiplier;
+    }
+
+    inline void setZoomIncrement(const int d) {
+        m_zoomMultiplier = d;
+    }
+
+    inline int getCompressLevel() const {
+        return m_compressLevel;
+    }
+
+    inline void setCompressLevel(const int d) {
+        m_compressLevel = d;
+    }
+
+    inline int getSorting() const {
+        return m_sorting;
+    }
+
+    inline void setSorting(const int sort) {
+        m_sorting = sort;
+    }
+
+
+
 
     inline QStringList getActionsLoaded() const {
-        return actionsLoaded;
+        return m_actionsLoaded;
     }
     inline QStringList getBackgroundColor() const {
-        return backgroundColor;
+        return m_backgroundColor;
     }
-    inline QStringList getRecentFilesList() const {
-        return recentFilesList;
-    }
+
     inline QStringList getShortCutsActs() const {
-        return shortCutsOwner;
+        return m_shortCutsOwner;
     }
     inline QStringList getShortCuts() const {
-        return shortCuts;
+        return m_shortCuts;
     }
     inline QString getBGToShow() const {
-        return backgroundToShow;
+        return m_backgroundToShow;
     }
     inline QString getLastDirUsed() const {
-        return lastDirUsed;
+        return m_lastDirUsed;
     }
     inline QString getDefaultPath() const {
-        return defaultPath;
+        return m_defaultPath;
     }
-    inline QSize getWindowSize() const {
-        return windowSize;
-    }
-    inline int getSorting() const {
-        return sorting;
-    }
+
     inline int getPathToUse() const {
-        return pathToUse;
+        return m_pathToUse;
     }
     inline int getSquaresSize() const {
-        return squaresSize;
+        return m_squaresSize;
     }
     inline int getFileSizePrecision() const {
-        return precision;
-    }
-    inline int getMovieSpeed() const {
-        return movieSpeed;
-    }
-    inline int getZoomIncrement() const {
-        return zoomIncrement;
-    }
-    inline int getMaxRecentFiles() const {
-        return maxRecentFiles;
-    }
-    inline int getCompressLevel() const {
-        return compressLevel;
-    }
-    inline int getTBButtomStyle() const {
-        return tbButtomStyle;
-    }
-    inline int getTBArea() const {
-        return tbArea;
-    }
-    inline bool getRestartWhenZooming() const {
-        return restartWhenZooming;
-    }
-    inline bool getStopMovieWhenFinish() const {
-        return stopMovieWhenFinish;
-    }
-    inline bool getShowZoomSlider() const {
-        return showZoomSlider;
-    }
-    inline bool getShowMenuBar() const {
-        return showMenuBar;
-    }
-    inline bool getTBMovable() const {
-        return toolBarMovable;
-    }
-    inline bool getLoadFixedSize() const {
-        return loadFixedSize;
-    }
-    inline bool getTBVisible() const {
-        return toolBarVisible;
+        return m_precision;
     }
     inline bool getCreateNewShortCuts() const {
         return createNewShortCuts;
     }
-
     inline void setActionsLoaded(const QStringList d) {
-        actionsLoaded = d;
+        m_actionsLoaded = d;
     }
     inline void setBackgroundColor(const QStringList d) {
-        backgroundColor = d;
-    }
-    inline void setRecentFilesList(const QStringList d) {
-        recentFilesList = d;
+        m_backgroundColor = d;
     }
     inline void setShortCuts(const QStringList d, const QStringList e) {
-        shortCuts = d;
-        shortCutsOwner = e;
+        m_shortCuts = d;
+        m_shortCutsOwner = e;
     }
     inline void setBGTosShow(const QString d) {
-        backgroundToShow = d;
+        m_backgroundToShow = d;
     }
     inline void setLastDirUsed(const QString d) {
-        lastDirUsed = d;
+        m_lastDirUsed = d;
     }
     inline void setDefaultPath(const QString d) {
-        defaultPath = d;
-    }
-    inline void setWindowSize(const QSize d) {
-        windowSize = d;
-    }
-    inline void setSorting(const int sort) {
-        sorting = sort;
+        m_defaultPath = d;
     }
     inline void setPathToUse(const int d) {
-        pathToUse = d;
+        m_pathToUse = d;
     }
     inline void setSquaresSize(const int d) {
-        squaresSize = d;
-    }
-    inline void setMovieSpeed(const int d) {
-        movieSpeed = d;
+        m_squaresSize = d;
     }
     inline void setFileSizePrecision(const int fSizePrecision) {
-        precision = fSizePrecision;
-    }
-    inline void setZoomIncrement(const int d) {
-        zoomIncrement = d;
-    }
-    inline void setMaxRecentFiles(const int d) {
-        maxRecentFiles = d;
-    }
-    inline void setCompressLevel(const int d) {
-        compressLevel = d;
-    }
-    inline void setTBButtomStyle(const int d) {
-        tbButtomStyle = d;
-    }
-    inline void setTBArea(const int d) {
-        tbArea = d;
-    }
-    inline void setRestartWhenZooming(const bool d) {
-        restartWhenZooming = d;
-    }
-    inline void setStopMovieWhenFinish(const bool d) {
-        stopMovieWhenFinish = d;
-    }
-    inline void setShowZoomSlider(const bool d) {
-        showZoomSlider = d;
-    }
-    inline void setShowMenuBar(const bool d) {
-        showMenuBar = d;
-    }
-    inline void setTBMovable(const bool d) {
-        toolBarMovable = d;
-    }
-    inline void setLoadFixedSize(const bool d) {
-        loadFixedSize = d;
-    }
-    inline void setTBVisible(const bool d) {
-        toolBarVisible = d;
+        m_precision = fSizePrecision;
     }
     inline void setCreateNewShortCuts(const bool d) {
         createNewShortCuts = d;
@@ -203,38 +206,32 @@ public slots:
     void loadSettings();
 
 private:
-    //variables
-    QStringList actionsLoaded;
-    QStringList backgroundColor;
-    QStringList recentFilesList;
-    QStringList shortCutsOwner;
-    QStringList shortCuts;
-    QString backgroundToShow;
-    QString lastDirUsed;
-    QString defaultPath;
-    QSize windowSize;
-    int sorting;
-    int pathToUse;
-    int squaresSize;
-    int zoomIncrement;
-    int maxRecentFiles;
-    int precision;
-    int movieSpeed;
-    int compressLevel;
-    int tbButtomStyle;
-    int tbArea;
-    bool restartWhenZooming;
-    bool stopMovieWhenFinish;
-    bool showZoomSlider;
-    bool showMenuBar;
-    bool toolBarMovable;
-    bool loadFixedSize;
-    bool toolBarVisible;
+    VSettings *m_settings;
+    QStringList m_actionsLoaded;
+    QStringList m_backgroundColor;
+    QStringList m_recentFilesList;
+    QStringList m_shortCutsOwner;
+    QStringList m_shortCuts;
+    QString m_backgroundToShow;
+    QString m_lastDirUsed;
+    QString m_defaultPath;
+    QSize m_windowSize;
+    int m_sorting;
+    int m_pathToUse;
+    int m_squaresSize;
+    int m_zoomMultiplier;
+    int m_maxRecentFiles;
+    int m_precision;
+    int m_movieSpeed;
+    int m_compressLevel;
+    Qt::ToolBarArea m_tbArea;
+    bool m_restartWhenZooming;
+    bool m_stopMovieWhenFinish;
+    bool m_showZoomSlider;
+    bool m_showMenuBar;
     bool createNewShortCuts;
-    bool previousSettings;
+    bool m_previousSettings;
 
-    //methods
-    void getPreviousConfig();
     bool isTime();
 
     /**
@@ -254,6 +251,7 @@ private:
     QStringList defaultActions() const;
     QStringList defaultColor() const;
 
+    Qt::ToolBarArea convertToToolBarArea(int val);
 };
 
 #endif // SETTINGS_H

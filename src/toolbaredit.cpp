@@ -21,7 +21,8 @@
 #include <QtWidgets>
 #include "toolbaredit.h"
 
-ToolBarEdit::ToolBarEdit(QWidget *parent, Qt::WFlags fl) : QWidget(parent, fl)
+ToolBarEdit::ToolBarEdit(QWidget *parent)
+    : QWidget(parent)
 {
     ui.setupUi(this);
 

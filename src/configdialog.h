@@ -33,7 +33,8 @@ class ConfigDialog : public QDialog
     Q_OBJECT
 
 public:
-    ConfigDialog(QWidget *parent = 0, Qt::WFlags fl = 0);
+    ConfigDialog(QWidget *parent = 0);
+
     /**
      * Sends all the actions available with their shortcuts and icons
      * name to the dialog
@@ -60,8 +61,7 @@ private:
 
     //toolbar stuff
     ToolBarEdit *tbe;
-    int getButtonStyle();
-    int gettbpos();
+    Qt::ToolBarArea gettbpos();
 
     //general options stuff
     QPixmap iconForButton();

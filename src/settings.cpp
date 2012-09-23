@@ -20,32 +20,16 @@
 
 #include "settings.h"
 
-Settings::Settings()
+Settings::Settings(QObject *parent)
+    : QObject(parent)
 {
-    actionsLoaded = this->defaultActions();
-    backgroundColor = this->defaultColor();
-    backgroundToShow = QString("squares");
-    defaultPath = QDir().homePath();
-    windowSize = QSize(500, 400);
-    sorting = 0;
-    pathToUse = 0;
-    squaresSize = 8;
-    zoomIncrement = 25;
-    maxRecentFiles = 5;
-    movieSpeed = 100;
-    compressLevel = -1;
-    tbButtomStyle = 0;
-    tbArea = 4;
-    precision = 2;
-    restartWhenZooming = true;
-    stopMovieWhenFinish = false;
-    showZoomSlider = false;
-    showMenuBar = true;
-    toolBarMovable = false;
-    loadFixedSize = true;
-    toolBarVisible = true;
-    createNewShortCuts = true;
-    previousSettings = true;
+    m_settings = new VSettings("org.hawaii.EyeSight");
+    loadSettings();
+}
+
+Settings::~Settings()
+{
+    delete m_settings;
 }
 
 void Settings::getHour(QString time, int &hour, int &min)
@@ -108,136 +92,87 @@ QStringList Settings::defaultColor() const
     return defColor;
 }
 
-void Settings::getPreviousConfig()
-{
-    QSettings settings("EyeSight", "qiviewer");
-    if (settings.value("MainWindow/bgToShow").toString() == "scuares") {
-        settings.setValue("MainWindow/bgToShow", "squares");
-    }
-    if (settings.value("ToolBar/tbArea") == "top") {
-        settings.setValue("ToolBar/tbArea", 4);
-    }
-    if (settings.value("ToolBar/tbArea") == "bottom") {
-        settings.setValue("ToolBar/tbArea", 8);
-    }
-    if (settings.value("ToolBar/tbArea") == "left") {
-        settings.setValue("ToolBar/tbArea", 1);
-    }
-    if (settings.value("ToolBar/tbArea") == "right") {
-        settings.setValue("ToolBar/tbArea", 2);
-    }
-    settings.setValue("lastDir/pathToUse", settings.value("lastDir/showlastdir", 0).toInt());
-    settings.remove("lastDir/showlastdir");
-    settings.remove("Shortcuts");
-    settings.remove("ToolBar/actionsLoadedFromSettigns");
-    settings.setValue("getPreviousSettings", false);
-}
-
 void Settings::loadSettings()
 {
-    qDebug() << "load settings";
-    QSettings settings("EyeSight", "qiviewer");
-
-    //check if need to load previous version settings
-    if (settings.value("getPreviousSettings", true).toBool()) {
-        this->getPreviousConfig();
-    }
-
-    /*main app settings*/
-    settings.beginGroup("MainWindow");
-    restartWhenZooming  = settings.value("restartWhenZooming",   true).toBool();
-    showZoomSlider      = settings.value("showZoomSlider",       false).toBool();
-    showMenuBar         = settings.value("showMenuBar",          true).toBool();
-    stopMovieWhenFinish = settings.value("stopMovieWhenFinish",  false).toBool();
-    loadFixedSize       = settings.value("loadFixedSize",        true).toBool();
-    sorting             = settings.value("filesSorting",         0).toInt();
-    compressLevel       = settings.value("compressLevel",        -1).toInt();
-    maxRecentFiles      = settings.value("maxRecentFilesNumber", 5).toInt();
-    zoomIncrement       = settings.value("zoomIncrement",        25).toInt();
-    squaresSize         = settings.value("squaresSize",          8).toInt();
-    movieSpeed          = settings.value("movieSpeed",           100).toInt();
-    precision           = settings.value("fileSizePrecision",    2).toInt();
-    windowSize          = settings.value("mw_size",              QSize(500, 400)).toSize();
-    backgroundToShow    = settings.value("bgToShow",             "squares").toString();
-    backgroundColor     = settings.value("backgroundColor",      defaultColor()).toStringList();
-    recentFilesList     = settings.value("recentFiles").toStringList();
-    settings.endGroup();
-    //check max files
-    if (maxRecentFiles < 0 || maxRecentFiles > 15) {
-        maxRecentFiles = 5;
-    }
-
+    m_windowSize = QSize(m_settings->value("window-width").toInt(),
+                         m_settings->value("window-height").toInt());
+    m_showMenuBar = m_settings->value("show-menubar").toBool();
+qDebug() << "***********" << m_showMenuBar;
+    m_showZoomSlider = m_settings->value("show-zoom-slider").toBool();
+    m_tbArea = convertToToolBarArea(m_settings->value("toolbar-area").toInt());
+    m_maxRecentFiles = m_settings->value("max-recent-files").toInt();
+    m_recentFilesList = m_settings->value("recent-files").toStringList();
+    m_restartWhenZooming = m_settings->value("restart-animation-when-zooming").toBool();
+    m_movieSpeed = m_settings->value("animation-playback-speed").toInt();
+    m_stopMovieWhenFinish = m_settings->value("stop-animation-when-finished").toBool();
+    m_zoomMultiplier = m_settings->value("zoom-multiplier").toInt();
+    m_compressLevel = m_settings->value("compression-value").toInt();
+    m_sorting = m_settings->value("sort-by").toInt();
+#if 0
+    m_loadFixedSize       = settings.value("loadFixedSize",        true).toBool();
+    m_squaresSize         = settings.value("squaresSize",          8).toInt();
+    m_precision           = settings.value("fileSizePrecision",    2).toInt();
+    m_backgroundToShow    = settings.value("bgToShow",             "squares").toString();
+    m_backgroundColor     = settings.value("backgroundColor",      defaultColor()).toStringList();
     //toolbar settings
-    settings.beginGroup("Toolbar");
-    toolBarMovable = settings.value("toolbar_movable",           false).toBool();
-    toolBarVisible = settings.value("toolBarVisible",            true).toBool();
-    actionsLoaded  = settings.value("actionsLoadedFromSettigns", defaultActions()).toStringList();
-    tbArea         = settings.value("tbArea",                    4).toInt();
-    tbButtomStyle  = settings.value("tbbuttomstyle",             0).toInt();
-    settings.endGroup();
-
+    m_actionsLoaded  = settings.value("actionsLoadedFromSettigns", defaultActions()).toStringList();
     //last dir used
     settings.beginGroup("lastDir");
-    pathToUse   = settings.value("pathToUse",    int(0)).toInt();
-    lastDirUsed = settings.value("last_dir",     QDir().homePath()).toString();
-    defaultPath = settings.value("user_default", QDir().homePath()).toString();
+    m_pathToUse   = settings.value("pathToUse",    int(0)).toInt();
+    m_lastDirUsed = settings.value("last_dir",     QDir().homePath()).toString();
+    m_defaultPath = settings.value("user_default", QDir().homePath()).toString();
     settings.endGroup();
-
-    //shortcuts
-    /*settings.beginGroup("Shortcuts");
-    createNewShortCuts = settings.value("creatNewShorcuts", true).toBool();
-    shortCutsOwner = settings.childKeys();
-    if(!createNewShortCuts){
-        for(int i=0; i < shortCutsOwner.size(); i++){
-            shortCuts<<settings.value(shortCutsOwner.at(i)).toString();
-        }
-    }
-    settings.endGroup();*/
+#else
+    m_backgroundColor = QStringList();
+    m_backgroundColor.append("0");
+    m_backgroundColor.append("0");
+    m_backgroundColor.append("0");
+    m_actionsLoaded = defaultActions();
+    m_defaultPath = QDir().homePath();
+#endif
 }
 
 void Settings::saveSettings()
 {
-    QSettings settings("EyeSight", "qiviewer");
+    m_settings->setValue("window-width", m_windowSize.width());
+    m_settings->setValue("window-height", m_windowSize.height());
+    m_settings->setValue("show-menubar", m_showMenuBar);
+    m_settings->setValue("show-zoom-slider", m_showZoomSlider);
+    m_settings->setValue("toolbar-area", m_tbArea);
+    m_settings->setValue("max-recent-files", m_maxRecentFiles);
+    m_settings->setValue("recent-files", m_recentFilesList);
+    m_settings->setValue("restart-animation-when-zooming", m_restartWhenZooming);
+    m_settings->setValue("animation-playback-speed", m_movieSpeed);
+    m_settings->setValue("stop-animation-when-finished", m_stopMovieWhenFinish);
+    m_settings->setValue("zoom-multiplier", m_zoomMultiplier);
+    m_settings->setValue("compression-value", m_compressLevel);
+    m_settings->setValue("sort-by", m_sorting);
 
-    settings.beginGroup("MainWindow");
-    settings.setValue("movieSpeed", movieSpeed);
-    settings.setValue("restartWhenZooming", restartWhenZooming);
-    settings.setValue("showZoomSlider", showZoomSlider);
-    settings.setValue("showMenuBar", showMenuBar);
-    settings.setValue("fileSizePrecision", precision);
-    settings.setValue("stopMovieWhenFinish", stopMovieWhenFinish);
-    settings.setValue("loadFixedSize", loadFixedSize);
-    settings.setValue("compressLevel", compressLevel);
-    settings.setValue("maxRecentFilesNumber", maxRecentFiles);
-    settings.setValue("zoomIncrement", zoomIncrement);
-    settings.setValue("squaresSize", squaresSize);
-    settings.setValue("mw_size", windowSize);
-    settings.setValue("bgToShow", backgroundToShow);
-    settings.setValue("backgroundColor", backgroundColor);
-    settings.setValue("recentFiles", recentFilesList);
-    settings.setValue("filesSorting", sorting);
-    settings.endGroup();
-
-    settings.beginGroup("Toolbar");
-    settings.setValue("toolbar_movable", toolBarMovable);
-    settings.setValue("toolBarVisible", toolBarVisible);
-    settings.setValue("actionsLoadedFromSettigns", actionsLoaded);
-    settings.setValue("tbArea", tbArea);
-    settings.setValue("tbbuttomstyle", tbButtomStyle);
-    settings.endGroup();
-
+#if 0
+    settings.setValue("fileSizePrecision", m_precision);
+    settings.setValue("loadFixedSize", m_loadFixedSize);
+    settings.setValue("squaresSize", m_squaresSize);
+    settings.setValue("bgToShow", m_backgroundToShow);
+    settings.setValue("backgroundColor", m_backgroundColor);
+    settings.setValue("actionsLoadedFromSettigns", m_actionsLoaded);
     settings.beginGroup("lastDir");
-    settings.setValue("user_default", defaultPath);
-    settings.setValue("last_dir", lastDirUsed);
-    settings.setValue("pathToUse", pathToUse);
+    settings.setValue("user_default", m_defaultPath);
+    settings.setValue("last_dir", m_lastDirUsed);
+    settings.setValue("pathToUse", m_pathToUse);
     settings.endGroup();
+#endif
+}
 
-    /*settings.beginGroup("Shortcuts");
-    settings.setValue("creatNewShorcuts", createNewShortCuts);
-    for(int i=0; i<shortCutsOwner.size(); i++){
-        if(!shortCutsOwner.at(i).isEmpty()){
-            settings.setValue(shortCutsOwner.at(i), shortCuts.at(i));
-        }
+Qt::ToolBarArea Settings::convertToToolBarArea(int val)
+{
+    switch (val) {
+        case Qt::LeftToolBarArea:
+            return Qt::LeftToolBarArea;
+        case Qt::RightToolBarArea:
+            return Qt::LeftToolBarArea;
+        case Qt::TopToolBarArea:
+            return Qt::TopToolBarArea;
     }
-    settings.endGroup();*/
+
+    return Qt::BottomToolBarArea;
 }

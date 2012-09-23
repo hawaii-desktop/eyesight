@@ -162,11 +162,9 @@ private:
       *
       * @param sl is the list of the actions to add to the toolbar
       * @param a is the toolbar area
-      * @param s the toolbar buttom style
-      * @param v toolbar visible or not
       * @param zl show zoom slider
       */
-    void setUpToolBar(QStringList, Qt::ToolBarArea, Qt::ToolButtonStyle, bool, bool);
+    void setUpToolBar(QStringList, Qt::ToolBarArea, bool);
 
 private slots:
     void open();
@@ -195,8 +193,6 @@ private slots:
     void loadSettings();
     void saveSettings();
     void showMenuBar();
-    void setToolBarMovable();
-    void setToolBarVisible(bool);
     void deleteRecentFiles();
     void deleteFileSlot();
     void moveToSlot();
