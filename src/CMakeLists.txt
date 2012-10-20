@@ -49,4 +49,4 @@ target_link_libraries(eyesight
     ${Qt5PrintSupport_LIBRARIES}
 )
 
-install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_PROGSDIR})
+install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_BINDIR})
