@@ -13,7 +13,7 @@ set(EYESIGHT_VERSION_PATCH 0)
 set(EYESIGHT_VERSION_STRING "${EYESIGHT_VERSION_MAJOR}.${EYESIGHT_VERSION_MINOR}.${EYESIGHT_VERSION_PATCH}")
 
 # Installation directories
-include(MauiInstallDirs)
+include(HawaiiInstallDirs)
 
 # Make CPack available to easy generate binary packages
 include(CPack)
