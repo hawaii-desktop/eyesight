@@ -18,25 +18,26 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
 
-#include <QtWidgets>
-#include <getopt.h>
-#include <iostream>
-
-#include <VApplication>
-
-#include <config.h>
+#include <QApplication>
+#include <QDir>
+#include <QLibraryInfo>
+#include <QTranslator>
 
 #include "mainwindow.h"
 #include "configdialog.h"
 
+#include <getopt.h>
+#include <iostream>
+
+#include <config.h>
+
 int main(int argc, char *argv[])
 {
-    VApplication app(argc, argv);
-    app.setApplicationName("EyeSight");
+    QApplication app(argc, argv);
+    app.setApplicationName(QLatin1String("EyeSight"));
     app.setApplicationVersion(EYESIGHT_VERSION);
-    app.setOrganizationDomain("maui-project.org");
-    app.setOrganizationName("Maui");
-    app.setIdentifier("org.maui.EyeSight");
+    app.setOrganizationDomain(QLatin1String("maui-project.org"));
+    app.setOrganizationName(QLatin1String("Hawaii"));
     app.setWindowIcon(QIcon::fromTheme("eyesight"));
 
     //all the translation stuff was taken from minitube
@@ -81,17 +82,16 @@ int main(int argc, char *argv[])
     next_option = getopt_long(argc, argv, short_options, long_options, NULL);
 
     if (next_option == 'h') {
-        std::cout << QString("If you have problems with the toolbar and the actions, try deleting the file .config/EyeSight/qiviewer.conf\n"
-                             "How to use: qiviewer [OPTION/FILE]\n"
+        std::cout << QString("How to use: eyesight [OPTION/FILE]\n"
                              "Avaible options:\n"
                              "    %1 shows this help and finish\n"
-                             "    %2 shows qiviewer version\n"
+                             "    %2 shows eyesight version\n"
                             ).arg("-h --help").arg("-v --version").toStdString();
         re = 0;
     }
 
     else if (next_option == '?') {
-        std::cout << QObject::tr("Try 'qiviewer --help' for more information\n").toStdString();
+        std::cout << QObject::tr("Try 'eyesight --help' for more information\n").toStdString();
         re = 0;
     }
 

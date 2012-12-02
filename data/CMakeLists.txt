@@ -1,5 +1,4 @@
-set(FILES
-    org.hawaii.EyeSight.json
-)
-
-install(FILES ${FILES} DESTINATION ${CMAKE_INSTALL_SETTINGSDIR})
+install(FILES org.hawaii.EyeSight.json
+    DESTINATION ${CMAKE_INSTALL_SETTINGSDIR})
+install(FILES eyesight.desktop
+    DESTINATION ${CMAKE_INSTALL_APPLICATIONSDIR})

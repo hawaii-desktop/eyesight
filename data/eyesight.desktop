@@ -63,7 +63,5 @@ Keywords[vi]=Picture;Hình;ảnh;Hinh;Anh;Slideshow;Trình;diễn;Trinh;Dien;Gra
 Keywords[zh_CN]=Picture;Slideshow;Graphics;图片;幻灯片;图像;
 Keywords[zh_HK]=Picture;Slideshow;Graphics;照片;投影片;影像;
 Keywords[zh_TW]=Picture;Slideshow;Graphics;照片;投影片;影像;
-X-Hawaii-Identifier=org.maui.EyeSight
-X-Hawaii-Version=@EYESIGHT_VERSION_STRING@
 X-Hawaii-BugTracker=https://github.com/hawaii-desktop/eyesight/issues
 X-Hawaii-BugTracker-NewIssue=https://github.com/hawaii-desktop/eyesight/issues/new
