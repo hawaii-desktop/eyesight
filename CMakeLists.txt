@@ -8,15 +8,12 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Set version
 set(EYESIGHT_VERSION_MAJOR 0)
-set(EYESIGHT_VERSION_MINOR 0)
+set(EYESIGHT_VERSION_MINOR 1)
 set(EYESIGHT_VERSION_PATCH 0)
 set(EYESIGHT_VERSION_STRING "${EYESIGHT_VERSION_MAJOR}.${EYESIGHT_VERSION_MINOR}.${EYESIGHT_VERSION_PATCH}")
 
 # Installation directories
 include(HawaiiInstallDirs)
-
-# Make CPack available to easy generate binary packages
-include(CPack)
 
 # Add custom uninstall target
 configure_file(
@@ -58,6 +55,14 @@ find_package(VibeWidgets REQUIRED)
 if(NOT VibeWidgets_FOUND)
     message(FATAL_ERROR "VibeWidgets module is required!")
 endif()
+
+# Set up packaging
+set(CPACK_PACKAGE_NAME hawaii-eyesight)
+set(CPACK_PACKAGE_VERSION ${EYESIGHT_VERSION_STRING})
+set(CPACK_SYSTEM_NAME "generic")
+set(CPACK_GENERATOR "TGZ")
+set(CPACK_SET_DESTDIR FALSE)
+include(CPack)
 
 # Subdirectories
 add_subdirectory(data)
