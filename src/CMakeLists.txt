@@ -35,14 +35,23 @@ set(UI_SOURCES
     forms/edittoolbar.ui
 )
 
+
+set(QM_SOURCES
+    translations/el.ts
+    translations/es_AR.ts
+    translations/es_ES.ts
+    translations/it.ts
+)
+
 set(QRC_SOURCES
     eyesight.qrc
 )
 
 qt5_wrap_ui(UI_FILES ${UI_SOURCES})
 qt5_add_resources(QRC_FILES ${QRC_SOURCES})
+qt5_add_translation(QM_FILES ${QM_SOURCES})
 
-add_executable(eyesight ${SOURCES} ${UI_FILES} ${QRC_FILES})
+add_executable(eyesight ${SOURCES} ${UI_FILES} ${QRC_FILES} ${QM_FILES})
 set_target_properties(eyesight PROPERTIES COMPILE_FLAGS ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS})
 target_link_libraries(eyesight
     ${VibeWidgets_LIBRARIES}
@@ -50,3 +59,4 @@ target_link_libraries(eyesight
 )
 
 install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/eyesight/translations)

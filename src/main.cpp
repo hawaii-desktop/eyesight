@@ -28,6 +28,7 @@
 #include <QApplication>
 #include <QDir>
 #include <QLibraryInfo>
+#include <QStandardPaths>
 #include <QTranslator>
 
 #include "mainwindow.h"
@@ -50,27 +51,17 @@ int main(int argc, char *argv[])
     //all the translation stuff was taken from minitube
     const QString locale = QLocale::system().name();
 
-    // qt translations
+    // Translations
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + locale,
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&qtTranslator);
 
-    // app translations
-#ifdef PKGDATADIR
-    QString dataDir = QLatin1String(PKGDATADIR);
-#else
-    QString dataDir = "";
-#endif
-
-
-#if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
-    QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
-#else
-    QString    localeDir = dataDir + QDir::separator() + "locale";
-#endif
-
     QTranslator translator;
+    QString localeDir = QStandardPaths::locate(
+                            QStandardPaths::GenericDataLocation,
+                            QLatin1String("eyesight/translations"),
+                            QStandardPaths::LocateDirectory);
     translator.load(locale, localeDir);
     app.installTranslator(&translator);
 

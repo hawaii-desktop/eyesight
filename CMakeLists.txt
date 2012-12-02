@@ -48,6 +48,10 @@ find_package(Qt5PrintSupport REQUIRED)
 if(NOT Qt5PrintSupport_FOUND)
     message(FATAL_ERROR "Qt5PrintSupport module is required!")
 endif()
+find_package(Qt5LinguistTools REQUIRED)
+if(NOT Qt5LinguistTools_FOUND)
+    message(FATAL_ERROR "Qt5LinguistTools module is required!")
+endif()
 
 # Find Vibe libraries
 find_package(VibeWidgets REQUIRED)
