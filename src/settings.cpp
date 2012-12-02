@@ -94,20 +94,19 @@ QStringList Settings::defaultColor() const
 
 void Settings::loadSettings()
 {
-    m_windowSize = QSize(m_settings->value("window-width").toInt(),
-                         m_settings->value("window-height").toInt());
-    m_showMenuBar = m_settings->value("show-menubar").toBool();
-qDebug() << "***********" << m_showMenuBar;
-    m_showZoomSlider = m_settings->value("show-zoom-slider").toBool();
-    m_tbArea = convertToToolBarArea(m_settings->value("toolbar-area").toInt());
-    m_maxRecentFiles = m_settings->value("max-recent-files").toInt();
-    m_recentFilesList = m_settings->value("recent-files").toStringList();
-    m_restartWhenZooming = m_settings->value("restart-animation-when-zooming").toBool();
-    m_movieSpeed = m_settings->value("animation-playback-speed").toInt();
-    m_stopMovieWhenFinish = m_settings->value("stop-animation-when-finished").toBool();
-    m_zoomMultiplier = m_settings->value("zoom-multiplier").toInt();
-    m_compressLevel = m_settings->value("compression-value").toInt();
-    m_sorting = m_settings->value("sort-by").toInt();
+    m_windowSize = QSize(m_settings->value("interface/window-width").toInt(),
+                         m_settings->value("interface/window-height").toInt());
+    m_showMenuBar = m_settings->value("interface/show-menubar").toBool();
+    m_tbArea = convertToToolBarArea(m_settings->value("interface/toolbar-area").toInt());
+    m_showZoomSlider = m_settings->value("interface/show-zoom-slider").toBool();
+    m_maxRecentFiles = m_settings->value("settings/max-recent-files").toInt();
+    m_recentFilesList = m_settings->value("behavior/recent-files").toStringList();
+    m_restartWhenZooming = m_settings->value("behavior/restart-animation-when-zooming").toBool();
+    m_movieSpeed = m_settings->value("behavior/animation-playback-speed").toInt();
+    m_stopMovieWhenFinish = m_settings->value("behavior/stop-animation-when-finished").toBool();
+    m_zoomMultiplier = m_settings->value("behavior/zoom-multiplier").toInt();
+    m_compressLevel = m_settings->value("behavior/compression-value").toInt();
+    m_sorting = m_settings->value("behavior/sort-by").toInt();
 #if 0
     m_loadFixedSize       = settings.value("loadFixedSize",        true).toBool();
     m_squaresSize         = settings.value("squaresSize",          8).toInt();
@@ -134,19 +133,34 @@ qDebug() << "***********" << m_showMenuBar;
 
 void Settings::saveSettings()
 {
-    m_settings->setValue("window-width", m_windowSize.width());
-    m_settings->setValue("window-height", m_windowSize.height());
-    m_settings->setValue("show-menubar", m_showMenuBar);
-    m_settings->setValue("show-zoom-slider", m_showZoomSlider);
-    m_settings->setValue("toolbar-area", m_tbArea);
-    m_settings->setValue("max-recent-files", m_maxRecentFiles);
-    m_settings->setValue("recent-files", m_recentFilesList);
-    m_settings->setValue("restart-animation-when-zooming", m_restartWhenZooming);
-    m_settings->setValue("animation-playback-speed", m_movieSpeed);
-    m_settings->setValue("stop-animation-when-finished", m_stopMovieWhenFinish);
-    m_settings->setValue("zoom-multiplier", m_zoomMultiplier);
-    m_settings->setValue("compression-value", m_compressLevel);
-    m_settings->setValue("sort-by", m_sorting);
+    m_settings->setValue("interface/window-width", m_windowSize.width());
+    m_settings->setValue("interface/window-height", m_windowSize.height());
+    m_settings->setValue("interface/show-menubar", m_showMenuBar);
+    switch (m_tbArea) {
+        case Qt::LeftToolBarArea:
+            m_settings->setValue("interface/toolbar-area", "left");
+            break;
+        case Qt::RightToolBarArea:
+            m_settings->setValue("interface/toolbar-area", "right");
+            break;
+        case Qt::TopToolBarArea:
+            m_settings->setValue("interface/toolbar-area", "top");
+            break;
+        case Qt::BottomToolBarArea:
+            m_settings->setValue("interface/toolbar-area", "bottom");
+            break;
+        default:
+            break;
+    }
+    m_settings->setValue("interface/show-zoom-slider", m_showZoomSlider);
+    m_settings->setValue("behavior/max-recent-files", m_maxRecentFiles);
+    m_settings->setValue("behavior/recent-files", m_recentFilesList);
+    m_settings->setValue("behavior/restart-animation-when-zooming", m_restartWhenZooming);
+    m_settings->setValue("behavior/animation-playback-speed", m_movieSpeed);
+    m_settings->setValue("behavior/stop-animation-when-finished", m_stopMovieWhenFinish);
+    m_settings->setValue("behavior/zoom-multiplier", m_zoomMultiplier);
+    m_settings->setValue("behavior/compression-value", m_compressLevel);
+    m_settings->setValue("behavior/sort-by", m_sorting);
 
 #if 0
     settings.setValue("fileSizePrecision", m_precision);

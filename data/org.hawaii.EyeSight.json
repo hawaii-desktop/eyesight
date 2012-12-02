@@ -1,0 +1,96 @@
+{
+    "schema": "org.hawaii.EyeSight",
+    "groups": [
+        {
+            "name": "interface",
+            "keys": {
+                "window-width": {
+                    "type": "int",
+                    "summary": "Window Width",
+                    "description": "The last recorded width of the application window.",
+                    "default": 500
+                },
+                "window-height": {
+                    "type": "int",
+                    "summary": "Window Height",
+                    "description": "The last recorded hight of the application window.",
+                    "default": 400
+                },
+                "show-menu-bar": {
+                    "type": "bool",
+                    "summary": "Show Menu Bar",
+                    "description": "Whether the menu bar should be displayed.",
+                    "default": true
+                },
+                "toolbar-area": {
+                    "type": "enum",
+                    "summary": "Tool Bar Area",
+                    "description": "Where the tool bar is docked.",
+                    "choices": ["left", "right", "top", "bottom"]
+                },
+                "show-zoom-slider": {
+                    "type": "bool",
+                    "summary": "Show Zoom Slider",
+                    "description": "Whether the zoom slider should be displayed.",
+                    "default": false
+                }
+            }
+        },
+        {
+            "name": "behavior",
+            "keys": {
+                "max-recent-files": {
+                    "type": "int",
+                    "summary": "Max Recent Files",
+                    "description": "Maximum number of recent files to keep.",
+                    "minValue": 1,
+                    "maxValue": 15,
+                    "default": 5
+                },
+                "recent-files": {
+                    "type": "strings",
+                    "summary": "Recent Files",
+                    "description": "List of recent files. See the \"max-recent-files\" to configure the maximum number of recent files to keep.",
+                    "default": []
+                },
+                "restart-animation-when-zooming": {
+                    "type": "bool",
+                    "summary": "Restart Animation When Zooming",
+                    "description": "Restart the currently played animation when zooming.",
+                    "default": true
+                },
+                "animation-playback-speed": {
+                    "type": "uint",
+                    "summary": "Animation Speed",
+                    "description": "The animation playback speed in percentage.",
+                    "default": 100
+                },
+                "stop-animation-when-finished": {
+                    "type": "bool",
+                    "summary": "Stop Animation When Finished",
+                    "description": "Whether animations will stop when finished or continue indefinitely.",
+                    "default": false
+                },
+                "zoom-multiplier": {
+                    "type": "uint",
+                    "summary": "Zoom Multiplier",
+                    "description": "The multiplier to be applied when using the mouse scroll wheel for zooming. This value defines the zooming step used for each scroll event in percentage.",
+                    "default": 25
+                },
+                "compression-level": {
+                    "type": "int",
+                    "summary": "Compression Level",
+                    "description": "Compression level for saved images.",
+                    "default": -1
+                },
+                "sort-by": {
+                    "type": "enum",
+                    "summary": "Files Sorting",
+                    "description": "Files sorting key.",
+                    "choices": ["name", "type", "size", "time"],
+                    "default": "name"
+                }
+            }
+        }
+    ]
+}
