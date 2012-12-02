@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>license.txt</file>
+        <file>../COPYING</file>
     </qresource>
 </RCC>
