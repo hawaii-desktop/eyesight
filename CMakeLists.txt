@@ -8,7 +8,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Set version
 set(EYESIGHT_VERSION_MAJOR 0)
-set(EYESIGHT_VERSION_MINOR 1)
+set(EYESIGHT_VERSION_MINOR 0)
 set(EYESIGHT_VERSION_PATCH 0)
 set(EYESIGHT_VERSION_STRING "${EYESIGHT_VERSION_MAJOR}.${EYESIGHT_VERSION_MINOR}.${EYESIGHT_VERSION_PATCH}")
 
@@ -21,6 +21,14 @@ configure_file(
     "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
     IMMEDIATE @ONLY)
 add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+
+# Set up packaging
+set(CPACK_PACKAGE_NAME hawaii-eyesight)
+set(CPACK_PACKAGE_VERSION ${EYESIGHT_VERSION_STRING})
+set(CPACK_SYSTEM_NAME "generic")
+set(CPACK_GENERATOR "TGZ")
+set(CPACK_SET_DESTDIR FALSE)
+include(CPack)
 
 # Build flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden -fvisibility-inlines-hidden -Wall -std=c++0x")
@@ -55,14 +63,6 @@ find_package(VibeWidgets REQUIRED)
 if(NOT VibeWidgets_FOUND)
     message(FATAL_ERROR "VibeWidgets module is required!")
 endif()
-
-# Set up packaging
-set(CPACK_PACKAGE_NAME hawaii-eyesight)
-set(CPACK_PACKAGE_VERSION ${EYESIGHT_VERSION_STRING})
-set(CPACK_SYSTEM_NAME "generic")
-set(CPACK_GENERATOR "TGZ")
-set(CPACK_SET_DESTDIR FALSE)
-include(CPack)
 
 # Subdirectories
 add_subdirectory(data)
