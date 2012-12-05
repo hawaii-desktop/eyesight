@@ -1,5 +1,5 @@
 {
-    "schema": "org.hawaii.EyeSight",
+    "schema": "org.hawaii.eyesight",
     "groups": [
         {
             "name": "interface",

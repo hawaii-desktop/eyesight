@@ -30,7 +30,7 @@
 Settings::Settings(QObject *parent)
     : QObject(parent)
 {
-    m_settings = new VSettings("org.hawaii.EyeSight");
+    m_settings = new VSettings("org.hawaii.eyesight");
     loadSettings();
 }
 
