@@ -1,12 +1,6 @@
-include_directories(
-    ${VibeWidgets_INCLUDE_DIRS}
-    ${Qt5PrintSupport_INCLUDE_DIRS}
-)
+include_directories(${VibeWidgets_INCLUDE_DIRS})
 
-add_definitions(
-    ${VibeWidgets_DEFINITIONS}
-    ${Qt5PrintSupport_DEFINITIONS}
-)
+add_definitions(${VibeWidgets_DEFINITIONS})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
@@ -52,11 +46,8 @@ qt5_add_resources(QRC_FILES ${QRC_SOURCES})
 qt5_add_translation(QM_FILES ${QM_SOURCES})
 
 add_executable(eyesight ${SOURCES} ${UI_FILES} ${QRC_FILES} ${QM_FILES})
-set_target_properties(eyesight PROPERTIES COMPILE_FLAGS ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS})
-target_link_libraries(eyesight
-    ${VibeWidgets_LIBRARIES}
-    ${Qt5PrintSupport_LIBRARIES}
-)
+qt5_use_modules(eyesight PrintSupport)
+target_link_libraries(eyesight ${VibeWidgets_LIBRARIES})
 
 install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/eyesight/translations)
