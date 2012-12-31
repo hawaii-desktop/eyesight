@@ -53,7 +53,7 @@ The CMAKE_BUILD_TYPE parameter allows the following values:
 
 ## Installation
 
-It's really, it's just a matter of typing:
+It's really easy, it's just a matter of typing:
 
     make install
 
