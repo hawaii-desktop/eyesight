@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [hawaii.eyesight]
-type = TS
+type = QT
 source_lang = en
 source_file = src/translations/template.ts
 file_filter = src/translations/<lang>.ts
