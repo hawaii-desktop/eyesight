@@ -1,11 +1,11 @@
 /****************************************************************************
  * This file is part of EyeSight.
  *
- * Copyright (c) 2012 Pier Luigi Fiorini
- * Copyright (c) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
+ * Copyright (C) 2012 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
  *
  * Author(s):
- *    Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ *    Pier Luigi Fiorini
  *
  * $BEGIN_LICENSE:GPL2+$
  *
