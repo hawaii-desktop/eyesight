@@ -2,9 +2,7 @@
 Type=Application
 Name=Eyesight
 GenericName=Image Viewer
-GenericName[it]=Visualizzatore di immagini
 Comment=Browse and rotate images
-Comment[it]=Mostra e ruota immagini
 Exec=eyesight %U
 TryExec=eyesight
 Icon=eyesight
@@ -15,3 +13,10 @@ MimeType=image/bmp;image/gif;image/jpeg;image/png;image/tiff;image/x-portable-an
 Keywords=Picture;Slideshow;Graphics;
 X-Hawaii-BugTracker=https://github.com/hawaii-desktop/eyesight/issues
 X-Hawaii-BugTracker-NewIssue=https://github.com/hawaii-desktop/eyesight/issues/new
+
+
+# Translations
+Comment[it]=Mostra e ruota immagini
+GenericName[it]=Visualizzatore di immagini
+Name[it]=Eyesight
+Icon[it]=eyesight

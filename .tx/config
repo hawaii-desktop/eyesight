@@ -1,0 +1,14 @@
+[main]
+host = https://www.transifex.com
+
+[hawaii.eyesight]
+type = TS
+source_lang = en
+source_file = src/translations/template.ts
+file_filter = src/translations/<lang>.ts
+
+[hawaii.eyesight-desktop-file]
+type = DESKTOP
+source_lang = en
+source_file = data/eyesight.desktop
+file_filter = data/eyesight_<lang>.desktop
