@@ -1,7 +1,7 @@
 /****************************************************************************
  * This file is part of EyeSight.
  *
- * Copyright (C) 2012 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+ * Copyright (C) 2012-2013 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
  * Copyright (C) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
  *
  * Author(s):
@@ -588,8 +588,8 @@ void MainWindow::about()
 
     VAboutDialog dialog(this);
     dialog.setAuthors(authors);
-    dialog.setCopyright("Pier Luigi Fiorini");
-    dialog.setDescription("Simple image visualization application.");
+    dialog.setCopyright(tr("Copyright (C) 2012-2013 Pier Luigi Fiorini"));
+    dialog.setDescription(tr("Simple image visualization application."));
     dialog.setLink(QUrl("http://www.maui-project.org/"));
 
     QFile licenseFile(":/COPYING");

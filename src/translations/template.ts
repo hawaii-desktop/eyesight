@@ -570,6 +570,14 @@ The new folder is iqual to the older</source>
         <source>I couldn&apos;t make it :&apos;(</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Copyright (C) 2012-2013 Pier Luigi Fiorini</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simple image visualization application.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PropertiesDialog</name>
