@@ -158,7 +158,7 @@
         <translation>Αριστερά</translation>
     </message>
     <message>
-        <source>Buttom style</source>
+        <source>Button style</source>
         <translation>Στυλ κουμπιών</translation>
     </message>
     <message>
