@@ -158,10 +158,6 @@
         <translation>Izquierda</translation>
     </message>
     <message>
-        <source>Button style</source>
-        <translation>Estilo de los botones</translation>
-    </message>
-    <message>
         <source>Only icons</source>
         <translation>Solo iconos</translation>
     </message>
@@ -234,6 +230,10 @@ usar para imagenes con canal alfa</translation>
     <message>
         <source>Select folder</source>
         <translation>Seleccionar carpeta</translation>
+    </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

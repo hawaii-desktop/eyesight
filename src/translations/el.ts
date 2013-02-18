@@ -158,10 +158,6 @@
         <translation>Αριστερά</translation>
     </message>
     <message>
-        <source>Button style</source>
-        <translation>Στυλ κουμπιών</translation>
-    </message>
-    <message>
         <source>Only icons</source>
         <translation>Μόνο εικονίδια</translation>
     </message>
@@ -234,6 +230,10 @@ to use for images with alpha channel</source>
     <message>
         <source>Select folder</source>
         <translation>Επιλέξτε φάκελο</translation>
+    </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -330,11 +330,11 @@ The new folder is iqual to the older</source>
     <name>MainWindow</name>
     <message>
         <source>EyeSight</source>
-        <translation type="unfinished"></translation>
+        <translation>EyeSight</translation>
     </message>
     <message>
         <source>EyeSight couldn&apos;t open the image, what do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Τo EyeSight δεν μπορεί να ανοίξει αυτήν την εικόνα, τι θα θέλατε;  </translation>
     </message>
     <message>
         <source>Configuration</source>
@@ -394,7 +394,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Zoom In</source>
-        <translation>Μεγένθυνση</translation>
+        <translation>Μεγέθυνση</translation>
     </message>
     <message>
         <source>Zoom Out</source>

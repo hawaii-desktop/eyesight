@@ -2,19 +2,7 @@
 Type=Application
 Name=Eyesight
 GenericName=Image Viewer
-GenericName[ar]=عارض الصور
-GenericName[de]=Bildbetrachter
-GenericName[el]=Προβολή εικόνων
-GenericName[fr]=Visualisateur d'images
-GenericName[it]=Visualizzatore di immagini
-GenericName[ja_JP]=画像ビューアー
 Comment=Browse and rotate images
-Comment[ar]=استعراض وتدوير الصور
-Comment[de]=Bilder durchsuchen und rotieren
-Comment[el]=Περιηγηθείτε και περιστρέψτε τις εικόνες
-Comment[fr]=Parcourir et tourner les images
-Comment[it]=Mostra e ruota immagini
-Comment[ja_JP]=画像を閲覧
 Exec=eyesight %U
 TryExec=eyesight
 Icon=eyesight
@@ -25,3 +13,10 @@ MimeType=image/bmp;image/gif;image/jpeg;image/png;image/tiff;image/x-portable-an
 Keywords=Picture;Slideshow;Graphics;
 X-Hawaii-BugTracker=https://github.com/hawaii-desktop/eyesight/issues
 X-Hawaii-BugTracker-NewIssue=https://github.com/hawaii-desktop/eyesight/issues/new
+
+
+# Translations
+Comment[ar]=استعراض وتدوير الصور
+GenericName[ar]=عارض الصور
+Name[ar]=Eyesight
+Icon[ar]=eyesight

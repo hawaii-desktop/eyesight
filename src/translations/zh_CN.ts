@@ -1,129 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>ConfigDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation>对话</translation>
     </message>
     <message>
         <source>General</source>
-        <translation>Generale</translation>
+        <translation>常规</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Posizione</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Toolbar</source>
-        <translation>Barra degli strumenti</translation>
+        <translation>工具栏</translation>
     </message>
     <message>
         <source>Miscellaneous</source>
-        <translation>Varie</translation>
+        <translation>杂项</translation>
     </message>
     <message>
         <source>Show zoom slider</source>
-        <translation>Mostra il cursore dello zoom</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Show menu bar</source>
-        <translation>Mostra la barra del menu</translation>
+        <translation>显示菜单栏</translation>
     </message>
     <message>
         <source>This must be in the range [0,100] or -1. Specify 0 to obtain small compressed files,
 100 for large uncompressed files, and -1 to use the default settings.</source>
-        <translation>Deve essere un valore compreso nell&apos;intervallo [0,100] o -1. Specifica 0 per ottenere piccoli file compressi,
-100 per file grandi non compressi e -1 per utilizzare le impostazioni predefinite.</translation>
-    </message>
-    <message>
-        <source>Compression level for saved images:</source>
-        <translation>Livello di compressione per le immagini salvate:</translation>
-    </message>
-    <message>
-        <source>Recent files showed:</source>
-        <translation>File mostrati recentemente:</translation>
-    </message>
-    <message>
-        <source>Once you close this window, the list can&apos;t be restored</source>
-        <translation>Una volta chiusa questa finestra l&apos;elenco non potrà essere ripristinato</translation>
-    </message>
-    <message>
-        <source>Zoom increment value:</source>
-        <translation>Valore di incremento dell&apos;ingrandimento:</translation>
-    </message>
-    <message>
-        <source> %</source>
-        <translation> %</translation>
-    </message>
-    <message>
-        <source>Order files by:</source>
-        <translation>Ordina file per:</translation>
-    </message>
-    <message>
-        <source>Images Background</source>
-        <translation>Sfondo delle immagini</translation>
-    </message>
-    <message>
-        <source>Alpha channel background</source>
-        <translation>Sfondo del canale alpha</translation>
-    </message>
-    <message>
-        <source>Type:</source>
-        <translation>Tipo:</translation>
-    </message>
-    <message>
-        <source>Checkered board</source>
-        <translation>Scacchiera</translation>
-    </message>
-    <message>
-        <source>Solid color</source>
-        <translation>Tinta unita</translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation>Nessuno</translation>
-    </message>
-    <message>
-        <source>Color:</source>
-        <translation>Colore:</translation>
-    </message>
-    <message>
-        <source>Size of the sides:</source>
-        <translation>Dimensione dei lati:</translation>
-    </message>
-    <message>
-        <source> pixels</source>
-        <translation> pixel</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Compression level for saved images:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recent files showed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Once you close this window, the list can&apos;t be restored</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zoom increment value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> %</source>
+        <translation>%</translation>
+    </message>
+    <message>
+        <source>Order files by:</source>
+        <translation>文件排序方式：</translation>
+    </message>
+    <message>
+        <source>Images Background</source>
+        <translation>图像背景</translation>
+    </message>
+    <message>
+        <source>Alpha channel background</source>
+        <translation>A</translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation>类型：</translation>
+    </message>
+    <message>
+        <source>Checkered board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Solid color</source>
+        <translation>纯色</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <source>Color:</source>
+        <translation>颜色：</translation>
+    </message>
+    <message>
+        <source>Size of the sides:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> pixels</source>
+        <translation>像素</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation>文本标签</translation>
+    </message>
+    <message>
         <source>Animated Images</source>
-        <translation>Immagini animate</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Stop image reproduction when finish</source>
-        <translation>Interrompere la riproduzione delle immagini al termine</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Restart animation when zooming</source>
-        <translation>Riavviare animazione durante lo zoom</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Movie&apos;s speed</source>
-        <translation>Velocità del filmato</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use last folder</source>
-        <translation>Utilizza l&apos;ultima cartella</translation>
+        <translation>使用上次的文件夹</translation>
     </message>
     <message>
         <source>Use a different location:</source>
-        <translation>Utilizza una posizione differente:</translation>
+        <translation>使用一个不同的位置：</translation>
     </message>
     <message>
         <source>...</source>
@@ -131,105 +130,104 @@
     </message>
     <message>
         <source>Lock the toolbar position</source>
-        <translation>Blocca la posizione della barra degli strumenti</translation>
+        <translation>锁定工具栏位置</translation>
     </message>
     <message>
         <source>Toolbar visible</source>
-        <translation>Barra degli strumenti visibile</translation>
+        <translation>工具栏可见</translation>
     </message>
     <message>
         <source>Position</source>
-        <translation>Posizione</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Top</source>
-        <translation>Alto</translation>
+        <translation>顶部</translation>
     </message>
     <message>
         <source>Bottom</source>
-        <translation>Basso</translation>
+        <translation>底部</translation>
     </message>
     <message>
         <source>Right</source>
-        <translation>Destra</translation>
+        <translation>右侧</translation>
     </message>
     <message>
         <source>Left</source>
-        <translation>Sinistra</translation>
+        <translation>左侧</translation>
     </message>
     <message>
         <source>Only icons</source>
-        <translation>Solo icone</translation>
+        <translation>仅图标</translation>
     </message>
     <message>
         <source>Only text</source>
-        <translation>Solo testo</translation>
+        <translation>仅文本</translation>
     </message>
     <message>
         <source>Text beside icons</source>
-        <translation>Testo accanto alle icone</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Text under icons</source>
-        <translation>Testo sotto le icone</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Follow style</source>
-        <translation>Segui lo stile</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Actions</source>
-        <translation>Azioni</translation>
+        <translation>动作</translation>
     </message>
     <message>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation>Applica</translation>
+        <translation>应用</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Change default location</source>
-        <translation>Modifica la posizione predefinita</translation>
+        <translation>更改默认位置</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation>类型：</translation>
     </message>
     <message>
         <source>Size</source>
-        <translation>Dimensione</translation>
+        <translation>尺寸</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Tempo</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <source>With this you select the kind of background you want 
 to use for images with alpha channel</source>
-        <translation>Con questa opzione puoi selezionare il tipo di sfondo che vuoi
-utilizzare per le immagini con un canale alpha.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Delete list</source>
-        <translation>Cancella elenco</translation>
+        <translation>删除列表</translation>
     </message>
     <message>
         <source>Restore list</source>
-        <translation>Ripristina elenco</translation>
+        <translation>恢复列表</translation>
     </message>
     <message>
         <source>Select folder</source>
-        <translation>Seleziona cartella</translation>
+        <translation>选中文件夹</translation>
     </message>
     <message>
         <source>Button style</source>
@@ -240,38 +238,38 @@ utilizzare per le immagini con un canale alpha.</translation>
     <name>Dialog</name>
     <message>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation>Applica</translation>
+        <translation>应用</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
     <name>EditToolBar</name>
     <message>
         <source>Configure toolbar</source>
-        <translation>Configura barra degli strumenti</translation>
+        <translation>配置标题栏</translation>
     </message>
 </context>
 <context>
     <name>FileProperties</name>
     <message>
         <source>%1&apos;s properties</source>
-        <translation>Proprietà di %1</translation>
+        <translation>%1 的属性</translation>
     </message>
     <message>
         <source>%1 Image</source>
         <comment>Image type</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 张图像</translation>
     </message>
     <message>
         <source>%1 Bytes</source>
-        <translation>%1 byte</translation>
+        <translation>%1 字节</translation>
     </message>
     <message>
         <source>%1 MiB (%2)</source>
@@ -283,42 +281,42 @@ utilizzare per le immagini con un canale alpha.</translation>
     </message>
     <message>
         <source>%1 Pixels</source>
-        <translation>%1 pixel</translation>
+        <translation>%1 像素</translation>
     </message>
 </context>
 <context>
     <name>FileUtils</name>
     <message>
         <source>Empty file name, i can&apos;t do anything</source>
-        <translation>Nome del file vuoto, non posso fare nulla</translation>
+        <translation>空文件名，无法操作</translation>
     </message>
     <message>
         <source>Empty path, i can&apos;t do anything</source>
-        <translation>Percorso vuoto, non posso fare nulla</translation>
+        <translation>空路径，无法操作</translation>
     </message>
     <message>
         <source>The folder is the same than the current</source>
-        <translation>La cartella è la stessa di quella attuale</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The image wasn&apos;t moved
 The new folder is iqual to the older</source>
-        <translation>L&apos;immagine non è stata spostata ⏎ La nuova cartella è uguale alla vecchia</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Overwrite?</source>
-        <translation>Sovrascrivere?</translation>
+        <translation>覆盖？</translation>
     </message>
     <message>
         <source>File %1 already exists. Do you want to overwrite it?</source>
-        <translation>Il file %1 esiste già. Vuoi sovrascriverlo?</translation>
+        <translation>文件 %1 已经存在。您要覆盖它吗？</translation>
     </message>
 </context>
 <context>
     <name>ImageWidget</name>
     <message>
         <source>I own your OS</source>
-        <translation>Il tuo sistema operativo è mio</translation>
+        <translation>我拥有您的系统</translation>
     </message>
     <message>
         <source>PERO Q&apos; LO QUE PASOOOO!!!!</source>
@@ -333,231 +331,231 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>EyeSight couldn&apos;t open the image, what do you want to do?</source>
-        <translation>EyeSight non è in grado di aprire l&apos;immagine, cosa vuoi fare?</translation>
+        <translation>EyeSight 无法打开图像，您打算怎么做？</translation>
     </message>
     <message>
         <source>Configuration</source>
-        <translation>Configurazione</translation>
+        <translation>配置</translation>
     </message>
     <message>
         <source>&amp;Recent images</source>
-        <translation>Immagini &amp;recenti</translation>
+        <translation>最近的图像(&amp;R)</translation>
     </message>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;File</translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>&amp;Modifica</translation>
+        <translation>编辑(&amp;E)</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation>&amp;Visualizza</translation>
+        <translation>查看(&amp;V)</translation>
     </message>
     <message>
         <source>&amp;Image</source>
-        <translation>&amp;Immagine</translation>
+        <translation>图像(&amp;I)</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Aiuto</translation>
+        <translation>帮助(&amp;H)</translation>
     </message>
     <message>
         <source>&amp;Go</source>
-        <translation>&amp;Vai</translation>
+        <translation>转到(&amp;G)</translation>
     </message>
     <message>
         <source>Main toolbar</source>
-        <translation>Barra degli strumenti principale</translation>
+        <translation>主工具栏</translation>
     </message>
     <message>
         <source>&amp;Open</source>
-        <translation>&amp;Apri</translation>
+        <translation>打开(&amp;O)</translation>
     </message>
     <message>
         <source>Open an image</source>
-        <translation>Apri un&apos;immagine</translation>
+        <translation>打开图像</translation>
     </message>
     <message>
         <source>&amp;Save</source>
-        <translation>&amp;Salva</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <source>&amp;Exit</source>
-        <translation>&amp;Esci</translation>
+        <translation>退出(&amp;E)</translation>
     </message>
     <message>
         <source>Properties</source>
-        <translation>Proprietà</translation>
+        <translation>属性</translation>
     </message>
     <message>
         <source>Zoom In</source>
-        <translation>Ingrandisci</translation>
+        <translation>放大</translation>
     </message>
     <message>
         <source>Zoom Out</source>
-        <translation>Rimpicciolisci</translation>
+        <translation>缩小</translation>
     </message>
     <message>
         <source>Normal Size</source>
-        <translation>Dimensione normale</translation>
+        <translation>正常尺寸</translation>
     </message>
     <message>
         <source>Best Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>最佳尺寸</translation>
     </message>
     <message>
         <source>Rotate to right</source>
-        <translation>Ruota a destra</translation>
+        <translation>旋转到右侧</translation>
     </message>
     <message>
         <source>Rotate image in the clockwise clock</source>
-        <translation>Ruota l&apos;immagine in senso orario</translation>
+        <translation>顺时针方向旋转图像</translation>
     </message>
     <message>
         <source>Rotate to Left</source>
-        <translation>Ruota a sinistra</translation>
+        <translation>旋转到左侧</translation>
     </message>
     <message>
         <source>Rotate image counter-clockwise to clockwise</source>
-        <translation>Ruota l&apos;immagine da senso antiorario a orario</translation>
+        <translation>逆时针方向旋转图像</translation>
     </message>
     <message>
         <source>Flip vertically</source>
-        <translation type="unfinished"></translation>
+        <translation>垂直翻转</translation>
     </message>
     <message>
         <source>Turns vertically the image</source>
-        <translation>Gira l&apos;immagine verticalmente</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Flip horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation>水平翻转</translation>
     </message>
     <message>
         <source>Reflects the image</source>
-        <translation type="unfinished"></translation>
+        <translation>图像倒映</translation>
     </message>
     <message>
         <source>A&amp;bout</source>
-        <translation>&amp;Informazioni</translation>
+        <translation>关于(&amp;B)</translation>
     </message>
     <message>
         <source>Ne&amp;xt</source>
-        <translation>&amp;Successiva</translation>
+        <translation>下一张(&amp;X)</translation>
     </message>
     <message>
         <source>Loads next image</source>
-        <translation>Carica l&apos;immagine successiva</translation>
+        <translation>加载下一张图像</translation>
     </message>
     <message>
         <source>Go to the first</source>
-        <translation>Vai alla prima</translation>
+        <translation>转到第一张</translation>
     </message>
     <message>
         <source>Loads the first image in the folder</source>
-        <translation>Carica la prima immagine nella cartella</translation>
+        <translation>加载文件夹中的第一张图像</translation>
     </message>
     <message>
         <source>Pre&amp;vious</source>
-        <translation>&amp;Precedente</translation>
+        <translation>上一张(&amp;V)</translation>
     </message>
     <message>
         <source>Loads previous image</source>
-        <translation>Carica l&apos;immagine precedente</translation>
+        <translation>加载上一张图像</translation>
     </message>
     <message>
         <source>Go to the last</source>
-        <translation>Vai all&apos;ultima</translation>
+        <translation>转到最后一张图像</translation>
     </message>
     <message>
         <source>Loads the last image in the folder</source>
-        <translation>Carica l&apos;ultima immagine nella cartella</translation>
+        <translation>加载文件夹中的最后一张图像</translation>
     </message>
     <message>
         <source>Open &amp;Folder</source>
-        <translation>Apri &amp;cartella</translation>
+        <translation>打开文件夹(&amp;F)</translation>
     </message>
     <message>
         <source>Show Menu Bar</source>
-        <translation>Mostra la barra del menu</translation>
+        <translation>显示菜单栏</translation>
     </message>
     <message>
         <source>Delete list</source>
-        <translation>Cancella elenco</translation>
+        <translation>删除列表</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation>Stampa</translation>
+        <translation>打印</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Elimina</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>This deletes completly the file from the disk, doesn&apos;t move it to the trash</source>
-        <translation>Questo elimina completamente il file dal disco, non lo sposta nel cestino</translation>
+        <translation>这将完全会把文件从磁盘删除，并不移到回收站</translation>
     </message>
     <message>
         <source>Move to...</source>
-        <translation>Sposta in...</translation>
+        <translation>移动到...</translation>
     </message>
     <message>
         <source>Go to</source>
-        <translation>Vai a</translation>
+        <translation>转到</translation>
     </message>
     <message>
         <source>Configure toolbar</source>
-        <translation>Configura barra degli strumenti</translation>
+        <translation>配置工具栏</translation>
     </message>
     <message>
         <source>Move to</source>
-        <translation>Sposta in</translation>
+        <translation>移动到</translation>
     </message>
     <message>
         <source>Do you want to delete %1?</source>
-        <translation>Vuoi eliminare %1?</translation>
+        <translation>您要删除 %1？</translation>
     </message>
     <message>
         <source>File deleted</source>
-        <translation>File eliminato</translation>
+        <translation>文件已删除</translation>
     </message>
     <message>
         <source>The file couldn&apos;t be deleted</source>
-        <translation>Il file non può essere eliminato</translation>
+        <translation>无法删除文件</translation>
     </message>
     <message>
         <source>The file doesn&apos;t exist, may be it&apos;s been moved or deleted.</source>
-        <translation>Il file non esiste, potrebbe essere stato spostato o eliminato.</translation>
+        <translation>该文件不存在，可能已移动或删除。</translation>
     </message>
     <message>
         <source>Save File</source>
-        <translation>Salva file</translation>
+        <translation>保存文件</translation>
     </message>
     <message>
         <source>Image Files (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>图像文件(%1)</translation>
     </message>
     <message>
         <source>I couldn&apos;t save the image</source>
-        <translation type="unfinished"></translation>
+        <translation>我无法保存图像</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Apri cartella</translation>
+        <translation>打开文件夹</translation>
     </message>
     <message>
         <source>No folder selected</source>
-        <translation>Nessuna cartella selezionata</translation>
+        <translation>未选中文件夹</translation>
     </message>
     <message>
         <source>No folder selected, i can&apos;t do anything</source>
-        <translation type="unfinished"></translation>
+        <translation>未选中文件夹，无法操作</translation>
     </message>
     <message>
         <source>Image changed</source>
-        <translation>Immagine modificata</translation>
+        <translation>图像已更改</translation>
     </message>
     <message>
         <source>I&apos;ve touched the image so, do you want to save it before exit?</source>
@@ -566,58 +564,58 @@ The new folder is iqual to the older</source>
     <message>
         <source>Open file</source>
         <comment>dialog to open file</comment>
-        <translation>Apri file</translation>
+        <translation>打开文件</translation>
     </message>
     <message>
         <source>I couldn&apos;t make it :&apos;(</source>
-        <translation>Non posso farlo :&apos;(</translation>
+        <translation>我搞不定哟:&apos;(</translation>
     </message>
     <message>
         <source>Copyright (C) 2012-2013 Pier Luigi Fiorini</source>
-        <translation>Copyright (C) 2012-2013 Pier Luigi Fiorini</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Simple image visualization application.</source>
-        <translation>Una semplice applicazione per la visualizzazione di immagini.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PropertiesDialog</name>
     <message>
         <source>%1&apos;s properties</source>
-        <translation>Proprietà di %1</translation>
+        <translation>%1 的属性</translation>
     </message>
     <message>
         <source>&lt;b&gt;Location:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Posizione:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;位置：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>文本标签</translation>
     </message>
     <message>
         <source>&lt;b&gt;Type:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Tipo:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;类型：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Size:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Dimensione:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;大小：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Height:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Altezza:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;高度：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Width:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Larghezza:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;宽度：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>&lt;b&gt;Name:&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Nome:&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;名称：&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation>确定</translation>
     </message>
 </context>
 <context>
@@ -625,8 +623,7 @@ The new folder is iqual to the older</source>
     <message>
         <source>Try &apos;eyesight --help&apos; for more information
 </source>
-        <translation>Prova &apos;eyesight --help&apos; per maggiori informazioni
-</translation>
+        <translation>尝试&apos;eyesight --help&apos;查看更多信息\n</translation>
     </message>
     <message>
         <source>EyeSight %1
@@ -636,22 +633,22 @@ License GPLv2+.
 This is free software: you are free to change it and redistribute.
 There is NO WARRANTY.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>EyeSight %1\n版权所有 (C) 2011 Aguilera Dario.\n协议遵循 GPLv2+.\n&lt;http://gnu.org/licenses/gpl.html&gt;.\n该软件为自由软件：您可以自由更改并进行分发.\n不提供任何担保.\n</translation>
     </message>
 </context>
 <context>
     <name>ToolBarEdit</name>
     <message>
         <source>Separator</source>
-        <translation>Separatore</translation>
+        <translation>分隔符</translation>
     </message>
     <message>
         <source>Add separator</source>
-        <translation>Aggiungi separatore</translation>
+        <translation>增加分隔符</translation>
     </message>
     <message>
         <source>Remove separator</source>
-        <translation>Rimuovi separatore</translation>
+        <translation>移除分隔符</translation>
     </message>
 </context>
 <context>
@@ -690,54 +687,54 @@ There is NO WARRANTY.
     <name>goToDialog</name>
     <message>
         <source>Name</source>
-        <translation>Nome</translation>
+        <translation>名称 </translation>
     </message>
     <message>
         <source>Position</source>
-        <translation>Posizione</translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Annulla</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Go</source>
-        <translation>Vai</translation>
+        <translation>转到</translation>
     </message>
 </context>
 <context>
     <name>toolBarEdit</name>
     <message>
         <source>Available actions:</source>
-        <translation>Azioni disponibili:</translation>
+        <translation>可用动作：</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Cerca</translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation>Sposta in alto l&apos;azione</translation>
+        <translation>动作上移</translation>
     </message>
     <message>
         <source>Remove action</source>
-        <translation>Rimuovi azione</translation>
+        <translation>移除动作</translation>
     </message>
     <message>
         <source>Add separator</source>
-        <translation>Aggiungi separatore</translation>
+        <translation>添加分隔符</translation>
     </message>
     <message>
         <source>Add action</source>
-        <translation>Aggiungi azione</translation>
+        <translation>添加动作</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation>Sposta in basso l&apos;azione</translation>
+        <translation>动作下移</translation>
     </message>
     <message>
         <source>Current actions:</source>
-        <translation>Azioni attuali:</translation>
+        <translation>当前动作：</translation>
     </message>
 </context>
 </TS>
