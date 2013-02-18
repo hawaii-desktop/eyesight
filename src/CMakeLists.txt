@@ -31,10 +31,17 @@ set(UI_SOURCES
 
 
 set(QM_SOURCES
+    translations/ar.ts
+    translations/de.ts
     translations/el.ts
     translations/es_AR.ts
     translations/es_ES.ts
+    translations/fr.ts
     translations/it.ts
+    translations/ja_JP.ts
+    translations/nl.ts
+    translations/pt.ts
+    translations/zh_CN.ts
 )
 
 set(QRC_SOURCES
