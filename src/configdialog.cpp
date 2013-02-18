@@ -96,32 +96,32 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     ui.editActions->addWidget(tbe);
 
     //conections
-    connect(ui.leftRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.rightRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.topRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.bottomRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.leftRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.rightRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.topRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.bottomRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.lockToolbar, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.toolbarVisible, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.onlyIconsRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.onlyTextRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.tbiRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.tuiRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.fsRadioButtom, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.onlyIconsRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.onlyTextRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.tbiRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.tuiRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
+    connect(ui.fsRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(tbe, SIGNAL(actionsListChanged()), this, SLOT(settingsChangedSlot()));
 
     //toolbar area
     switch (settings->getTBArea()) {
         case Qt::LeftToolBarArea:
-            ui.leftRadioButtom->setChecked(true);
+            ui.leftRadioButton->setChecked(true);
             break;
         case Qt::RightToolBarArea:
-            ui.rightRadioButtom->setChecked(true);
+            ui.rightRadioButton->setChecked(true);
             break;
         case Qt::TopToolBarArea:
-            ui.topRadioButtom->setChecked(true);
+            ui.topRadioButton->setChecked(true);
             break;
         case Qt::BottomToolBarArea:
-            ui.bottomRadioButtom->setChecked(true);
+            ui.bottomRadioButton->setChecked(true);
             break;
         default:
             break;
@@ -414,13 +414,13 @@ void ConfigDialog::openDirSlot()
   */
 Qt::ToolBarArea ConfigDialog::gettbpos()
 {
-    if (ui.leftRadioButtom->isChecked()) {
+    if (ui.leftRadioButton->isChecked()) {
         return Qt::LeftToolBarArea;
     }
-    if (ui.rightRadioButtom->isChecked()) {
+    if (ui.rightRadioButton->isChecked()) {
         return Qt::RightToolBarArea;
     }
-    if (ui.topRadioButtom->isChecked()) {
+    if (ui.topRadioButton->isChecked()) {
         return Qt::TopToolBarArea;
     }
     return Qt::BottomToolBarArea;

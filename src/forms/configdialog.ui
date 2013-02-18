@@ -724,28 +724,28 @@
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
                   <item>
-                   <widget class="QRadioButton" name="topRadioButtom">
+                   <widget class="QRadioButton" name="topRadioButton">
                     <property name="text">
                      <string>Top</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="bottomRadioButtom">
+                   <widget class="QRadioButton" name="bottomRadioButton">
                     <property name="text">
                      <string>Bottom</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="rightRadioButtom">
+                   <widget class="QRadioButton" name="rightRadioButton">
                     <property name="text">
                      <string>Right</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="leftRadioButtom">
+                   <widget class="QRadioButton" name="leftRadioButton">
                     <property name="text">
                      <string>Left</string>
                     </property>
@@ -770,39 +770,39 @@
                <item>
                 <widget class="QGroupBox" name="groupBox_2">
                  <property name="title">
-                  <string>Buttom style</string>
+                  <string>Button style</string>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_10">
                   <item>
-                   <widget class="QRadioButton" name="onlyIconsRadioButtom">
+                   <widget class="QRadioButton" name="onlyIconsRadioButton">
                     <property name="text">
                      <string>Only icons</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="onlyTextRadioButtom">
+                   <widget class="QRadioButton" name="onlyTextRadioButton">
                     <property name="text">
                      <string>Only text</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="tbiRadioButtom">
+                   <widget class="QRadioButton" name="tbiRadioButton">
                     <property name="text">
                      <string>Text beside icons</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="tuiRadioButtom">
+                   <widget class="QRadioButton" name="tuiRadioButton">
                     <property name="text">
                      <string>Text under icons</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="fsRadioButtom">
+                   <widget class="QRadioButton" name="fsRadioButton">
                     <property name="text">
                      <string>Follow style</string>
                     </property>

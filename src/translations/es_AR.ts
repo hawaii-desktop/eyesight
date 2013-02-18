@@ -158,7 +158,7 @@
         <translation>Izquierda</translation>
     </message>
     <message>
-        <source>Buttom style</source>
+        <source>Button style</source>
         <translation>Estilo de los botones</translation>
     </message>
     <message>

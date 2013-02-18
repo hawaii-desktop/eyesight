@@ -157,7 +157,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Buttom style</source>
+        <source>Button style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
