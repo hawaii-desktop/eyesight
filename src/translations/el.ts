@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="el">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -158,6 +156,10 @@
         <translation>Αριστερά</translation>
     </message>
     <message>
+        <source>Button style</source>
+        <translation>Στυλ κουμπιού</translation>
+    </message>
+    <message>
         <source>Only icons</source>
         <translation>Μόνο εικονίδια</translation>
     </message>
@@ -231,10 +233,6 @@ to use for images with alpha channel</source>
         <source>Select folder</source>
         <translation>Επιλέξτε φάκελο</translation>
     </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Dialog</name>
@@ -301,7 +299,7 @@ to use for images with alpha channel</source>
         <translation>Ο φάκελλος είναι ο ίδιος με τον τρέχον</translation>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
         <translation>Η εικόνα δε μετακινήθηκε
 Ο νέος φάκελλος είναι ο ίδιος με τον παλιό</translation>
@@ -575,11 +573,11 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Copyright (C) 2012-2013 Pier Luigi Fiorini</source>
-        <translation type="unfinished"></translation>
+        <translation>Πνευματική ιδιοκτησία (C) 2012-2013 Pier Luigi Fiorini</translation>
     </message>
     <message>
         <source>Simple image visualization application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Απλή εφαρμογή απεικόνισης εικόνων.</translation>
     </message>
 </context>
 <context>
@@ -624,9 +622,10 @@ The new folder is iqual to the older</source>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Δοκίμασε &apos;eyesight --help&apos; για περισσότερες πληροφορίες⏎ 
+</translation>
     </message>
     <message>
         <source>EyeSight %1
@@ -636,7 +635,11 @@ License GPLv2+.
 This is free software: you are free to change it and redistribute.
 There is NO WARRANTY.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>EyeSight %1⏎ Πνευματικά δικαιώματα (C) 2011 Aguilera Dario.⏎
+Άδεια χρήσης GPLv2+.⏎
+&lt;http://gnu.org/licenses/gpl.html&gt;.⏎ Αυτό είναι ελεύθερο λογισμικό: είστε ελεύθεροι να το τροποποιήσετε και να το αναδιανείμετε.⏎
+Δεν υπάρχει ΚΑΜΙΑ ΕΓΓΥΗΣΗ.⏎
+</translation>
     </message>
 </context>
 <context>

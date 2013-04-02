@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="es_AR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es_AR" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>General</source>
@@ -99,7 +97,7 @@
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Animated Images</source>
@@ -156,6 +154,10 @@
     <message>
         <source>Left</source>
         <translation>Izquierda</translation>
+    </message>
+    <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Only icons</source>
@@ -231,10 +233,6 @@ usar para imagenes con canal alfa</translation>
         <source>Select folder</source>
         <translation>Seleccionar carpeta</translation>
     </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Dialog</name>
@@ -301,7 +299,7 @@ usar para imagenes con canal alfa</translation>
         <translation>La carpeta es la misma que la actual</translation>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
         <translation>La imagen no fue movida
 La nueva carpeta es igual a la anterior</translation>
@@ -330,11 +328,11 @@ La nueva carpeta es igual a la anterior</translation>
     <name>MainWindow</name>
     <message>
         <source>EyeSight</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>EyeSight couldn&apos;t open the image, what do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Configuration</source>
@@ -575,11 +573,11 @@ La nueva carpeta es igual a la anterior</translation>
     </message>
     <message>
         <source>Copyright (C) 2012-2013 Pier Luigi Fiorini</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Simple image visualization application.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -594,7 +592,7 @@ La nueva carpeta es igual a la anterior</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&lt;b&gt;Type:&lt;/b&gt;</source>
@@ -624,9 +622,9 @@ La nueva carpeta es igual a la anterior</translation>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>EyeSight %1
@@ -636,7 +634,7 @@ License GPLv2+.
 This is free software: you are free to change it and redistribute.
 There is NO WARRANTY.
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -658,32 +656,32 @@ There is NO WARRANTY.
     <name>WebpDecoder</name>
     <message>
         <source>[WEBP]in file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]missing input file!!
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]cannot open input file &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoding of %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoded %1. Dimensions: %2 x %3. Now opening...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]File %1 opened</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Error opening file %s !!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

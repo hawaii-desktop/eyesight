@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ar">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -157,6 +155,10 @@
         <translation>يسار</translation>
     </message>
     <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Only icons</source>
         <translation>الإيقونات فقط</translation>
     </message>
@@ -229,10 +231,6 @@ to use for images with alpha channel</source>
         <source>Select folder</source>
         <translation>تحديد مجلد</translation>
     </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Dialog</name>
@@ -299,7 +297,7 @@ to use for images with alpha channel</source>
         <translation>هذا المجلد هو نفس المجلد الحالي</translation>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
         <translation>الصورة لم تُنقَل⏎ المجلد الجديد هو نفسه القديم</translation>
     </message>
@@ -621,7 +619,7 @@ The new folder is iqual to the older</source>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
         <translation>جرب &apos;eyesight --help&apos; للمزيد من المعلومات⏎ 
 </translation>

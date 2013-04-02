@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -29,7 +27,7 @@
     </message>
     <message>
         <source>Show menu bar</source>
-        <translation>Afficher la barre de menu</translation>
+        <translation>Afficher la barre de menus</translation>
     </message>
     <message>
         <source>This must be in the range [0,100] or -1. Specify 0 to obtain small compressed files,
@@ -158,6 +156,10 @@
         <translation>Gauche</translation>
     </message>
     <message>
+        <source>Button style</source>
+        <translation>Style bouton</translation>
+    </message>
+    <message>
         <source>Only icons</source>
         <translation>Seulement les icônes</translation>
     </message>
@@ -230,10 +232,6 @@ to use for images with alpha channel</source>
         <source>Select folder</source>
         <translation>Sélectionner un dossier</translation>
     </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Dialog</name>
@@ -300,7 +298,7 @@ to use for images with alpha channel</source>
         <translation>Le dossier est le même que le dossier courrant</translation>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
         <translation>L&apos;image n&apos;as pas été déplacer
 Le nouveau dossier est le même que l&apos;ancien</translation>
@@ -349,7 +347,7 @@ Le nouveau dossier est le même que l&apos;ancien</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>&amp;Édition</translation>
+        <translation>Éditio&amp;n</translation>
     </message>
     <message>
         <source>&amp;View</source>
@@ -365,7 +363,7 @@ Le nouveau dossier est le même que l&apos;ancien</translation>
     </message>
     <message>
         <source>&amp;Go</source>
-        <translation>&amp;Aller</translation>
+        <translation>A&amp;ller à</translation>
     </message>
     <message>
         <source>Main toolbar</source>
@@ -409,7 +407,7 @@ Le nouveau dossier est le même que l&apos;ancien</translation>
     </message>
     <message>
         <source>Rotate to right</source>
-        <translation>Pivoter sur la Droite</translation>
+        <translation>Pivoter à Droite</translation>
     </message>
     <message>
         <source>Rotate image in the clockwise clock</source>
@@ -417,7 +415,7 @@ Le nouveau dossier est le même que l&apos;ancien</translation>
     </message>
     <message>
         <source>Rotate to Left</source>
-        <translation>Pivoter sur la Gauche</translation>
+        <translation>Pivoter à Gauche</translation>
     </message>
     <message>
         <source>Rotate image counter-clockwise to clockwise</source>
@@ -623,7 +621,7 @@ Le nouveau dossier est le même que l&apos;ancien</translation>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
         <translation>Essayer &apos;eyesight --help&apos; pour plus d&apos;informations
 </translation>

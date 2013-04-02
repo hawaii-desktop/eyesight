@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -25,7 +23,7 @@
     </message>
     <message>
         <source>Show zoom slider</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Show menu bar</source>
@@ -34,23 +32,23 @@
     <message>
         <source>This must be in the range [0,100] or -1. Specify 0 to obtain small compressed files,
 100 for large uncompressed files, and -1 to use the default settings.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Compression level for saved images:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Recent files showed:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Once you close this window, the list can&apos;t be restored</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Zoom increment value:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> %</source>
@@ -74,7 +72,7 @@
     </message>
     <message>
         <source>Checkered board</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Solid color</source>
@@ -90,7 +88,7 @@
     </message>
     <message>
         <source>Size of the sides:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source> pixels</source>
@@ -102,19 +100,19 @@
     </message>
     <message>
         <source>Animated Images</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Stop image reproduction when finish</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Restart animation when zooming</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Movie&apos;s speed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Use last folder</source>
@@ -157,6 +155,10 @@
         <translation>左侧</translation>
     </message>
     <message>
+        <source>Button style</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <source>Only icons</source>
         <translation>仅图标</translation>
     </message>
@@ -166,15 +168,15 @@
     </message>
     <message>
         <source>Text beside icons</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Text under icons</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Follow style</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Actions</source>
@@ -215,7 +217,7 @@
     <message>
         <source>With this you select the kind of background you want 
 to use for images with alpha channel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Delete list</source>
@@ -228,10 +230,6 @@ to use for images with alpha channel</source>
     <message>
         <source>Select folder</source>
         <translation>选中文件夹</translation>
-    </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -296,12 +294,12 @@ to use for images with alpha channel</source>
     </message>
     <message>
         <source>The folder is the same than the current</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Overwrite?</source>
@@ -320,7 +318,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>PERO Q&apos; LO QUE PASOOOO!!!!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -427,7 +425,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Turns vertically the image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Flip horizontally</source>
@@ -559,7 +557,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>I&apos;ve touched the image so, do you want to save it before exit?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open file</source>
@@ -572,11 +570,11 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Copyright (C) 2012-2013 Pier Luigi Fiorini</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Simple image visualization application.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -621,7 +619,7 @@ The new folder is iqual to the older</source>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
         <translation>尝试&apos;eyesight --help&apos;查看更多信息\n</translation>
     </message>
@@ -655,32 +653,32 @@ There is NO WARRANTY.
     <name>WebpDecoder</name>
     <message>
         <source>[WEBP]in file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]missing input file!!
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]cannot open input file &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoding of %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoded %1. Dimensions: %2 x %3. Now opening...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]File %1 opened</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Error opening file %s !!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

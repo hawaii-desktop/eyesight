@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.0">
 <context>
     <name>ConfigDialog</name>
     <message>
@@ -99,7 +97,7 @@
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Animated Images</source>
@@ -156,6 +154,10 @@
     <message>
         <source>Left</source>
         <translation>Sinistra</translation>
+    </message>
+    <message>
+        <source>Button style</source>
+        <translation>Stile del pulsante</translation>
     </message>
     <message>
         <source>Only icons</source>
@@ -231,10 +233,6 @@ utilizzare per le immagini con un canale alpha.</translation>
         <source>Select folder</source>
         <translation>Seleziona cartella</translation>
     </message>
-    <message>
-        <source>Button style</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Dialog</name>
@@ -267,7 +265,7 @@ utilizzare per le immagini con un canale alpha.</translation>
     <message>
         <source>%1 Image</source>
         <comment>Image type</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>%1 Bytes</source>
@@ -301,7 +299,7 @@ utilizzare per le immagini con un canale alpha.</translation>
         <translation>La cartella è la stessa di quella attuale</translation>
     </message>
     <message>
-        <source>The image wasn&apos;t moved
+        <source>The image wasn't moved
 The new folder is iqual to the older</source>
         <translation>L&apos;immagine non è stata spostata ⏎ La nuova cartella è uguale alla vecchia</translation>
     </message>
@@ -322,7 +320,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>PERO Q&apos; LO QUE PASOOOO!!!!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -405,7 +403,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Best Fit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Rotate to right</source>
@@ -425,7 +423,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Flip vertically</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Turns vertically the image</source>
@@ -433,11 +431,11 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Flip horizontally</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Reflects the image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>A&amp;bout</source>
@@ -537,11 +535,11 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>Image Files (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>I couldn&apos;t save the image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open folder</source>
@@ -553,7 +551,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>No folder selected, i can&apos;t do anything</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Image changed</source>
@@ -561,7 +559,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>I&apos;ve touched the image so, do you want to save it before exit?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Open file</source>
@@ -593,7 +591,7 @@ The new folder is iqual to the older</source>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>&lt;b&gt;Type:&lt;/b&gt;</source>
@@ -623,7 +621,7 @@ The new folder is iqual to the older</source>
 <context>
     <name>QObject</name>
     <message>
-        <source>Try &apos;eyesight --help&apos; for more information
+        <source>Try 'eyesight --help' for more information
 </source>
         <translation>Prova &apos;eyesight --help&apos; per maggiori informazioni
 </translation>
@@ -636,7 +634,7 @@ License GPLv2+.
 This is free software: you are free to change it and redistribute.
 There is NO WARRANTY.
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -658,32 +656,32 @@ There is NO WARRANTY.
     <name>WebpDecoder</name>
     <message>
         <source>[WEBP]in file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>[WEBP]nel file: %1</translation>
     </message>
     <message>
         <source>[WEBP]missing input file!!
 </source>
-        <translation type="unfinished"></translation>
+        <translation>[WEBP]File di ingresso mancante!</translation>
     </message>
     <message>
         <source>[WEBP]cannot open input file &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoding of %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>[WEBP]Decoded %1. Dimensions: %2 x %3. Now opening...</source>
-        <translation type="unfinished"></translation>
+        <translation>[WEBP]Decodificato %1. Dimensioni: %2 x %3. In apertura...</translation>
     </message>
     <message>
         <source>[WEBP]File %1 opened</source>
-        <translation type="unfinished"></translation>
+        <translation>[WEBP]File %1 aperto</translation>
     </message>
     <message>
         <source>[WEBP]Error opening file %s !!</source>
-        <translation type="unfinished"></translation>
+        <translation>[WEBP]Errore nell&apos;apertura Del File %s !!</translation>
     </message>
 </context>
 <context>
