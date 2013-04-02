@@ -34,8 +34,8 @@ set(QM_SOURCES
     translations/ar.ts
     translations/de.ts
     translations/el.ts
+    translations/es.ts
     translations/es_AR.ts
-    translations/es_ES.ts
     translations/fr.ts
     translations/it.ts
     translations/ja_JP.ts
