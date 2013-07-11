@@ -96,6 +96,7 @@ int main(int argc, char *argv[])
     else if (next_option == 'v') {
         std::cout << QObject::tr("EyeSight %1\n"
                                  "Copyright (C) 2011 Aguilera Dario.\n"
+                                 "Copyright (C) 2012-2013 Pier Luigi Fiorini.\n"
                                  "License GPLv2+.\n"
                                  "<http://gnu.org/licenses/gpl.html>.\n"
                                  "This is free software: you are free to change it and redistribute.\n"

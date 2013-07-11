@@ -30,7 +30,7 @@
 Settings::Settings(QObject *parent)
     : QObject(parent)
 {
-    m_settings = new VSettings("org.hawaii.eyesight");
+    m_settings = new QSettings();
     loadSettings();
 }
 
@@ -101,19 +101,19 @@ QStringList Settings::defaultColor() const
 
 void Settings::loadSettings()
 {
-    m_windowSize = QSize(m_settings->value("interface/window-width").toInt(),
-                         m_settings->value("interface/window-height").toInt());
-    m_showMenuBar = m_settings->value("interface/show-menubar").toBool();
-    m_tbArea = convertToToolBarArea(m_settings->value("interface/toolbar-area").toInt());
-    m_showZoomSlider = m_settings->value("interface/show-zoom-slider").toBool();
-    m_maxRecentFiles = m_settings->value("settings/max-recent-files").toInt();
+    m_windowSize = QSize(m_settings->value("interface/window-width", 500).toInt(),
+                         m_settings->value("interface/window-height", 400).toInt());
+    m_showMenuBar = m_settings->value("interface/show-menubar", true).toBool();
+    m_tbArea = convertToToolBarArea(m_settings->value("interface/toolbar-area", Qt::BottomToolBarArea).toInt());
+    m_showZoomSlider = m_settings->value("interface/show-zoom-slider", false).toBool();
+    m_maxRecentFiles = m_settings->value("settings/max-recent-files", 5).toInt();
     m_recentFilesList = m_settings->value("behavior/recent-files").toStringList();
-    m_restartWhenZooming = m_settings->value("behavior/restart-animation-when-zooming").toBool();
-    m_movieSpeed = m_settings->value("behavior/animation-playback-speed").toInt();
-    m_stopMovieWhenFinish = m_settings->value("behavior/stop-animation-when-finished").toBool();
-    m_zoomMultiplier = m_settings->value("behavior/zoom-multiplier").toInt();
-    m_compressLevel = m_settings->value("behavior/compression-value").toInt();
-    m_sorting = m_settings->value("behavior/sort-by").toInt();
+    m_restartWhenZooming = m_settings->value("behavior/restart-animation-when-zooming", true).toBool();
+    m_movieSpeed = m_settings->value("behavior/animation-playback-speed", 100).toInt();
+    m_stopMovieWhenFinish = m_settings->value("behavior/stop-animation-when-finished", false).toBool();
+    m_zoomMultiplier = m_settings->value("behavior/zoom-multiplier", 25).toInt();
+    m_compressLevel = m_settings->value("behavior/compression-value",-1).toInt();
+    m_sorting = m_settings->value("behavior/sort-by", 0).toInt();
 #if 0
     m_loadFixedSize       = settings.value("loadFixedSize",        true).toBool();
     m_squaresSize         = settings.value("squaresSize",          8).toInt();

@@ -33,8 +33,6 @@
 #include <QDebug>
 #include <QSize>
 
-#include <VSettings>
-
 class Settings : public QObject
 {
     Q_OBJECT
@@ -213,7 +211,7 @@ public slots:
     void loadSettings();
 
 private:
-    VSettings *m_settings;
+    QSettings *m_settings;
     QStringList m_actionsLoaded;
     QStringList m_backgroundColor;
     QStringList m_recentFilesList;

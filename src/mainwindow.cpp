@@ -28,8 +28,6 @@
 #include <QtWidgets>
 #include <QPrintDialog>
 
-#include <VAboutDialog>
-
 #include "mainwindow.h"
 #include "imagewidget.h"
 #include "zoomwidget.h"
@@ -583,22 +581,7 @@ void MainWindow::fileProperties()
 
 void MainWindow::about()
 {
-    QStringList authors;
-    authors << "Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>";
-
-    VAboutDialog dialog(this);
-    dialog.setAuthors(authors);
-    dialog.setCopyright(tr("Copyright (C) 2012-2013 Pier Luigi Fiorini"));
-    dialog.setDescription(tr("Simple image visualization application."));
-    dialog.setLink(QUrl("http://www.maui-project.org/"));
-
-    QFile licenseFile(":/COPYING");
-    if (licenseFile.open(QIODevice::ReadOnly)) {
-        dialog.setLicenseText(licenseFile.readAll());
-        licenseFile.close();
-    }
-
-    dialog.exec();
+    QMessageBox::about(this, tr("About"), tr("Simple image visualization application."));
 }
 
 void MainWindow::flipHorizontally()
