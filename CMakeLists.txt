@@ -15,7 +15,7 @@ set(EYESIGHT_VERSION_PATCH 90)
 set(EYESIGHT_VERSION_STRING "${EYESIGHT_VERSION_MAJOR}.${EYESIGHT_VERSION_MINOR}.${EYESIGHT_VERSION_PATCH}")
 
 # Installation directories
-include(HawaiiInstallDirs)
+include(GNUInstallDirs)
 
 # Macro to print feature summary
 include(FeatureSummary)
