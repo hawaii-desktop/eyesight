@@ -17,8 +17,8 @@ set(EYESIGHT_VERSION_STRING "${EYESIGHT_VERSION_MAJOR}.${EYESIGHT_VERSION_MINOR}
 # Installation directories
 include(HawaiiInstallDirs)
 
-# Log features
-include(MacroLogFeature)
+# Macro to print feature summary
+include(FeatureSummary)
 
 # Add custom uninstall target
 configure_file(
@@ -51,12 +51,10 @@ endif()
 # Find Qt
 find_package(Qt5PrintSupport REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
-macro_log_feature(Qt5PrintSupport_FOUND "Qt5PrintSupport" "Support for Qt5PrintSupport" "http://qt-project.org" "")
-macro_log_feature(Qt5LinguistTools_FOUND "Qt5LinguistTools" "Support for Qt5LinguistTools" "http://qt-project.org" "")
 
 # Subdirectories
 add_subdirectory(data)
 add_subdirectory(src)
 
-# Display featute log
-macro_display_feature_log()
+# Display featute summary
+feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
