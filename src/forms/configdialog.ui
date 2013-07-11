@@ -767,50 +767,6 @@
                  </layout>
                 </widget>
                </item>
-               <item>
-                <widget class="QGroupBox" name="groupBox_2">
-                 <property name="title">
-                  <string>Button style</string>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_10">
-                  <item>
-                   <widget class="QRadioButton" name="onlyIconsRadioButton">
-                    <property name="text">
-                     <string>Only icons</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="onlyTextRadioButton">
-                    <property name="text">
-                     <string>Only text</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="tbiRadioButton">
-                    <property name="text">
-                     <string>Text beside icons</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="tuiRadioButton">
-                    <property name="text">
-                     <string>Text under icons</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="fsRadioButton">
-                    <property name="text">
-                     <string>Follow style</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
               </layout>
              </item>
              <item>

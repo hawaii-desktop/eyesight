@@ -102,11 +102,6 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     connect(ui.bottomRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.lockToolbar, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.toolbarVisible, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.onlyIconsRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.onlyTextRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.tbiRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.tuiRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.fsRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(tbe, SIGNAL(actionsListChanged()), this, SLOT(settingsChangedSlot()));
 
     //toolbar area
