@@ -255,8 +255,6 @@ private:
     QString setHour(int hour, int min);
     QStringList defaultActions() const;
     QStringList defaultColor() const;
-
-    Qt::ToolBarArea convertToToolBarArea(int val);
 };
 
 #endif // SETTINGS_H

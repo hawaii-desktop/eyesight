@@ -104,7 +104,7 @@ void Settings::loadSettings()
     m_windowSize = QSize(m_settings->value("interface/window-width", 500).toInt(),
                          m_settings->value("interface/window-height", 400).toInt());
     m_showMenuBar = m_settings->value("interface/show-menubar", true).toBool();
-    m_tbArea = convertToToolBarArea(m_settings->value("interface/toolbar-area", Qt::BottomToolBarArea).toInt());
+    m_tbArea = (Qt::ToolBarArea)m_settings->value("interface/toolbar-area", Qt::BottomToolBarArea).toInt();
     m_showZoomSlider = m_settings->value("interface/show-zoom-slider", false).toBool();
     m_maxRecentFiles = m_settings->value("settings/max-recent-files", 5).toInt();
     m_recentFilesList = m_settings->value("behavior/recent-files").toStringList();
@@ -143,22 +143,7 @@ void Settings::saveSettings()
     m_settings->setValue("interface/window-width", m_windowSize.width());
     m_settings->setValue("interface/window-height", m_windowSize.height());
     m_settings->setValue("interface/show-menubar", m_showMenuBar);
-    switch (m_tbArea) {
-        case Qt::LeftToolBarArea:
-            m_settings->setValue("interface/toolbar-area", "left");
-            break;
-        case Qt::RightToolBarArea:
-            m_settings->setValue("interface/toolbar-area", "right");
-            break;
-        case Qt::TopToolBarArea:
-            m_settings->setValue("interface/toolbar-area", "top");
-            break;
-        case Qt::BottomToolBarArea:
-            m_settings->setValue("interface/toolbar-area", "bottom");
-            break;
-        default:
-            break;
-    }
+    m_settings->setValue("interface/toolbar-area", m_tbArea);
     m_settings->setValue("interface/show-zoom-slider", m_showZoomSlider);
     m_settings->setValue("behavior/max-recent-files", m_maxRecentFiles);
     m_settings->setValue("behavior/recent-files", m_recentFilesList);
@@ -182,18 +167,4 @@ void Settings::saveSettings()
     settings.setValue("pathToUse", m_pathToUse);
     settings.endGroup();
 #endif
-}
-
-Qt::ToolBarArea Settings::convertToToolBarArea(int val)
-{
-    switch (val) {
-        case Qt::LeftToolBarArea:
-            return Qt::LeftToolBarArea;
-        case Qt::RightToolBarArea:
-            return Qt::LeftToolBarArea;
-        case Qt::TopToolBarArea:
-            return Qt::TopToolBarArea;
-    }
-
-    return Qt::BottomToolBarArea;
 }
