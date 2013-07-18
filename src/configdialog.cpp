@@ -28,7 +28,6 @@
 #include <QtWidgets>
 
 #include "configdialog.h"
-#include "toolbaredit.h"
 #include "settings.h"
 #include "fileutils.h"
 
@@ -91,18 +90,12 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     /**
       *toolbar stuff
       */
-    //edit actions
-    tbe = new ToolBarEdit;
-    ui.editActions->addWidget(tbe);
 
     //conections
     connect(ui.leftRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.rightRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.topRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
     connect(ui.bottomRadioButton, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.lockToolbar, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(ui.toolbarVisible, SIGNAL(toggled(bool)), this, SLOT(settingsChangedSlot()));
-    connect(tbe, SIGNAL(actionsListChanged()), this, SLOT(settingsChangedSlot()));
 
     //toolbar area
     switch (settings->getTBArea()) {
@@ -426,7 +419,7 @@ Qt::ToolBarArea ConfigDialog::gettbpos()
   */
 void ConfigDialog::setActionsList(QList<ActionData *> actions)
 {
-    tbe->setActionsList(actions, settings->getActionsLoaded());
+    //tbe->setActionsList(actions, settings->getActionsLoaded());
 }
 
 int ConfigDialog::closeDialog()
@@ -457,7 +450,7 @@ void ConfigDialog::saveSettings()
 
     //toolbar stuff
     settings->setTBArea(this->gettbpos());
-    settings->setActionsLoaded(tbe->getActionsList());
+    //settings->setActionsLoaded(tbe->getActionsList());
 
     //general options stuff
     //settings->setUseWebp(ui.webpSupport->isChecked());

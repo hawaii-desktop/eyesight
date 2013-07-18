@@ -33,7 +33,6 @@
 #include "actiondata.h"
 
 class Settings;
-class ToolBarEdit;
 
 class ConfigDialog : public QDialog
 {
@@ -67,7 +66,6 @@ private:
     int getLastDirOption();
 
     //toolbar stuff
-    ToolBarEdit *tbe;
     Qt::ToolBarArea gettbpos();
 
     //general options stuff
