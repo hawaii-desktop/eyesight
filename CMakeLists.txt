@@ -28,7 +28,7 @@ configure_file(
 add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
 # Set up packaging
-set(CPACK_PACKAGE_NAME "hawaii-eyesight")
+set(CPACK_PACKAGE_NAME "eyesight")
 set(CPACK_PACKAGE_VERSION "${EYESIGHT_VERSION_STRING}")
 set(CPACK_GENERATOR "TGZ")
 set(CPACK_SET_DESTDIR FALSE)
