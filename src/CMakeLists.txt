@@ -2,29 +2,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DI
 
 set(SOURCES
     main.cpp
-    mainwindow.cpp
-    actiondata.cpp
-    actionsmanager.cpp
-    configdialog.cpp
-    edittoolbar.cpp
-    fileproperties.cpp
-    fileutils.cpp
-    gotodialog.cpp
-    imagewidget.cpp
-    settings.cpp
-    shortcut.cpp
-    toolbaredit.cpp
-    zoomwidget.cpp
 )
-
-set(UI_SOURCES
-    forms/fileproperties.ui
-    forms/configdialog.ui
-    forms/gotodialog.ui
-    forms/toolbaredit.ui
-    forms/edittoolbar.ui
-)
-
 
 set(QM_SOURCES
     translations/ar.ts
@@ -44,12 +22,11 @@ set(QRC_SOURCES
     eyesight.qrc
 )
 
-qt5_wrap_ui(UI_FILES ${UI_SOURCES})
 qt5_add_resources(QRC_FILES ${QRC_SOURCES})
 qt5_add_translation(QM_FILES ${QM_SOURCES})
 
-add_executable(eyesight ${SOURCES} ${UI_FILES} ${QRC_FILES} ${QM_FILES})
-qt5_use_modules(eyesight PrintSupport)
+add_executable(eyesight ${SOURCES} ${QRC_FILES} ${QM_FILES})
+qt5_use_modules(eyesight Gui Qml)
 
 install(TARGETS eyesight DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/eyesight/translations)
+#install(FILES ${QM_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/eyesight/translations)

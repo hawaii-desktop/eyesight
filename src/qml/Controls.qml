@@ -2,7 +2,6 @@
  * This file is part of EyeSight.
  *
  * Copyright (C) 2012-2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
- * Copyright (C) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
  *
  * Author(s):
  *    Pier Luigi Fiorini
@@ -25,42 +24,24 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef FILEPROPERTIES_H
-#define FILEPROPERTIES_H
+import QtQuick 2.2
+import QtQuick.Controls 1.2 as QtControls
+import "Utils.js" as Utils
 
-#include <QDialog>
-#include "ui_fileproperties.h"
+Row {
+    QtControls.ToolButton {
+        iconName: Utils.resolveIconName("media-seek-backward")
+    }
 
-class FileProperties : public QDialog
-{
-    Q_OBJECT
+    QtControls.ToolButton {
+        iconName: {
+            if (state == "slideshow")
+                return Utils.resolveIconName("media-playback-pause", true);
+            return Utils.resolveIconName("media-playback-start");
+        }
+    }
 
-public:
-    /**
-     * constructor
-     */
-    FileProperties(QWidget *parent = 0);
-
-    /**
-     * Sets \a fileName as the file to be processed
-     * @param useBinarySystem enable/disable the binary sistem notation to show the file size
-     * @param sizePrecision sets the file's size precision to use
-     */
-    void setFile(const QString fileName, bool useBinarySystem = false, int sizePrecision = 2);
-
-    /**
-     * Sets \a prevPixmap as the preview image to show in the dialog
-     */
-    void setPreviewPixmap(const QPixmap prevPixmap);
-
-    /**
-     * Sets \a size as the picture size (height and width) to show
-     */
-    void setPictureSize(QSize size);
-
-private:
-    Ui_PropertiesDialog ui;
-    QString getFromResource(const QString &res_file);
-
-};
-#endif
+    QtControls.ToolButton {
+        iconName: Utils.resolveIconName("media-seek-forward")
+    }
+}

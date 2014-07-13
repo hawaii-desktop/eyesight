@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>../COPYING</file>
+        <file>qml/BlurBackground.qml</file>
+        <file>qml/Controls.qml</file>
+        <file>qml/FoldersView.qml</file>
+        <file>qml/ImageView.qml</file>
+        <file>qml/MainWindow.qml</file>
+        <file>qml/Options.qml</file>
+        <file>qml/PicturesList.qml</file>
+        <file>qml/Utils.js</file>
     </qresource>
 </RCC>

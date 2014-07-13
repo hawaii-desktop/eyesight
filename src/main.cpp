@@ -25,33 +25,25 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#include <QApplication>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 #include <QDir>
 #include <QLibraryInfo>
 #include <QStandardPaths>
 #include <QTranslator>
 
-#include "mainwindow.h"
-#include "configdialog.h"
-
-#include <getopt.h>
-#include <iostream>
-
 #include <config.h>
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-    app.setApplicationName(QLatin1String("EyeSight"));
+    QGuiApplication app(argc, argv);
+    app.setApplicationName(QStringLiteral("EyeSight"));
     app.setApplicationVersion(EYESIGHT_VERSION);
-    app.setOrganizationDomain(QLatin1String("maui-project.org"));
-    app.setOrganizationName(QLatin1String("Hawaii"));
-    app.setWindowIcon(QIcon::fromTheme("eyesight"));
-
-    //all the translation stuff was taken from minitube
-    const QString locale = QLocale::system().name();
+    app.setOrganizationDomain(QStringLiteral("maui-project.org"));
+    app.setOrganizationName(QStringLiteral("Hawaii"));
 
     // Translations
+    const QString locale = QLocale::system().name();
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + locale,
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
@@ -60,58 +52,12 @@ int main(int argc, char *argv[])
     QTranslator translator;
     QString localeDir = QStandardPaths::locate(
                             QStandardPaths::GenericDataLocation,
-                            QLatin1String("eyesight/translations"),
+                            QStringLiteral("eyesight/translations"),
                             QStandardPaths::LocateDirectory);
     translator.load(locale, localeDir);
     app.installTranslator(&translator);
 
-    /**
-      *command line stuff
-      */
-    int next_option;
-    int re = 0;
-    const char *const short_options = "hev";
-    const struct option long_options[] = {
-        {"help",     0, NULL, 'h'},
-        {"version",  0, NULL, 'v'},
-        {NULL,       0, NULL, 0}
-    };
-
-    next_option = getopt_long(argc, argv, short_options, long_options, NULL);
-
-    if (next_option == 'h') {
-        std::cout << QString("How to use: eyesight [OPTION/FILE]\n"
-                             "Avaible options:\n"
-                             "    %1 shows this help and finish\n"
-                             "    %2 shows eyesight version\n"
-                            ).arg("-h --help").arg("-v --version").toStdString();
-        re = 0;
-    }
-
-    else if (next_option == '?') {
-        std::cout << QObject::tr("Try 'eyesight --help' for more information\n").toStdString();
-        re = 0;
-    }
-
-    else if (next_option == 'v') {
-        std::cout << QObject::tr("EyeSight %1\n"
-                                 "Copyright (C) 2011 Aguilera Dario.\n"
-                                 "Copyright (C) 2012-2014 Pier Luigi Fiorini.\n"
-                                 "License GPLv2+.\n"
-                                 "<http://gnu.org/licenses/gpl.html>.\n"
-                                 "This is free software: you are free to change it and redistribute.\n"
-                                 "There is NO WARRANTY.\n"
-                                ).arg(QLatin1String(EYESIGHT_VERSION)).toStdString();
-        re = 0;
-    }
-
-    else if (next_option == -1) {
-        MainWindow imageViewer;
-        if (QApplication::arguments().size() > 1)
-            imageViewer.openImageFromCommandLine(QApplication::arguments());
-        imageViewer.show();
-        re = app.exec();
-    }
-
-    return re;
+    // QML application
+    QQmlApplicationEngine engine(QUrl("qrc:///qml/MainWindow.qml"));
+    return app.exec();
 }

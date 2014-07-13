@@ -2,7 +2,6 @@
  * This file is part of EyeSight.
  *
  * Copyright (C) 2012-2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
- * Copyright (C) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
  *
  * Author(s):
  *    Pier Luigi Fiorini
@@ -25,40 +24,25 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#ifndef WEBPDECODER_H
-#define WEBPDECODER_H
+import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
-#include <QWidget>
+Item {
+    property alias source: desaturate.source
 
-class WebpDecoder : public QWidget
-{
-    Q_OBJECT
-
-public:
-    /**
-      *constructor
-      */
-    WebpDecoder(QWidget *parent = 0);
-
-    /**
-      *pass the file \a name to decode, returns true if sucess, otherwise return false
-      */
-    bool setFile(const QString name);
-
-    /**
-      * @return the image passed as an QPixmap object
-      */
-    inline QPixmap getPixmap() const {
-        return pixmap;
+    Desaturate {
+        id: desaturate
+        anchors.fill: parent
+        desaturation: 0.35
+        cached: false
+        visible: false
     }
 
-private:
-    QPixmap pixmap;
-    QString name;
-
-    bool decodeWebpImage(const QString fileName);
-    bool readImage(unsigned char *rgb, int width, int height, QPixmap &pixmap);
-
-};
-
-#endif // WEBPDECODER_H
+    FastBlur {
+        id: blur
+        anchors.fill: parent
+        source: desaturate
+        radius: 64
+        cached: false
+    }
+}

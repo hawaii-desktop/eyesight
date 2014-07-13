@@ -2,7 +2,6 @@
  * This file is part of EyeSight.
  *
  * Copyright (C) 2012-2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
- * Copyright (C) 2010-2011 Dario Ignacio Aguilera <dario_21_06@hotmail.com>
  *
  * Author(s):
  *    Pier Luigi Fiorini
@@ -25,13 +24,16 @@
  * $END_LICENSE$
  ***************************************************************************/
 
-#include "actiondata.h"
+import QtQuick 2.2
+import QtQuick.Controls 1.2 as QtControls
+import "Utils.js" as Utils
 
-ActionData::ActionData(QString name, QString id, QString shortcut, QString iconName, QObject *parent) :
-    QObject(parent)
-{
-    this->name = name;
-    this->iconName = iconName;
-    this->shortcut = shortcut;
-    this->id = id;
+Row {
+    QtControls.ToolButton {
+        iconName: Utils.resolveIconName("view-grid")
+    }
+
+    QtControls.ToolButton {
+        iconName: Utils.resolveIconName("view-list")
+    }
 }

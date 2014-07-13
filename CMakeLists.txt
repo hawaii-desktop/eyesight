@@ -51,6 +51,8 @@ if(CMAKE_BUILD_TYPE MATCHES "^[Rr]elease$")
 endif()
 
 # Find Qt
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5Qml REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
