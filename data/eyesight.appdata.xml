@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
+<application>
+  <id type="desktop">eyesight.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>View and rotate images</summary>
+  <description>
+    <p>
+      EyeSight is a simple image viewer that allows the user to view either a
+      single image, or a whole directory of images.
+      EyeSight also allows the user to rotate the image, and save the result.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">http://www.maui-project.org/projects/eyesight/images/eyesight.png</screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/mauios/eyesight</url>
+  <updatecontact>pierluigi.fiorini_at_gmail.com</updatecontact>
+</application>
