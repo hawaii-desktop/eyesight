@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 Ryan Lerch <rlerch@redhat.com> -->
+<!--
+     Copyright 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+     Copyright 2014 Ryan Lerch <rlerch@redhat.com>
+-->
 <application>
   <id type="desktop">eyesight.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
@@ -12,8 +15,10 @@
     </p>
   </description>
   <screenshots>
-    <screenshot type="default">http://www.maui-project.org/projects/eyesight/images/eyesight.png</screenshot>
+    <screenshot type="default">http://hawaiios.org/projects/eyesight/screenshot1.png</screenshot>
+    <screenshot type="default">http://hawaiios.org/projects/eyesight/screenshot2.png</screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/mauios/eyesight</url>
-  <updatecontact>pierluigi.fiorini_at_gmail.com</updatecontact>
+  <url type="homepage">http://hawaiios.org/projects/eyesight</url>
+  <project_group>Hawaii</project_group>
+  <updatecontact>https://github.com/hawaii-desktop/eyesight</updatecontact>
 </application>
