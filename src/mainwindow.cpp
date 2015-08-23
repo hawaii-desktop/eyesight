@@ -111,7 +111,7 @@ MainWindow::MainWindow()
 void MainWindow::print()
 {
     //copy/paste from qt exaples :-P
-    Q_ASSERT(imageWidget->getPixmap());
+    Q_ASSERT(!imageWidget->getPixmap().isNull());
 #ifndef QT_NO_PRINTER
     QPrintDialog dialog(&printer, this);
     if (dialog.exec()) {
